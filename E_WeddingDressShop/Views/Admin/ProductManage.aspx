@@ -26,7 +26,7 @@
             <label for="txtStockQuantity">Số lượng tồn:</label>
             <asp:TextBox ID="txtStockQuantity" runat="server"></asp:TextBox>
 
-             <label for="txtImageUrl">Hình ảnh:</label>
+            <label for="txtImageUrl">Hình ảnh:</label>
             <asp:Label ID="lblUploadMessage" runat="server" ForeColor="Red" Visible="false"></asp:Label>
             <asp:Image ID="imgPreview" runat="server" Visible="false" Width="200px" Height="200px" />
             <asp:FileUpload ID="fileUploadImage" runat="server" />
@@ -45,13 +45,22 @@
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
-                     <asp:ImageField DataImageUrlField="ImageUrl" HeaderText="Hình ảnh" SortExpression="ImageUrl" />
+                    <asp:ImageField DataImageUrlField="ImageUrl" HeaderText="Hình ảnh" SortExpression="ImageUrl" />
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" />
                     <asp:BoundField DataField="Price" HeaderText="Giá" DataFormatString="{0:C}" />
                     <asp:BoundField DataField="StockQuantity" HeaderText="Số lượng tồn" />
                     <asp:BoundField DataField="CategoryName" HeaderText="Danh mục" />
-                    <asp:CommandField ShowEditButton="True" ButtonType="Button" EditText="Sửa" />
-                    <asp:CommandField ShowDeleteButton="True" ButtonType="Button" DeleteText="Xóa" />
+                    <asp:TemplateField HeaderText="Sửa">
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="sua" CommandName="SUA" OnCommand="Sua_Click" Text="Sửa" CommandArgument='<%# Bind("ProductID") %>'></asp:Button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Xoá">
+                        <ItemTemplate>
+                            <asp:Button runat="server" ID="xoa" CommandName="XOA" OnCommand="Xoa_Click" Text="Xoá" CommandArgument='<%# Bind("ProductID") %>'
+                                OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') "></asp:Button>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </div>

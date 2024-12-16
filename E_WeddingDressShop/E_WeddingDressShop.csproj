@@ -88,6 +88,7 @@
     <Content Include="Assets\ProductManage.css" />
     <Content Include="Views\Admin\CategoryManage.aspx" />
     <Content Include="Views\Admin\ProductManage.aspx" />
+    <Content Include="Views\Admin\UpdateProductManage.aspx" />
     <Content Include="Views\Admin\UpdateCategoryManage.aspx" />
     <Content Include="Views\DashBoard.aspx" />
     <Content Include="Views\Clients\Login.aspx" />
@@ -116,6 +117,13 @@
     </Compile>
     <Compile Include="Views\Admin\ProductManage.aspx.designer.cs">
       <DependentUpon>ProductManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UpdateProductManage.aspx.cs">
+      <DependentUpon>UpdateProductManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\UpdateProductManage.aspx.designer.cs">
+      <DependentUpon>UpdateProductManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\UpdateCategoryManage.aspx.cs">
       <DependentUpon>UpdateCategoryManage.aspx</DependentUpon>
@@ -155,7 +163,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
