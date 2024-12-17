@@ -109,11 +109,55 @@ namespace E_WeddingDressShop.Views.Admin
             lblMessage.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;
             lblMessage.Visible = true;
 
-            ClearForm();
+            ClearFields();
             LoadProducts();
         }
 
-        private void ClearForm()
+        protected void Xoa_Click(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "XOA")
+                {
+                    int productID = Convert.ToInt32(e.CommandArgument);
+                    string result = productController.DeleteProduct(productID);
+
+                    ShowMessage(result, result.Contains("thành công"));
+                    ClearFields();
+                    LoadProducts();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khi xóa danh mục: {ex.Message}", false);
+            }
+        }
+        protected void Sua_Click(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "SUA")
+                {
+                    int productId = Convert.ToInt32(e.CommandArgument);
+                    PRODUCT product = productController.getProductByID(productId);
+
+                    if (product != null)
+                    {
+                        Session["sp"] = product;
+                        Response.Redirect("UpdateProductManage.aspx");
+                    }
+                    else
+                    {
+                        ShowMessage("Không tìm thấy danh mục cần sửa.", false);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khi sửa danh mục: {ex.Message}", false);
+            }
+        }
+        private void ClearFields()
         {
             txtProductID.Text = string.Empty;
             txtProductName.Text = string.Empty;
@@ -123,6 +167,13 @@ namespace E_WeddingDressShop.Views.Admin
             txtImageUrl.Text = string.Empty;
             ddlCategory.SelectedIndex = 0;
             imgPreview.Visible = false;
+        }
+
+        private void ShowMessage(string message, bool isSuccess)
+        {
+            lblMessage.Text = message;
+            lblMessage.ForeColor = isSuccess ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+            lblMessage.Visible = true;
         }
     }
 }
