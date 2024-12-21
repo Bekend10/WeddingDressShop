@@ -21,7 +21,7 @@
             
             /* Main container */
             .container {
-                width: 40%;
+                width: 70%;
                 margin: 50px auto;
                 background-color: #ffffff;
                 padding: 20px;

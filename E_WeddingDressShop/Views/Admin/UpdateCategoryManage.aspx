@@ -22,10 +22,10 @@
         
         /* Main container */
         .container {
-            width: 30%;
+            width: 60%;
             margin: 50px auto;
             background-color: #ffffff;
-            padding: 20px;
+            padding: 20px 50px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
@@ -52,7 +52,7 @@
         }
         
         .category-table td {
-            width: 80%;
+            width: 20%;
         }
         
         /* Input fields */
@@ -130,7 +130,7 @@
                         <asp:TextBox ID="txtCategoryName" runat="server" class="input-field" />
                     </asp:TableCell></asp:TableRow><asp:TableRow>
                     <asp:TableCell>Mô tả</asp:TableCell><asp:TableCell>
-                        <asp:TextBox ID="txtDescription" runat="server" class="input-field" />
+                        <asp:TextBox ID="txtDescription" runat="server" class="input-field" TextMode="MultiLine" />
                     </asp:TableCell></asp:TableRow></asp:Table><div class="buttons">
                 <asp:Button ID="btnSua" runat="server" Text="Lưu thay đổi" OnClick="btnSua_Click" class="btn-save" />
                 <asp:Button ID="btnBoQua" runat="server" Text="Hủy bỏ" class="btn-cancel" />
