@@ -2,6 +2,7 @@
 using E_WeddingDressShop.DTO;
 using System;
 using System.Text;
+using System.Web.UI;
 
 namespace E_WeddingDressShop.Views
 {
@@ -21,29 +22,21 @@ namespace E_WeddingDressShop.Views
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(numberPhone) ||
                 string.IsNullOrEmpty(address))
             {
-                lblMessage.Text = "Vui lòng nhập đầy đủ thông tin!";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
             if (!IsValidEmail(email))
             {
-                lblMessage.Text = "Địa chỉ email không hợp lệ!";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
             if (password.Length < 8)
             {
-                lblMessage.Text = "Mật khẩu phải có ít nhất 8 ký tự!";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
             if (!long.TryParse(numberPhone, out _) || numberPhone.Length < 9)
             {
-                lblMessage.Text = "Số điện thoại không hợp lệ!";
-                lblMessage.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
@@ -60,10 +53,7 @@ namespace E_WeddingDressShop.Views
 
             UserController dto = new UserController();
             string result = dto.RegisterUser(user);
-
-            lblMessage.Text = result;
-            lblMessage.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;
-
+            string script;
             if (result.Contains("thành công"))
             {
                 // Xóa các trường nhập sau khi đăng ký thành công
@@ -72,6 +62,40 @@ namespace E_WeddingDressShop.Views
                 txtPassword.Text = string.Empty;
                 txtNumberPhone.Text = string.Empty;
                 txtAddress.Text = string.Empty;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                     function showToast(message) {
+                         Toastify({
+                             text: message,
+                             duration: 3000,
+                             close: true,
+                             gravity: 'top',
+                             position: 'right',
+                             style.background: '#00d400',
+                             stopOnFocus: true
+                         }).showToast();
+                     }
+                 ", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Đăng ký thành công!');", true);
+                Response.Redirect("~/Views/Clients/Login.aspx");
+            }
+            else
+            {
+
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                     function showToast(message) {
+                         Toastify({
+                             text: message,
+                             duration: 3000,
+                             close: true,
+                             gravity: 'top',
+                             position: 'right',
+                             backgroundColor: 'red',
+                             stopOnFocus: true
+                         }).showToast();
+                     }
+                 ", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Thông tin chưa chính xác!');", true);
+
             }
         }
 
