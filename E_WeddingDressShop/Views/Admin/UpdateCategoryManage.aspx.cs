@@ -50,8 +50,35 @@ namespace E_WeddingDressShop.Views.Admin
 
                 string result = categoryController.UpdateCategory(updatedCategory);
 
-                msg.Text = result.Contains("thành công") ? "Cập nhật thành công!" : result;
-                msg.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                /*                msg.Text = result.Contains("thành công") ? "Cập nhật thành công!" : result;
+                                msg.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;*/
+                if (result.Contains("thành công"))
+                {
+                    // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'green',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }
+
+                    ", true);
+                    // Gọi showToast sau khi script đã được tải
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Cập nhật Danh mục thành công!');", true);
+                    msg.Text = "Cập nhật Danh mục thành công!";
+                    msg.ForeColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    msg.Text = result;
+                    msg.ForeColor = System.Drawing.Color.Red;
+                }
             }
             catch (Exception ex)
             {

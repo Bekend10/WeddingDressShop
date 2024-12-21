@@ -6,6 +6,10 @@
 <head runat="server">
     <title>Quản lý danh mục</title>
     <link href="../../Assets/CategoryManage.css" rel="stylesheet" />
+      <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+    <!-- Toastify JavaScript -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,10 +107,10 @@
             background-color: #c82333;
         }
     </style>
-
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <div class="form-container">
             <h2>Thêm</h2>
             <asp:Label ID="lblCategoryID" runat="server" Text="ID danh mục (chỉ dùng khi cập nhật):" Visible="false"></asp:Label>

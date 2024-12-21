@@ -58,7 +58,7 @@ namespace E_WeddingDressShop.Views.Admin
                 StockQuantity = int.Parse(txtStockQuantity.Text),
                 CategoryID = categoryId,
                 CreatedDate = DateTime.Now
-            };
+            };//chưa có try catch nếu sai định dạng
 
             // Kiểm tra và xử lý ảnh nếu có
             if (fileUploadImage.HasFile)
@@ -104,6 +104,42 @@ namespace E_WeddingDressShop.Views.Admin
             {
                 result = productController.UpdateProduct(product);
             }
+            if (result.Contains("thành công"))
+            {
+                // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'green',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                // Gọi showToast sau khi script đã được tải
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Thêm sản phẩm thành công!');", true);
+            }
+            else if (result.Contains("Lỗi"))
+            {
+                // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'Red',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                // Gọi showToast sau khi script đã được tải
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Lỗi thêm sản phẩm!');", true);
+            }
 
             lblMessage.Text = result;
             lblMessage.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;
@@ -121,7 +157,42 @@ namespace E_WeddingDressShop.Views.Admin
                 {
                     int productID = Convert.ToInt32(e.CommandArgument);
                     string result = productController.DeleteProduct(productID);
-
+                    if (result.Contains("thành công"))
+                    {
+                        // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'green',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                        // Gọi showToast sau khi script đã được tải
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Xóa sản phẩm thành công!');", true);
+                    }
+                    else if (result.Contains("Lỗi"))
+                    {
+                        // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'Red',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                        // Gọi showToast sau khi script đã được tải
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Lỗi xóa sản phẩm!');", true);
+                    }
                     ShowMessage(result, result.Contains("thành công"));
                     ClearFields();
                     LoadProducts();

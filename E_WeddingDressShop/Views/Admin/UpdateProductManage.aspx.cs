@@ -1,9 +1,7 @@
 ﻿using E_WeddingDressShop.Controllers;
 using E_WeddingDressShop.Models;
 using System;
-using System.Collections.Generic;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace E_WeddingDressShop.Views.Admin
 {
@@ -40,19 +38,76 @@ namespace E_WeddingDressShop.Views.Admin
                 }
             }
         }
+
         private void LoadCategories()
         {
             ddlCategory.DataSource = categoryController.getListCategory();
             ddlCategory.DataTextField = "CategoryName";
             ddlCategory.DataValueField = "CategoryID";
             ddlCategory.DataBind();
-
         }
 
+        /*        protected void btnSua_Click(object sender, EventArgs e)
+                {
+                    try
+                    {
+                        if (string.IsNullOrWhiteSpace(txtProductName.Text) ||
+                            string.IsNullOrWhiteSpace(txtDescription.Text) ||
+                            string.IsNullOrWhiteSpace(txtPrice.Text) ||
+                            string.IsNullOrWhiteSpace(txtStockQuantity.Text) ||
+                            ddlCategory.SelectedValue == null)
+                        {
+                            msg.Text = "Vui lòng điền đầy đủ thông tin trước khi cập nhật.";
+                            msg.ForeColor = System.Drawing.Color.Red;
+                            return;
+                        }
+
+                        string imageUrl = imgPreview.ImageUrl;
+                        if (fileUploadImage.HasFile)
+                        {
+                            string fileName = $"{DateTime.Now.Ticks}_{fileUploadImage.FileName}";
+                            string filePath = Server.MapPath($"~/Uploads/{fileName}");
+                            fileUploadImage.SaveAs(filePath);
+                            imageUrl = $"/Uploads/{fileName}";
+                        }
+
+                        PRODUCT updateProduct = new PRODUCT
+                        {
+                            ProductID = int.Parse(txtProductID.Text),
+                            Name = txtProductName.Text.Trim(),
+                            Description = txtDescription.Text.Trim(),
+                            Price = float.Parse(txtPrice.Text),
+                            StockQuantity = int.Parse(txtStockQuantity.Text),
+                            ImageUrl = imageUrl,
+                            CategoryID = int.Parse(ddlCategory.SelectedValue)
+                        };
+
+                        string result = productController.UpdateProduct(updateProduct);
+
+                        if (result.Contains("thành công"))
+                        {
+                            // Show success Toast
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowToast", "showToast('Cập nhật sản phẩm thành công!');", true);
+                            msg.Text = "Cập nhật sản phẩm thành công!";
+                            msg.ForeColor = System.Drawing.Color.Green;
+                        }
+                        else
+                        {
+                            msg.Text = result;
+                            msg.ForeColor = System.Drawing.Color.Red;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        msg.Text = $"Lỗi khi cập nhật sản phẩm: {ex.Message}";
+                        msg.ForeColor = System.Drawing.Color.Red;
+                    }
+                }*/
         protected void btnSua_Click(object sender, EventArgs e)
         {
             try
             {
+                // Kiểm tra các trường thông tin
                 if (string.IsNullOrWhiteSpace(txtProductName.Text) ||
                     string.IsNullOrWhiteSpace(txtDescription.Text) ||
                     string.IsNullOrWhiteSpace(txtPrice.Text) ||
@@ -70,9 +125,10 @@ namespace E_WeddingDressShop.Views.Admin
                     string fileName = $"{DateTime.Now.Ticks}_{fileUploadImage.FileName}";
                     string filePath = Server.MapPath($"~/Uploads/{fileName}");
                     fileUploadImage.SaveAs(filePath);
-                    imageUrl = $"/Uploads/{fileName}"; 
+                    imageUrl = $"/Uploads/{fileName}";
                 }
 
+                // Cập nhật thông tin sản phẩm
                 PRODUCT updateProduct = new PRODUCT
                 {
                     ProductID = int.Parse(txtProductID.Text),
@@ -84,12 +140,32 @@ namespace E_WeddingDressShop.Views.Admin
                     CategoryID = int.Parse(ddlCategory.SelectedValue)
                 };
 
+                // Gọi controller để cập nhật sản phẩm
                 string result = productController.UpdateProduct(updateProduct);
 
+                // Kiểm tra kết quả trả về
                 if (result.Contains("thành công"))
                 {
+                    // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'green',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }
+
+                    ", true);
+                    // Gọi showToast sau khi script đã được tải
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Cập nhật sản phẩm thành công!');", true);
                     msg.Text = "Cập nhật sản phẩm thành công!";
                     msg.ForeColor = System.Drawing.Color.Green;
+                    System.Diagnostics.Debug.WriteLine("Cập nhật thành công: " + result);
                 }
                 else
                 {
@@ -103,6 +179,9 @@ namespace E_WeddingDressShop.Views.Admin
                 msg.ForeColor = System.Drawing.Color.Red;
             }
         }
+
+
+
         private void ShowMessage(string message, bool isSuccess)
         {
             msg.Text = message;

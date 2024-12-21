@@ -5,7 +5,11 @@
 <head runat="server">
     <title>Quản lý sản phẩm</title>
     <link href="../../Assets/ProductManage.css" rel="stylesheet" />
-      <style>
+          <!-- Toastify CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"/>
+    <!-- Toastify JavaScript -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>  
+    <style>
         body {
             background-color: white;
             font-family: Arial, sans-serif;
@@ -91,6 +95,12 @@
     background-color: #a71d2a;
 }
 
+.grid-container img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+}
+
         .grid-container table {
             width: 100%;
             border-collapse: collapse;
@@ -119,6 +129,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
         <div class="form-container">
             <h2>Thêm / Cập nhật sản phẩm</h2>
 

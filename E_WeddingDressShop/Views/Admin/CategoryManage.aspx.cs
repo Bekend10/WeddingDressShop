@@ -2,6 +2,7 @@
 using E_WeddingDressShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace E_WeddingDressShop.Views.Admin
@@ -64,8 +65,46 @@ namespace E_WeddingDressShop.Views.Admin
                     // Add new category
                     result = categoryController.AddCategory(category);
                 }
-
+                if (result.Contains("thành công"))
+                {
+                    // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'green',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                    // Gọi showToast sau khi script đã được tải
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Thêm Danh mục thành công!');", true);
+                }
+                else if (result.Contains("Lỗi"))
+                {
+                    // Gọi JavaScript để hiển thị Toastify thông báo thành công
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                    function showToast(message) {
+                        Toastify({
+                            text: message,
+                            duration: 3000,  // Thời gian hiển thị là 3 giây
+                            close: true,  // Có nút đóng
+                            gravity: 'top',  // Vị trí ở phía trên
+                            position: 'right',  // Vị trí ở bên phải
+                            backgroundColor: 'Red',  // Đặt màu nền thành màu xanh
+                            stopOnFocus: true  // Dừng khi hover vào Toast
+                        }).showToast();
+                    }", true);
+                    // Gọi showToast sau khi script đã được tải
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Lỗi thêm danh mục!');", true);
+                }
                 ShowMessage(result, result.Contains("thành công"));
+
+                // Kiểm tra kết quả trả về
+
                 ClearFields();
                 LoadCategories();
             }
