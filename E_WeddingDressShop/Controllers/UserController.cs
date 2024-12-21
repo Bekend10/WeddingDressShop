@@ -1,5 +1,6 @@
 ﻿using E_WeddingDressShop.DTO;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.EnterpriseServices.Internal;
@@ -127,6 +128,26 @@ namespace E_WeddingDressShop.Controllers
             {
                 return "Lỗi: Không thể cập nhật thông tin người dùng. Vui lòng thử lại. " + ex.Message;
             }
+        }
+
+        public int getUserByEmail(string email)
+        {
+            int result = -1; 
+            using (var conn = new SqlConnection(SqlCon))
+            {
+                string sql = "SELECT UserID FROM tb_Users WHERE Email = @Email";
+                var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                conn.Open();
+                var dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    result = (int)dr["UserID"];
+                }
+                conn.Close();
+            }
+            return result;
         }
 
         private void AddUserParameters(SqlCommand cmd, USER user)
