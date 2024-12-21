@@ -86,6 +86,9 @@
     <Content Include="Assets\CategoryManage.css" />
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\ProductManage.css" />
+    <Content Include="Template\fonts\SVN-Ginger-Regular.svg" />
+    <Content Include="Template\image\anh4.png" />
+    <Content Include="Template\image\Screenshot 2024-12-20 145052.png" />
     <Content Include="Views\Admin\CategoryManage.aspx" />
     <Content Include="Views\Admin\ListProduct.aspx" />
     <Content Include="Views\Admin\Order.aspx" />
@@ -93,7 +96,7 @@
     <Content Include="Views\Admin\UpdateProductManage.aspx" />
     <Content Include="Views\Admin\UpdateCategoryManage.aspx" />
     <Content Include="Views\Clients\Order.aspx" />
-    <Content Include="Views\DashBoard.aspx" />
+    <Content Include="Views\Clients\DashBoard.aspx" />
     <Content Include="Views\Clients\Login.aspx" />
     <Content Include="Views\Clients\Register.aspx" />
     <Content Include="Web.config" />
@@ -157,11 +160,11 @@
     <Compile Include="Views\Clients\Order.aspx.designer.cs">
       <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\DashBoard.aspx.cs">
+    <Compile Include="Views\Clients\DashBoard.aspx.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\DashBoard.aspx.designer.cs">
+    <Compile Include="Views\Clients\DashBoard.aspx.designer.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Clients\Login.aspx.cs">
@@ -181,6 +184,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Template\fonts\SVN-Ginger-Regular.eot" />
+    <Content Include="Template\fonts\SVN-Ginger-Regular.ttf" />
+    <Content Include="Template\fonts\SVN-Ginger-Regular.woff" />
+    <Content Include="Template\fonts\SVN-Ginger-Regular.woff2" />
+    <Content Include="Template\fonts\SVN-HousttelySignature-Regular.eot" />
+    <Content Include="Template\fonts\SVN-HousttelySignature-Regular.ttf" />
+    <Content Include="Template\fonts\SVN-HousttelySignature-Regular.woff" />
+    <Content Include="Template\fonts\SVN-HousttelySignature-Regular.woff2" />
+    <Content Include="Template\fonts\Thu-Phap-Giao-Long-Free.ttf" />
+    <Content Include="Template\fonts\UTM-Spring.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
