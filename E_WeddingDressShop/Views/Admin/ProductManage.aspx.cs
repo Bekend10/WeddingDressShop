@@ -20,7 +20,6 @@ namespace E_WeddingDressShop.Views.Admin
                 LoadProducts();
             }
         }
-
         private void LoadCategories()
         {
             ddlCategory.DataSource = categoryController.getListCategory();

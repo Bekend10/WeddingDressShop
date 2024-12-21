@@ -18,7 +18,6 @@ namespace E_WeddingDressShop.Views.Admin
                 LoadCategories();
             }
         }
-
         private void LoadCategories()
         {
             try

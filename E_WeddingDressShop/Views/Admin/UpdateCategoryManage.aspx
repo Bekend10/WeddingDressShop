@@ -35,8 +35,6 @@
             text-align: center;
             color: #333;
         }
-        
-        /* Table for form inputs */
         .category-table {
             width: 100%;
             margin-top: 20px;

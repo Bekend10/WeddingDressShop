@@ -40,7 +40,6 @@
                 width: 100%;
                 margin-top: 20px;
             }
-            
             .product-table th, .product-table td {
                 padding: 12px;
                 text-align: left;

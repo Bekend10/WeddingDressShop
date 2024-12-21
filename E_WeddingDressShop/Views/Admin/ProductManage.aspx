@@ -27,11 +27,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-
         h2 {
             color: #333;
         }
-
         label {
             display: block;
             margin-top: 10px;

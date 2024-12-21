@@ -127,7 +127,7 @@
         </div>
 
         <div class="grid-container">
-            <h2>Danh sách danh mỤc</h2>
+            <h2>Danh sách danh mục</h2>
             <asp:GridView ID="gvCategories" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
                 <Columns>
                     <asp:BoundField DataField="CategoryID" HeaderText="ID" ReadOnly="True" />

@@ -47,62 +47,7 @@ namespace E_WeddingDressShop.Views.Admin
             ddlCategory.DataBind();
         }
 
-        /*        protected void btnSua_Click(object sender, EventArgs e)
-                {
-                    try
-                    {
-                        if (string.IsNullOrWhiteSpace(txtProductName.Text) ||
-                            string.IsNullOrWhiteSpace(txtDescription.Text) ||
-                            string.IsNullOrWhiteSpace(txtPrice.Text) ||
-                            string.IsNullOrWhiteSpace(txtStockQuantity.Text) ||
-                            ddlCategory.SelectedValue == null)
-                        {
-                            msg.Text = "Vui lòng điền đầy đủ thông tin trước khi cập nhật.";
-                            msg.ForeColor = System.Drawing.Color.Red;
-                            return;
-                        }
-
-                        string imageUrl = imgPreview.ImageUrl;
-                        if (fileUploadImage.HasFile)
-                        {
-                            string fileName = $"{DateTime.Now.Ticks}_{fileUploadImage.FileName}";
-                            string filePath = Server.MapPath($"~/Uploads/{fileName}");
-                            fileUploadImage.SaveAs(filePath);
-                            imageUrl = $"/Uploads/{fileName}";
-                        }
-
-                        PRODUCT updateProduct = new PRODUCT
-                        {
-                            ProductID = int.Parse(txtProductID.Text),
-                            Name = txtProductName.Text.Trim(),
-                            Description = txtDescription.Text.Trim(),
-                            Price = float.Parse(txtPrice.Text),
-                            StockQuantity = int.Parse(txtStockQuantity.Text),
-                            ImageUrl = imageUrl,
-                            CategoryID = int.Parse(ddlCategory.SelectedValue)
-                        };
-
-                        string result = productController.UpdateProduct(updateProduct);
-
-                        if (result.Contains("thành công"))
-                        {
-                            // Show success Toast
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowToast", "showToast('Cập nhật sản phẩm thành công!');", true);
-                            msg.Text = "Cập nhật sản phẩm thành công!";
-                            msg.ForeColor = System.Drawing.Color.Green;
-                        }
-                        else
-                        {
-                            msg.Text = result;
-                            msg.ForeColor = System.Drawing.Color.Red;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        msg.Text = $"Lỗi khi cập nhật sản phẩm: {ex.Message}";
-                        msg.ForeColor = System.Drawing.Color.Red;
-                    }
-                }*/
+        
         protected void btnSua_Click(object sender, EventArgs e)
         {
             try

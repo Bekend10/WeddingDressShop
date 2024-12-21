@@ -27,7 +27,6 @@ namespace E_WeddingDressShop.Views.Admin
                 }
             }
         }
-
         protected void btnSua_Click(object sender, EventArgs e)
         {
             try
