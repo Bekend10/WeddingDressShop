@@ -37,7 +37,6 @@ namespace E_WeddingDressShop.Views.Admin
             gvProducts.DataBind();
         }
 
-        // Xử lý sự kiện thêm hoặc cập nhật sản phẩm
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             int categoryId = int.Parse(ddlCategory.SelectedValue);
@@ -60,12 +59,11 @@ namespace E_WeddingDressShop.Views.Admin
                 CreatedDate = DateTime.Now
             };
 
-            // Kiểm tra và xử lý ảnh nếu có
             if (fileUploadImage.HasFile)
             {
                 try
                 {
-                    string folderPath = Server.MapPath("~/UploadedImages/");
+                    string folderPath = Server.MapPath("~/Uploads/");
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
@@ -75,8 +73,7 @@ namespace E_WeddingDressShop.Views.Admin
                     string filePath = folderPath + fileName;
                     fileUploadImage.SaveAs(filePath);
 
-                    // Cập nhật đường dẫn hình ảnh vào đối tượng sản phẩm
-                    product.ImageUrl = "~/UploadedImages/" + fileName;
+                    product.ImageUrl = "~/Uploads/" + fileName;
                 }
                 catch (Exception ex)
                 {
@@ -88,7 +85,6 @@ namespace E_WeddingDressShop.Views.Admin
             }
             else
             {
-                // Nếu không có hình ảnh mới, giữ lại đường dẫn hình ảnh cũ
                 if (!string.IsNullOrEmpty(txtImageUrl.Text))
                 {
                     product.ImageUrl = txtImageUrl.Text;
