@@ -83,6 +83,91 @@ namespace E_WeddingDressShop.Controllers
             return product;
         }
 
+        public PRODUCT getProductByName(string name)
+        {
+            string sql = "SELECT * FROM tb_Products WHERE Name Like @Name";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Name", "%" + name + "%"); ;
+            conn.Open();
+            PRODUCT product = null;
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                product = new PRODUCT
+                {
+                    ProductID = (int)dr["ProductID"],
+                    Name = (string)dr["Name"],
+                    Description = (string)dr["Description"],
+                    Price = Convert.ToSingle(dr["Price"]),
+                    StockQuantity = (int)dr["StockQuantity"],
+                    ImageUrl = (string)dr["ImageUrl"],
+                    CreatedDate = (DateTime)dr["CreatedDate"],
+                    CategoryID = (int)dr["CategoryID"]
+                };
+            }
+            conn.Close();
+            return product;
+        }
+
+        public List<PRODUCT> getListProductByName(string keyword)
+        {
+            var list = new List<PRODUCT>();
+            string sql = @"SELECT P.ProductID, P.Name, P.Description, P.Price, P.StockQuantity, P.ImageUrl, P.CreatedDate, 
+                 P.CategoryID, C.CategoryName
+                 FROM tb_Products P 
+                 INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID
+                 WHERE Name LIKE @Keyword   
+                   ";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Keyword" , "%" + keyword + "%");
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                PRODUCT pr = new PRODUCT
+                {
+                    ProductID = (int)dr["ProductID"],
+                    Name = (string)dr["Name"],
+                    Description = (string)dr["Description"],
+                    Price = Convert.ToSingle(dr["Price"]),
+                    StockQuantity = (int)dr["StockQuantity"],
+                    ImageUrl = (string)dr["ImageUrl"],
+                    CreatedDate = (DateTime)dr["CreatedDate"],
+                    CategoryID = (int)dr["CategoryID"],
+                    CategoryName = (string)dr["CategoryName"]
+                };
+                list.Add(pr);
+            }
+            conn.Close();
+            return list;
+        }
+
+        public PRODUCT getProductByPrice(int toPrice)
+        {
+            string sql = "SELECT * FROM tb_Products WHERE Price between 0 and @toPrice";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@toPrice", toPrice);
+            conn.Open();
+            PRODUCT product = null;
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                product = new PRODUCT
+                {
+                    ProductID = (int)dr["ProductID"],
+                    Name = (string)dr["Name"],
+                    Description = (string)dr["Description"],
+                    Price = Convert.ToSingle(dr["Price"]),
+                    StockQuantity = (int)dr["StockQuantity"],
+                    ImageUrl = (string)dr["ImageUrl"],
+                    CreatedDate = (DateTime)dr["CreatedDate"],
+                    CategoryID = (int)dr["CategoryID"]
+                };
+            }
+            conn.Close();
+            return product;
+        }
+
         public string AddProduct(PRODUCT product)
         {
             try

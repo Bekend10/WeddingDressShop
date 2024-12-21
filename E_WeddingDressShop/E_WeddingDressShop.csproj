@@ -87,9 +87,12 @@
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\ProductManage.css" />
     <Content Include="Views\Admin\CategoryManage.aspx" />
+    <Content Include="Views\Admin\ListProduct.aspx" />
+    <Content Include="Views\Admin\Order.aspx" />
     <Content Include="Views\Admin\ProductManage.aspx" />
     <Content Include="Views\Admin\UpdateProductManage.aspx" />
     <Content Include="Views\Admin\UpdateCategoryManage.aspx" />
+    <Content Include="Views\Clients\Order.aspx" />
     <Content Include="Views\DashBoard.aspx" />
     <Content Include="Views\Clients\Login.aspx" />
     <Content Include="Views\Clients\Register.aspx" />
@@ -97,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Models\CATEGORY.cs" />
@@ -110,6 +114,20 @@
     </Compile>
     <Compile Include="Views\Admin\CategoryManage.aspx.designer.cs">
       <DependentUpon>CategoryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ListProduct.aspx.cs">
+      <DependentUpon>ListProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\ListProduct.aspx.designer.cs">
+      <DependentUpon>ListProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\ProductManage.aspx.cs">
       <DependentUpon>ProductManage.aspx</DependentUpon>
@@ -131,6 +149,13 @@
     </Compile>
     <Compile Include="Views\Admin\UpdateCategoryManage.aspx.designer.cs">
       <DependentUpon>UpdateCategoryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DashBoard.aspx.cs">
       <DependentUpon>DashBoard.aspx</DependentUpon>
