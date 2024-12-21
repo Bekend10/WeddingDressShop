@@ -96,9 +96,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\CART.cs" />
     <Compile Include="Models\CATEGORY.cs" />
     <Compile Include="Models\ORDER.cs" />
     <Compile Include="Models\PRODUCT.cs" />

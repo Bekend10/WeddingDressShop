@@ -12,7 +12,7 @@ namespace E_WeddingDressShop.Controllers
 
         public ProductController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=NQD-Desktop\\MSSQLSERVER01;Initial Catalog=E_WeddingDress;Integrated Security=True;Trust Server Certificate=True";
             conn = new SqlConnection(SqlCon);
         }
 

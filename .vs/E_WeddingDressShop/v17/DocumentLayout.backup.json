@@ -1,0 +1,169 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|c:\\n\u0103m 3 k\u00EC 1\\ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\btl\\weddingdressshop\\e_weddingdressshop\\views\\clients\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\views\\clients\\register.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\views\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\views\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|c:\\n\u0103m 3 k\u00EC 1\\ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\btl\\weddingdressshop\\e_weddingdressshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\views\\clients\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\views\\clients\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\models\\cart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\views\\admin\\updateproductmanage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\views\\admin\\updateproductmanage.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\e_weddingdressshop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9B30B8D-DA95-4653-9148-23190A60C366}|E_WeddingDressShop\\E_WeddingDressShop.csproj|solutionrelative:e_weddingdressshop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 482,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Register.aspx",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Clients\\Register.aspx",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Views\\Clients\\Register.aspx",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Clients\\Register.aspx",
+              "RelativeToolTip": "E_WeddingDressShop\\Views\\Clients\\Register.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-21T00:29:14.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "USER.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Models\\USER.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Models\\USER.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Models\\USER.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Models\\USER.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-20T13:43:50.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.aspx.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Clients\\Login.aspx.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Views\\Clients\\Login.aspx.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Clients\\Login.aspx.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Views\\Clients\\Login.aspx.cs",
+              "ViewState": "AgIAAAwAAAAA+/////8fwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T14:36:09.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\UserController.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwA0AAACOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T14:35:25.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DashBoard.aspx",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\DashBoard.aspx",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Views\\DashBoard.aspx",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\DashBoard.aspx",
+              "RelativeToolTip": "E_WeddingDressShop\\Views\\DashBoard.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-19T14:34:43.275Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\CartController.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Controllers\\CartController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T14:25:05.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CART.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Models\\CART.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Models\\CART.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Models\\CART.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Models\\CART.cs",
+              "ViewState": "AgIAAAIAAAAwMjMzMzMbwAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T14:21:27.798Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UpdateProductManage.aspx",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Admin\\UpdateProductManage.aspx",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Views\\Admin\\UpdateProductManage.aspx",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Views\\Admin\\UpdateProductManage.aspx",
+              "RelativeToolTip": "E_WeddingDressShop\\Views\\Admin\\UpdateProductManage.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-12-19T14:29:46.877Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "E_WeddingDressShop\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\N\u0103m 3 K\u00EC 1\\Ph\u00E1t tri\u1EC3n \u1EE9ng d\u1EE5ng th\u01B0\u01A1ng m\u1EA1i \u0111i\u1EC7n t\u1EED\\BTL\\WeddingDressShop\\E_WeddingDressShop\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "E_WeddingDressShop\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-19T14:18:37.612Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

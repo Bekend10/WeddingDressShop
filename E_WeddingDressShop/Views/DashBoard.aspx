@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>Dash Board</h1>
+    <a href="Clients/Register.aspx">Sang trang dang ky</a>
 </body>
 </html>

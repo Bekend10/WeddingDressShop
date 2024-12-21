@@ -30,7 +30,7 @@
                 <asp:ListItem Text="Quản trị viên" Value="Admin" />
             </asp:DropDownList><br />
 
-            <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
+            <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" PostBackUrl="~/Views/Clients/Login.aspx"/>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
         </div>
     </form>
