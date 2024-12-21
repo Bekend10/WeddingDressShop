@@ -10,7 +10,7 @@ namespace E_WeddingDressShop.Views
         {
             if (Session["UserEmail"] != null)
             {
-                Response.Redirect("~/Views/Dashboard.aspx");
+                Response.Redirect("~/Views/Clients/Dashboard.aspx");
             }
         }
 
@@ -32,7 +32,21 @@ namespace E_WeddingDressShop.Views
             if (result == "Đăng nhập thành công!")
             {
                 Session["UserEmail"] = email;
-                Response.Redirect("~/Views/Dashboard.aspx");
+                Response.Redirect("~/Views/Clients/Dashboard.aspx");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
+                     function showToast(message) {
+                         Toastify({
+                             text: message,
+                             duration: 3000,
+                             close: true,
+                             gravity: 'top',
+                             position: 'right',
+                             backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
+                             stopOnFocus: true
+                         }).showToast();
+                     }
+                 ", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Đăng nhập thành công!');", true);
             }
             else
             {
