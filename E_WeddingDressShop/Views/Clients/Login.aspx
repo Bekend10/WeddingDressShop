@@ -28,40 +28,38 @@
         }
 
         body {
+            width: 100%;
             height: 100vh;
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../Template/image/titleAD.png') no-repeat center;
             background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .wrapper-login {
-            display: flex;
-            border-radius: 5px;
             overflow: hidden;
-            opacity: 0; /* Ẩn trước khi hiển thị */
-            animation: fadeIn 1s forwards; /* Hiệu ứng xuất hiện */
         }
 
+        /* Wrapper chiếm toàn màn hình */
+        .wrapper-login {
+            width: 100%;
+            height: 100%; /* Chiều dài full màn hình */
+            display: flex;
+            background-color: #fff;
+            padding: 20px 100px;
+            margin-top: 80px;
+            overflow: hidden;
+            transform: translateX(100%); /* Ban đầu trượt ngoài màn hình bên phải */
+            animation: slideInFromRight 1.5s ease-in-out forwards 0.1s; /* Hiệu ứng trượt từ phải */
+        }
+        
         /* Ảnh: Hiệu ứng từ trái sang */
         .wrapper-login img {
-            width: 200px;
-            height: 450px;
+            width: 100%;
+            height: 400px;
             object-fit: cover;
-            transform: translateX(-100%); /* Ban đầu ở ngoài khung nhìn */
-            animation: slideInFromLeft 0.8s ease-out forwards 0.5s; /* Hiệu ứng vào */
         }
 
-        /* Form: Hiệu ứng từ phải sang */
+        /* Form đăng nhập */
         .login-container {
-            width: 400px;
-            background: rgb(255 241 200);
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transform: translateX(100%); /* Ban đầu ở ngoài khung nhìn */
-            animation: slideInFromRight 0.8s ease-out forwards 0.5s; /* Hiệu ứng vào, delay 0.5s */
+            width: 100%;
+            margin-left: 50px;
         }
 
         /* Tiêu đề */
@@ -78,6 +76,7 @@
 
         /* Label */
         .login-container label {
+            color: #ffb648;
             display: block;
             margin-top: 10px;
             font-size: 18px;
@@ -104,40 +103,33 @@
         #btnLogin {
             background-color: transparent;
             border: 2px solid #ffb648;
+            border-radius: 30px;
             font-family: 'Quicksand';
-            padding: 10px 0;
-            margin-top: 10px;
+            font-size: 20px;
+            margin-top: 30px;
+            padding: 8px 0;
+            cursor: pointer;
+            color: #ffb648;
             width: 100%;
+            transition: all 0.3s ease;
         }
 
-        /* Hiệu ứng keyframes */
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+        #btnLogin:hover {
+            color: #fff;
+            background-color: #ffb648;
+            box-shadow: 0 0 10px #ffb648;
+            border: 2px solid #ffb64852;
+            letter-spacing: 1px;
         }
 
+        /* Hiệu ứng trượt từ phải */
         @keyframes slideInFromRight {
             0% {
                 transform: translateX(100%);
-                opacity: 0;
+                opacity: 0.5;
             }
             100% {
                 transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
                 opacity: 1;
             }
         }
@@ -147,9 +139,9 @@
 <body>
     <form id="form1" runat="server">
         <div class="wrapper-login">
-            <img src="../../Template/image/anh4.png" />
+            <img src="../../Template/image/anh1.png" />
             <div class="login-container">
-                <span class="title">Đăng  Nhập</span>
+                <span class="title">Đăng Nhập</span>
                 <label for="txtEmail">Email</label>
                 <asp:TextBox runat="server" ID="txtEmail" class="form-control" CssClass="form-control" TextMode="Email" placeholder="nhập email của bạn"  required="required" />
                 <br />
