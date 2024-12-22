@@ -32,7 +32,7 @@
         body {
             display: block;
             width: 100%;
-            height: 100%;
+            height: 70%;
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../Template/image/titleAD.png') no-repeat center;
             background-size: cover;
@@ -158,6 +158,9 @@
                 <label for="txtPassword">Mật khẩu:</label><br />
                 <asp:TextBox ID="txtPassword" TextMode="Password" runat="server" CssClass="form-control" placeholder="nhập mật khẩu của bạn" /><br />
 
+                <label for="txtRePassword">Nhập lại mật khẩu:</label><br />
+                <asp:TextBox ID="txtRePassword" TextMode="Password" runat="server" CssClass="form-control" placeholder="nhập lại mật khẩu của bạn" /><br />
+
                 <label for="txtNumberPhone">Số điện thoại:</label><br />
                 <asp:TextBox ID="txtNumberPhone" runat="server" CssClass="form-control" placeholder="nhập số điện thoại của bạn" /><br />
 
@@ -171,6 +174,7 @@
                 </asp:DropDownList><br />
 
                 <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
+                <asp:Label runat="server" ID="lblErrorMessage" CssClass="error-message" Visible="false"></asp:Label>
             </div>
         </div>
     </form>

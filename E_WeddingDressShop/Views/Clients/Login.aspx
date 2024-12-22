@@ -102,7 +102,7 @@
             font-family: 'Housttely';
         }
 
-        #btnLogin {
+        #btnLogin ,#btnRegister {
             background-color: transparent;
             border: 2px solid #ffb648;
             border-radius: 30px;
@@ -116,7 +116,7 @@
             transition: all 0.3s ease;
         }
 
-        #btnLogin:hover {
+        #btnLogin:hover , #btnRegister:hover {
             color: #fff;
             background-color: #ffb648;
             box-shadow: 0 0 10px #ffb648;
@@ -146,12 +146,13 @@
             <div class="login-container">
                 <span class="title">Đăng Nhập</span>
                 <label for="txtEmail">Email</label>
-                <asp:TextBox runat="server" ID="txtEmail" class="form-control" CssClass="form-control" TextMode="Email" placeholder="nhập email của bạn"  required="required" />
+                <asp:TextBox runat="server" ID="txtEmail" class="form-control" CssClass="form-control" TextMode="Email" placeholder="nhập email của bạn" />
                 <br />
                 <label for="txtPassword">Mật khẩu</label>
-                <asp:TextBox runat="server" ID="txtPassword" class="form-control" CssClass="form-control" TextMode="Password" placeholder="nhập mật khẩu của bạn"  required="required" />
+                <asp:TextBox runat="server" ID="txtPassword" class="form-control" CssClass="form-control" TextMode="Password" placeholder="nhập mật khẩu của bạn" />
                 <br />
                 <asp:Button runat="server" ID="btnLogin" Text="Đăng Nhập" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
+                <asp:Button runat="server" ID="btnRegister" Text="Đăng Ký" CssClass="btn btn-primary" PostBackUrl="~/Views/Clients/Register.aspx"/>
 
                 <br />
                 <asp:Label runat="server" ID="lblErrorMessage" CssClass="error-message" Visible="false"></asp:Label>

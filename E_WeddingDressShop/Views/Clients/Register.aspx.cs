@@ -13,6 +13,7 @@ namespace E_WeddingDressShop.Views
             string fullName = txtFullName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
+            string rePassword = txtRePassword.Text.Trim();
             string numberPhone = txtNumberPhone.Text.Trim();
             string address = txtAddress.Text.Trim();
             string role = ddlRole.SelectedValue;
@@ -20,23 +21,38 @@ namespace E_WeddingDressShop.Views
             // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(password) || string.IsNullOrEmpty(numberPhone) ||
-                string.IsNullOrEmpty(address))
+                string.IsNullOrEmpty(address) || string.IsNullOrEmpty(password))
             {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Vui lòng nhập đầy đủ thông tin ! ";
+                return; 
+            }
+
+            if(password != rePassword)
+            {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Mật khẩu không khớp ! ";
                 return;
             }
 
             if (!IsValidEmail(email))
             {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Email không đúng định dạng ! ";
                 return;
             }
 
             if (password.Length < 8)
             {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Mật khẩu phải lớn hơn 8 ký tự ! ";
                 return;
             }
 
             if (!long.TryParse(numberPhone, out _) || numberPhone.Length < 9)
             {
+                lblErrorMessage.Visible = true;
+                lblErrorMessage.Text = "Số điện thoại không đúng định dạng ! ";
                 return;
             }
 
@@ -53,7 +69,6 @@ namespace E_WeddingDressShop.Views
 
             UserController dto = new UserController();
             string result = dto.RegisterUser(user);
-            string script;
             if (result.Contains("thành công"))
             {
                 // Xóa các trường nhập sau khi đăng ký thành công

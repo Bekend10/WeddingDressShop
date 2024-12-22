@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="form-container">
-            <h2>Thêm / Cập nhật sản phẩm</h2>
+            <h2>Thêm sản phẩm</h2>
 
             <asp:Label ID="lblProductID" runat="server" Text="ID sản phẩm (chỉ dùng khi cập nhật):" Visible="false"></asp:Label>
             <asp:TextBox ID="txtProductID" runat="server" Visible="false"></asp:TextBox>
@@ -35,7 +35,7 @@
             <label for="ddlCategory">Danh mục:</label>
             <asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList>
 
-            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm / Cập nhật" OnClick="btnAddOrUpdate_Click" />
+            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm" OnClick="btnAddOrUpdate_Click" CssClass="btn-blue"/>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Visible="false"></asp:Label>
         </div>
 
@@ -52,12 +52,14 @@
                     <asp:BoundField DataField="CategoryName" HeaderText="Danh mục" />
                     <asp:TemplateField HeaderText="Sửa">
                         <ItemTemplate>
-                            <asp:Button runat="server" ID="sua" CommandName="SUA" OnCommand="Sua_Click" Text="Sửa" CommandArgument='<%# Bind("ProductID") %>'></asp:Button>
+                            <asp:Button runat="server" ID="sua" CommandName="SUA" OnCommand="Sua_Click"
+                                Text="Sửa" CommandArgument='<%# Bind("ProductID") %>' CssClass="btn-blue"></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Xoá">
                         <ItemTemplate>
-                            <asp:Button runat="server" ID="xoa" CommandName="XOA" OnCommand="Xoa_Click" Text="Xoá" CommandArgument='<%# Bind("ProductID") %>'
+                            <asp:Button runat="server" ID="xoa" CommandName="XOA" OnCommand="Xoa_Click"
+                                Text="Xoá" CommandArgument='<%# Bind("ProductID") %>' CssClass="btn-red"
                                 OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') "></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>

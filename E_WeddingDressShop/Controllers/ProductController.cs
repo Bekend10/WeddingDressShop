@@ -142,6 +142,42 @@ namespace E_WeddingDressShop.Controllers
             return list;
         }
 
+        public List<PRODUCT> getListNewProduct()
+        {
+            var list = new List<PRODUCT>();
+            string sql = @"
+                SELECT TOP 5 P.ProductID, P.Name, P.Description, P.Price, P.StockQuantity, P.ImageUrl, P.CreatedDate, 
+                       P.CategoryID, C.CategoryName
+                FROM tb_Products P 
+                INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID
+                ORDER BY P.CreatedDate DESC";
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+
+                conn.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    PRODUCT pr = new PRODUCT
+                    {
+                        ProductID = (int)dr["ProductID"],
+                        Name = dr["Name"].ToString(),
+                        Description = dr["Description"].ToString(),
+                        Price = Convert.ToSingle(dr["Price"]),
+                        StockQuantity = (int)dr["StockQuantity"],
+                        ImageUrl = dr["ImageUrl"].ToString(),
+                        CreatedDate = (DateTime)dr["CreatedDate"],
+                        CategoryID = (int)dr["CategoryID"],
+                        CategoryName = dr["CategoryName"].ToString()
+                    };
+                    list.Add(pr);
+                }
+                conn.Close();
+            }
+            return list;
+        }
+
+
         public PRODUCT getProductByPrice(int toPrice)
         {
             string sql = "SELECT * FROM tb_Products WHERE Price between 0 and @toPrice";

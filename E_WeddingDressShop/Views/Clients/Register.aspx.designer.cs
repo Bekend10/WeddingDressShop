@@ -60,6 +60,15 @@ namespace E_WeddingDressShop.Views
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
+        /// txtRePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRePassword;
+
+        /// <summary>
         /// txtNumberPhone control.
         /// </summary>
         /// <remarks>
@@ -94,5 +103,14 @@ namespace E_WeddingDressShop.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegister;
+
+        /// <summary>
+        /// lblErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
     }
 }

@@ -52,6 +52,13 @@ namespace E_WeddingDressShop.Views.Admin
 
                 msg.Text = result.Contains("thành công") ? "Cập nhật thành công!" : result;
                 msg.ForeColor = result.Contains("thành công") ? System.Drawing.Color.Green : System.Drawing.Color.Red;
+                if (result.Contains("thành công"))
+                {
+                    string redirectUrl = ResolveUrl("~/Views/Admin/CategoryManage.aspx");
+                    ClientScript.RegisterStartupScript(this.GetType(), "Redirect",
+                        $"setTimeout(function(){{ window.location = '{redirectUrl}'; }}, 1000);", true);
+                }
+
             }
             catch (Exception ex)
             {

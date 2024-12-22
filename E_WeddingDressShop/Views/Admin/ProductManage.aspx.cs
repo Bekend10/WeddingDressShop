@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using E_WeddingDressShop.Controllers;
@@ -63,33 +64,60 @@ namespace E_WeddingDressShop.Views.Admin
             {
                 try
                 {
+                    // Kiểm tra loại file hợp lệ
+                    string[] validExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
+                    string fileExtension = Path.GetExtension(fileUploadImage.FileName).ToLower();
+
+                    if (!validExtensions.Contains(fileExtension))
+                    {
+                        lblMessage.Text = "Vui lòng chọn file ảnh có định dạng hợp lệ (.jpg, .jpeg, .png, .gif)!";
+                        lblMessage.ForeColor = System.Drawing.Color.Red;
+                        lblMessage.Visible = true;
+                        return;
+                    }
+
                     string folderPath = Server.MapPath("~/Uploads/");
                     if (!Directory.Exists(folderPath))
                     {
                         Directory.CreateDirectory(folderPath);
                     }
 
-                    string fileName = Path.GetFileName(fileUploadImage.FileName);
-                    string filePath = folderPath + fileName;
+                    string fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + "_" + Path.GetFileName(fileUploadImage.FileName);
+                    string filePath = Path.Combine(folderPath, fileName);
+
                     fileUploadImage.SaveAs(filePath);
 
                     product.ImageUrl = "~/Uploads/" + fileName;
+
+                    lblMessage.Text = "Tải ảnh lên thành công!";
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                    lblMessage.Visible = true;
                 }
                 catch (Exception ex)
                 {
+                    string logPath = Server.MapPath("~/Logs/errors.log");
+                    File.AppendAllText(logPath, $"[{DateTime.Now}] Lỗi tải ảnh: {ex.Message}\n");
+
                     lblMessage.Text = "Lỗi khi tải lên hình ảnh: " + ex.Message;
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                     lblMessage.Visible = true;
-                    return;
                 }
             }
             else
             {
+                // Nếu không có file mới được chọn, sử dụng URL đã nhập (nếu có)
                 if (!string.IsNullOrEmpty(txtImageUrl.Text))
                 {
                     product.ImageUrl = txtImageUrl.Text;
                 }
+                else
+                {
+                    lblMessage.Text = "Vui lòng chọn file ảnh hoặc nhập URL ảnh!";
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                    lblMessage.Visible = true;
+                }
             }
+
 
             string result;
             if (product.ProductID == 0)

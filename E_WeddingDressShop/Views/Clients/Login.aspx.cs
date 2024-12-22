@@ -6,6 +6,7 @@ namespace E_WeddingDressShop.Views
 {
     public partial class Login : System.Web.UI.Page
     {
+        UserController userController = new UserController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserEmail"] != null)
@@ -31,7 +32,7 @@ namespace E_WeddingDressShop.Views
 
             if (result == "Đăng nhập thành công!")
             {
-                Session["UserEmail"] = email;
+                Session["UserEmail"] = email;                
                 Response.Redirect("~/Views/Clients/Dashboard.aspx");
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
                      function showToast(message) {
@@ -53,7 +54,6 @@ namespace E_WeddingDressShop.Views
                 lblErrorMessage.Visible = true;
                 lblErrorMessage.Text = result;
 
-                // Chỉ xóa mật khẩu, giữ lại email
                 txtPassword.Text = string.Empty;
             }
         }

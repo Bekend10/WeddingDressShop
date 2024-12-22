@@ -20,7 +20,7 @@
             <label for="txtDescription">Mô tả danh mục:</label>
             <asp:TextBox ID="txtDescription" runat="server" TextMode="MultiLine" Rows="4"></asp:TextBox>
 
-            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm / Cập nhật" OnClick="btnAddOrUpdate_Click" />
+            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm / Cập nhật" OnClick="btnAddOrUpdate_Click" CssClass="button" />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Visible="false"></asp:Label>
         </div>
 
@@ -33,13 +33,13 @@
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" />
                     <asp:TemplateField HeaderText="Sửa">
                         <ItemTemplate>
-                            <asp:Button runat="server" ID="sua" CommandName="SUA" OnCommand="Sua_Click" Text="Sửa" CommandArgument='<%# Bind("CategoryID") %>'></asp:Button>
+                            <asp:Button runat="server" ID="sua" CommandName="SUA" OnCommand="Sua_Click" Text="Sửa" CommandArgument='<%# Bind("CategoryID") %>' CssClass="sua"></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Xoá">
                         <ItemTemplate>
                             <asp:Button runat="server" ID="xoa" CommandName="XOA" OnCommand="Xoa_Click" Text="Xoá" CommandArgument='<%# Bind("CategoryID") %>'
-                                OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') "></asp:Button>
+                                OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') " CssClass="xoa"></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

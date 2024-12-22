@@ -83,7 +83,7 @@ namespace E_WeddingDressShop.Controllers
                                 }
                                 else
                                 {
-                                    return "Mật khẩu không đúng!" + "\nTrong data:\n" + storedPasswordHash;
+                                    return "Mật khẩu không đúng!";
                                 }
                             }
                             else
@@ -135,7 +135,7 @@ namespace E_WeddingDressShop.Controllers
             int result = -1; 
             using (var conn = new SqlConnection(SqlCon))
             {
-                string sql = "SELECT UserID FROM tb_Users WHERE Email = @Email";
+                string sql = "SELECT UserID , FullName FROM tb_Users WHERE Email = @Email";
                 var cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Email", email);
 
@@ -148,6 +148,25 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
             }
             return result;
+        }
+
+        public string getUserByUserID(int userId)
+        {
+            using (var conn = new SqlConnection(SqlCon))
+            {
+                string sql = "SELECT FullName FROM tb_Users WHERE UserID = @UserID";
+                var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@UserID", userId);
+                string user = null;
+                conn.Open();
+                var dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    user = (string)dr["FullName"];
+                }
+                conn.Close();
+                return user;
+            }
         }
 
         private void AddUserParameters(SqlCommand cmd, USER user)
