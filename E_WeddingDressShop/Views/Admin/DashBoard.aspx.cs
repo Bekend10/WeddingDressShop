@@ -13,7 +13,6 @@ namespace E_WeddingDressShop.Views.Admin
         {
             if (!IsPostBack)
             {
-                // Load data into the table if needed
             }
             if (Session["UserEmail"] == null)
             {

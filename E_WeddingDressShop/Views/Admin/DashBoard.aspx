@@ -200,7 +200,7 @@
                             <a href="#" class="action-item">
                                 <i class="fa fa-cog"></i>Setting
                         </a>
-                            <a href="#" class="action-item">
+                            <a href="../Clients/Login.aspx" class="action-item">
                                 <i class="fa fa-sign-out-alt"></i>Log out
                         </a>
                         </div>

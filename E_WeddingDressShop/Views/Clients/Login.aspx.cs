@@ -33,7 +33,17 @@ namespace E_WeddingDressShop.Views
             if (result == "Đăng nhập thành công!")
             {
                 Session["UserEmail"] = email;                
-                Response.Redirect("~/Views/Clients/Dashboard.aspx");
+                int userID = userController.getUserByEmail(email);
+                string role = userController.getUserByUserID(userID).Role;
+                if (role == "Admin")
+                {
+                    Response.Redirect("~/Views/Admin/Dashboard.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Clients/Dashboard.aspx");
+                }
+                Session["Role"] = role;
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
                      function showToast(message) {
                          Toastify({

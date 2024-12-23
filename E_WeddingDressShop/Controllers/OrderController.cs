@@ -39,7 +39,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                 };
@@ -62,7 +62,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                     FullName = (string)dr["FullName"]
@@ -88,7 +88,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                     FullName = (string)dr["FullName"]

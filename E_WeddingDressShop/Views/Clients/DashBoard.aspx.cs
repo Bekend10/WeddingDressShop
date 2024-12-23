@@ -23,7 +23,7 @@ namespace E_WeddingDressShop.Views
             {
                 string email = Session["UserEmail"].ToString();
                 int userID = userController.getUserByEmail(email);
-                string userName = userController.getUserByUserID(userID);
+                string userName = userController.getUserByUserID(userID).FullName;
                 nameUser.InnerText = "Xin chào " + userName.ToString();
                 LoadNewProducts();
             }

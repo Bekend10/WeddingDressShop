@@ -11,7 +11,7 @@ namespace E_WeddingDressShop.Models
         public int UserID { get; set; }
         public string FullName { get; set; }
         public DateTime OrderDate { get; set; }
-        public int TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
         public string Status { get; set; }
         public ORDER()
         {

@@ -150,19 +150,23 @@ namespace E_WeddingDressShop.Controllers
             return result;
         }
 
-        public string getUserByUserID(int userId)
+        public USER getUserByUserID(int userId)
         {
             using (var conn = new SqlConnection(SqlCon))
             {
-                string sql = "SELECT FullName FROM tb_Users WHERE UserID = @UserID";
+                string sql = "SELECT FullName , Role FROM tb_Users WHERE UserID = @UserID";
                 var cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@UserID", userId);
-                string user = null;
+                USER user = null;
                 conn.Open();
                 var dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    user = (string)dr["FullName"];
+                    user = new USER
+                    {
+                        Role = (string)dr["Role"],
+                        FullName = (string)dr["FullName"]
+                    };
                 }
                 conn.Close();
                 return user;
