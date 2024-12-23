@@ -12,7 +12,7 @@ namespace E_WeddingDressShop.Controllers
 {
     public class UserController
     {
-        private readonly string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string SqlCon = "Data Source=NQD-Desktop\\MSSQLSERVER01;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
 
         public string RegisterUser(USER us)
         {
@@ -150,6 +150,25 @@ namespace E_WeddingDressShop.Controllers
             return result;
         }
 
+        public int getUserByID(string email)
+        {
+            int result = -1;
+            using (var conn = new SqlConnection(SqlCon))
+            {
+                string sql = "SELECT UserID , FullName FROM tb_Users WHERE Email = @Email";
+                var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Email", email);
+
+                conn.Open();
+                var dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    result = (int)dr["UserID"];
+                }
+                conn.Close();
+            }
+            return result;
+        }
         public string getUserByUserID(int userId)
         {
             using (var conn = new SqlConnection(SqlCon))
@@ -169,6 +188,32 @@ namespace E_WeddingDressShop.Controllers
             }
         }
 
+        public USER layUserByUserID(int userId)
+        {
+            using (var conn = new SqlConnection(SqlCon))
+            {
+                string sql = "SELECT * FROM tb_Users WHERE UserID = @UserID";
+                var cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@UserID", userId);
+                USER user = new USER();
+                conn.Open();
+                var dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    user.UserID = (int)dr["UserID"];
+                    user.FullName = (string)dr["FullName"];
+                    user.NumberPhone = (string)dr["NumberPhone"];
+                    user.Email = (string)dr["Email"];
+                    user.Address = (string)dr["Address"];
+                    user.PasswordHash = (string)dr["PasswordHash"];
+                    user.CreatedDate = (DateTime)dr["CreatedDate"];
+                    user.Role = (string)dr["Role"];
+                }
+                conn.Close();
+                return user;
+            }
+        }
+
         private void AddUserParameters(SqlCommand cmd, USER user)
         {
             cmd.Parameters.Add("@FullName", SqlDbType.NVarChar).Value = user.FullName;
@@ -180,7 +225,7 @@ namespace E_WeddingDressShop.Controllers
             cmd.Parameters.Add("@CreatedDate", SqlDbType.DateTime).Value = user.CreatedDate;
         }
 
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
             using (var sha256Hash = SHA256.Create())
             {
