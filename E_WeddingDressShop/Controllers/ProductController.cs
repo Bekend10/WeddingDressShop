@@ -177,7 +177,29 @@ namespace E_WeddingDressShop.Controllers
             return list;
         }
 
-
+        public float getPriceByID(int productID)
+        {
+            try
+            {
+                string sql = "SELECT p.Price from tb_Products p WHERE ProductID = @ProductID";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ProductID", productID);
+                conn.Open();
+                float price = -1;
+                SqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    price = (float)dr["Price"];
+                }
+                conn.Close();
+                return price;
+            }
+            catch (Exception e1)
+            {
+                conn.Close();
+                return 0;
+            }
+        }
         public PRODUCT getProductByPrice(int toPrice)
         {
             string sql = "SELECT * FROM tb_Products WHERE Price between 0 and @toPrice";

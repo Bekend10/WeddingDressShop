@@ -17,7 +17,7 @@ namespace E_WeddingDressShop.Models
         {
             
         }
-        public ORDER(int orderID, int userID, string fullName, DateTime orderDate, int totalAmount, string status)
+        public ORDER(int orderID, int userID, string fullName, DateTime orderDate, decimal totalAmount, string status)
         {
             OrderID = orderID;
             UserID = userID;

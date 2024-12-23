@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_WeddingDressShop.Views.Admin
+namespace E_WeddingDressShop.Views.Clients
 {
 
 
-    public partial class Home
+    public partial class Cart
     {
 
         /// <summary>
@@ -24,39 +24,21 @@ namespace E_WeddingDressShop.Views.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblTotalSales control.
+        /// gvOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalSales;
+        protected global::System.Web.UI.WebControls.GridView gvOrders;
 
         /// <summary>
-        /// lblGrossSales control.
+        /// lblMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGrossSales;
-
-        /// <summary>
-        /// lblCancellations control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCancellations;
-
-        /// <summary>
-        /// blTasks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList blTasks;
+        protected global::System.Web.UI.WebControls.Label lblMessage;
     }
 }

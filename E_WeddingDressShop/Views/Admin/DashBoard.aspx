@@ -176,12 +176,10 @@
                     <div class="sidecont">
                         <h3 style="padding-bottom: 20px;">Category</h3>
                         <div>
-                            <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Home.aspx')">Home</a>
+                            <a href="Home.aspx" class="menu-item">Home</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/CategoryManage.aspx')">Quản lý danh mục</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ProductManage.aspx')">Quản lý sản phẩm</a>
-                            <a href="#" class="menu-item">Thống kê</a>
-                            <a href="#" class="menu-item">Calendar</a>
-                            <a href="#" class="menu-item">Email</a>
+                            <a href="#" class="menu-item">Quản lý người dùng</a>
                             <a href="#" class="menu-item">Tickets</a>
                             <a href="#" class="menu-item">Tree View</a>
                             <a href="#" class="menu-item">Pricing</a>

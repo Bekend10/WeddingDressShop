@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Admin Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,14 +85,14 @@
                 <!-- Card 1 -->
                 <div class="card">
                     <h3>Total Sales</h3>
-                    <div class="value">15,984.12 USD</div>
+                    <asp:Label ID="lblTotalSales" runat="server" CssClass="value" Text="15,984.12 USD"></asp:Label>
                     <small>7D ▲ 1.2%</small>
                 </div>
 
                 <!-- Card 2 -->
                 <div class="card">
                     <h3>Gross Sales</h3>
-                    <div class="value">246 USD</div>
+                    <asp:Label ID="lblGrossSales" runat="server" CssClass="value" Text="246 USD"></asp:Label>
                     <small>7D ▼ 1.2%</small>
                 </div>
 
@@ -108,7 +108,8 @@
                 <!-- Card 4: Cancellations -->
                 <div class="card">
                     <h3>Cancellations</h3>
-                    <div class="value">0.84% ▼ 1.6%</div>
+                    <asp:Label ID="lblCancellations" runat="server" CssClass="value" Text="0.84%"></asp:Label>
+                    <small>7D ▼ 1.6%</small>
                     <div class="bar-chart" id="barChart">
                         <!-- Bars will be dynamically populated -->
                     </div>
@@ -117,18 +118,18 @@
                 <!-- Additional Cards -->
                 <div class="card">
                     <h3>Tasks</h3>
-                    <ul>
-                        <li>Connect delivery partners</li>
-                        <li>Setup menu</li>
-                        <li>Add team members</li>
-                        <li>Setup order management</li>
-                    </ul>
+                    <asp:BulletedList ID="blTasks" runat="server">
+                        <asp:ListItem>Connect delivery partners</asp:ListItem>
+                        <asp:ListItem>Setup menu</asp:ListItem>
+                        <asp:ListItem>Add team members</asp:ListItem>
+                        <asp:ListItem>Setup order management</asp:ListItem>
+                    </asp:BulletedList>
                 </div>
             </div>
         </div>
         <script>
-            // biểu đồ cột
-            const barData = [50, 20, 70, 90, 60];// thay đổi tỉ lệ ở đây
+            // Biểu đồ cột
+            const barData = [50, 20, 70, 90, 60];
             const barChartContainer = document.getElementById('barChart');
 
             // Render Bars
@@ -139,7 +140,7 @@
                 barChartContainer.appendChild(bar);
             });
 
-            // biểu đồ tròn (40+30+30=100%)
+            // Biểu đồ tròn (40+30+30=100%)
             const pieData = [
                 { label: "Delivery", value: 30, color: "#0066ff" },
                 { label: "Pickup", value: 30, color: "#ff9900" },
@@ -169,6 +170,5 @@
             });
         </script>
     </form>
-
 </body>
 </html>
