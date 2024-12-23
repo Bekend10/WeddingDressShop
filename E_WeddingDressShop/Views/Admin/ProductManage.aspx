@@ -5,6 +5,123 @@
 <head runat="server">
     <title>Quản lý sản phẩm</title>
     <link href="../../Assets/ProductManage.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container, .grid-container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        .form-container button, .grid-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .form-container button {
+            background-color: #007bff;
+        }
+
+            .form-container button:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-blue {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .btn-blue:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-red {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+            .btn-red:hover {
+                background-color: #a71d2a;
+            }
+
+        .grid-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .grid-container th, .grid-container td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .grid-container th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .grid-container tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .grid-container tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .grid-container img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -35,7 +152,7 @@
             <label for="ddlCategory">Danh mục:</label>
             <asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList>
 
-            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm" OnClick="btnAddOrUpdate_Click" CssClass="btn-blue"/>
+            <asp:Button ID="btnAddOrUpdate" runat="server" Text="Thêm" OnClick="btnAddOrUpdate_Click" CssClass="btn-blue" />
             <asp:Label ID="lblMessage" runat="server" ForeColor="Green" Visible="false"></asp:Label>
         </div>
 

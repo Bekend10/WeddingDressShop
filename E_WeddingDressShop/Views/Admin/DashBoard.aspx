@@ -176,7 +176,7 @@
                     <div class="sidecont">
                         <h3 style="padding-bottom: 20px;">Category</h3>
                         <div>
-                            <a href="#" class="menu-item">Home</a>
+                            <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Home.aspx')">Home</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/CategoryManage.aspx')">Quản lý danh mục</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ProductManage.aspx')">Quản lý sản phẩm</a>
                             <a href="#" class="menu-item">Thống kê</a>
@@ -216,7 +216,8 @@
                         <input type="text" class="form-control" placeholder="Search..." />
                     </div>
                     <div class="hienthi">
-                        <iframe id="contentFrame" src="/Views/Admin/CategoryManage.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+                       <iframe id="contentFrame" src="Home.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+
 
                     </div>
 
