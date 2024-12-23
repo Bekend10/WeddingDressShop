@@ -72,11 +72,11 @@ namespace E_WeddingDressShop.Views.Clients
                 od.FullName = userController.getUserByUserID(userId);
                 od.OrderDate = DateTime.Now;
                 od.Status = "Processing";
-                od.TotalAmount =Convert.ToDecimal(price * quantity);
+                od.TotalAmount = Convert.ToDecimal(price * quantity);
 
                 string result = orderController.AddORDER(od);
-                ShowMessage(result, result.Contains("thành công"));
-                cartController.DeleteCart(cartID);
+                ShowMessage(result + quantity + price + productId + userId + cartID  , result.Contains("thành công"));
+                string abc = cartController.DeleteCart(cartID);
                 Loaded();
             }
             catch (Exception e1)

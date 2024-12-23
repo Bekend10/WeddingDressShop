@@ -70,10 +70,10 @@ namespace E_WeddingDressShop.Controllers
             {
                 int productID = -1;
                 conn.Open();
-                string url = @"select c.ProductID from tb_Cart c where CartID=@CardID";
+                string url = @"select c.ProductID from tb_Cart c where CartID=@CartID";
                 SqlCommand cmd = new SqlCommand(url, conn);
                 cmd.Parameters.AddWithValue("@CartID", CartID);
-                var dr = cmd.ExecuteReader();
+                SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
                     productID = (int)dr["ProductID"];
@@ -93,7 +93,7 @@ namespace E_WeddingDressShop.Controllers
             {
                 int quantity = -1;
                 conn.Open();
-                string url = @"select c.Quantity from tb_Cart c where CartID=@CardID";
+                string url = @"select c.Quantity from tb_Cart c where CartID=@CartID";
                 SqlCommand cmd = new SqlCommand(url, conn);
                 cmd.Parameters.AddWithValue("@CartID", CartID);
                 var dr = cmd.ExecuteReader();
