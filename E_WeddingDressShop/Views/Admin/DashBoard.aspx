@@ -179,8 +179,8 @@
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Home.aspx')">Home</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/CategoryManage.aspx')">Quản lý danh mục</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ProductManage.aspx')">Quản lý sản phẩm</a>
-                            <a href="#" class="menu-item">Thống kê</a>
-                            <a href="#" class="menu-item">Calendar</a>
+                            <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ListProduct.aspx')">Danh sách sản phẩm</a>
+                            <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Order.aspx')">Đơn hàng</a>
                             <a href="#" class="menu-item">Email</a>
                             <a href="#" class="menu-item">Tickets</a>
                             <a href="#" class="menu-item">Tree View</a>
