@@ -161,6 +161,28 @@ header {
         opacity: 1;
     }
 }
+.btnReturn {
+    background-color: transparent;
+    border: 2px solid #ffb648;
+    border-radius: 30px;
+    font-family: 'Quicksand';
+    font-size: 20px;
+    margin-top: 30px;
+    padding: 8px 30px;
+    cursor: pointer;
+    color: #ffb648;
+    transition: all 0.3s ease;
+}
+.btnReturn:hover {
+    color: #fff;
+    background-color: #ffb648;
+    box-shadow: 0 0 10px #ffb648;
+    border: 2px solid #ffb64852;
+    letter-spacing: 1px;
+}
+td, th {
+    text-align:center;
+}
     </style>
 </head>
 <body>
@@ -224,7 +246,7 @@ header {
                     <asp:BoundField DataField="Quantity" HeaderText="Số lượng" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnOrder" runat="server" Text="Đặt hàng" CommandName="Order" CommandArgument='<%# Eval("CartID") %>' CssClass="btn" OnCommand="Dat_Hang_Click"/>
+                            <asp:Button ID="btnOrder" runat="server" Text="Đặt hàng" CommandName="Order" CommandArgument='<%# Eval("CartID") %>' CssClass="btn btn-success" OnCommand="Dat_Hang_Click"/>
                             <asp:Button ID="btnDelete" runat="server" Text="Xóa" CommandName="DeleteCart" CommandArgument='<%# Eval("CartID") %>' CssClass="btn btn-danger" OnCommand="Xoa_Click"
                                 OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') "
                                 />
@@ -232,7 +254,7 @@ header {
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:Button runat="server" ID="back" Text="Trở về" CssClass="" PostBackUrl="~/Views/Clients/DashBoard.aspx"/>
+            <asp:Button runat="server" ID="back" Text="Trở về" CssClass="btnReturn" PostBackUrl="~/Views/Clients/DashBoard.aspx"/>
 
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
         </div>
