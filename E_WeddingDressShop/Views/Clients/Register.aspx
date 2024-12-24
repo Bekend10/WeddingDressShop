@@ -167,12 +167,6 @@
                 <label for="txtAddress">Địa chỉ:</label><br />
                 <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="nhập địa chỉ của bạn" /><br />
 
-                <label for="ddlRole">Vai trò:</label><br />
-                <asp:DropDownList ID="ddlRole" runat="server" CssClass="form-control">
-                    <asp:ListItem Text="Người dùng" Value="User" />
-                    <asp:ListItem Text="Quản trị viên" Value="Admin" />
-                </asp:DropDownList><br />
-
                 <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
                 <asp:Label runat="server" ID="lblErrorMessage" CssClass="error-message" Visible="false"></asp:Label>
             </div>
