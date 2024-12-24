@@ -49,8 +49,8 @@ namespace E_WeddingDressShop.Views.Clients
                     productName.InnerText = product.Name;
                     productDescription.InnerText = product.Description;
                     productPrice.InnerText = $"{product.Price:N0} VNĐ";
-                    productCategory.InnerText = $"Thể loại:{category}";
-                    productStock.InnerText = $"Số lượng còn lại: {product.StockQuantity}";
+                    productCategory.InnerText = $"{category}";
+                    productStock.InnerText = $"{product.StockQuantity}";
                 }
                 else
                 {
@@ -69,6 +69,12 @@ namespace E_WeddingDressShop.Views.Clients
         {
             // Logic thêm sản phẩm vào giỏ hàng (tùy thuộc vào hệ thống của bạn)
             Response.Redirect("~/Views/Clients/Cart.aspx");
+        }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
         }
     }
 }
