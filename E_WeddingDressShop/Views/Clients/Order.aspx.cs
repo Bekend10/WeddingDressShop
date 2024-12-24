@@ -55,5 +55,11 @@ namespace E_WeddingDressShop.Views.Clients
                 lblMessage.Text = "Đã xảy ra lỗi: " + ex.Message;
             }
         }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace E_WeddingDressShop.Views
     {
         private UserController userController = new UserController();
         private ProductController productController = new ProductController();
+        private const int PageSize = 8; // Số sản phẩm mỗi trang
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +26,11 @@ namespace E_WeddingDressShop.Views
                 int userID = userController.getUserByEmail(email);
                 string userName = userController.getUserByUserID(userID).FullName;
                 nameUser.InnerText = "Xin chào " + userName.ToString();
-                LoadNewProducts();
+                if (!IsPostBack)
+                {
+                    LoadNewProducts();
+                    LoadPagination();
+                }
             }
         }
 
@@ -38,9 +43,39 @@ namespace E_WeddingDressShop.Views
 
         private void LoadNewProducts()
         {
-            var products = productController.getListProduct(); 
-            rptNewProducts.DataSource = products;
+            // Lấy trang hiện tại từ query string, mặc định là 1
+            int currentPage = Convert.ToInt32(Request.QueryString["page"] ?? "1");
+
+            // Lấy danh sách sản phẩm
+            var products = productController.getListProduct();
+
+            // Phân trang sản phẩm
+            var pagedProducts = products
+                .Skip((currentPage - 1) * PageSize)
+                .Take(PageSize)
+                .ToList();
+
+            rptNewProducts.DataSource = pagedProducts;
             rptNewProducts.DataBind();
+        }
+
+        private void LoadPagination()
+        {
+            int currentPage = Convert.ToInt32(Request.QueryString["page"] ?? "1");
+
+            var products = productController.getListProduct();
+            int totalProducts = products.Count;
+
+            int totalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+            var pages = new List<dynamic>();
+            for (int i = 1; i <= totalPages; i++)
+            {
+                pages.Add(new { PageNumber = i, Active = (i == currentPage) });
+            }
+
+            rptPagination.DataSource = pages;
+            rptPagination.DataBind();
         }
 
     }

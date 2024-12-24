@@ -81,5 +81,11 @@ namespace E_WeddingDressShop.Views.Clients
                 ShowMessage("Có lỗi sảy ra: " + e1.Message, false);
             }
         }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
+        }
     }
 }

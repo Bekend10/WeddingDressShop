@@ -56,21 +56,67 @@
         }
 
         .menu-header {
+            height: 100%;
             display: flex;
+            align-items: center;
             gap: 20px;
+        }
+
+        .category-wedding {
+            position: relative;
+        }
+
+        .category-wedding-secondary {
+            position: absolute;
+            top: 100%;
+            left: -100px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px 15px;
+            display: none;
+        }
+
+        .category-wedding:hover .category-wedding-secondary {
+            display: flex;
+        }
+
+        .category-wedding-secondary div div {
+            border-bottom: 1px solid #f5f5f5;
+            width: 200px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .category-wedding-secondary div div:hover {
+            background-color: #f5f5f5;
+        }
+
+        .category-wedding-secondary img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .category-wedding-secondary span {
+            width: 30px;
+            height: 30px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
         }
 
              .menu-header a {
             color: #333;
             text-decoration: none;
-            font-weight: 500;
             transition: color 0.3s ease;
         }
         #logoutContainer {
             position: absolute;
             top: 100%;
             right: 0;
-            width: 250px;
+            width: 280px;
             background-color: #fff;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             display: none;
@@ -82,7 +128,6 @@
             border: none;
             background: #fff;
             padding: 10px 20px;
-            font-weight: 500;
             text-align: left;
             cursor: pointer;
             display: flex;
@@ -188,10 +233,8 @@
         }*/
 
         .product-card {
-            border-radius: 8px;
             background: #fff;
-            text-align: center;
-            padding: 15px;
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -206,13 +249,17 @@
         }
 
             .product-card h3 {
-            font-size: 18px;
+            font-size: 16px;
+            color: #333;
+        }
+                        .product-card p {
+            font-size: 14px;
             color: #333;
         }
 
             .product-card .price {
             color: #f60;
-            font-size: 16px;
+            font-size: 14px;
         }
 
              .product-card .btn {
@@ -269,10 +316,21 @@
                 <a href="#">COLLECTIONS</a>
                 <a href="#">NEW CONCEPT</a>
             </div>--%>
-            <img src="../../Template/image/logo-header.png" alt="Logo" />
+            <a href="#">
+                <img src="../../Template/image/logo-header.png" alt="Logo" />
+            </a>
             <div class="menu-header">
-                <a href="#">CATEGORY DRESS WEDDING</a>
-                <a href="Order.aspx"><i class="fa-solid fa-cart-shopping"></i></a>
+                <div class="category-wedding h-100 d-flex align-items-center">
+                    <a href="#"><div class="h-100 d-flex align-items-center">Dress Wedding +</div></a>
+                    <div class="category-wedding-secondary">
+                        <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
+                        </div>
+                    </div>
+                </div>
                  <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">
                     User
                 </a>
@@ -280,6 +338,9 @@
                     <div class="d-flex align-item-center justify-content-start">
                         <i class="fa-solid fa-user-pen"></i>
                         <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
+                    </div>
+                    <div>
+                        <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
                     </div>
                      <div class="d-flex align-item-center justify-content-start">
                          <i class="fa-solid fa-bag-shopping"></i>
@@ -291,7 +352,7 @@
                     </div>
                     <div class="d-flex">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <asp:Button ID="logout" runat="server" Text="LOG OUT" OnClick="logout_Click" />
+                        <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
                     </div>
                 </div>
             </div>
@@ -317,30 +378,43 @@
             </div>
         </div>
         <div class="wrapper-new-product">
-            <div class="title">
-                Danh sách sản phẩm mới
-                <img src="../../Template/image/main-img.png" />
-            </div>
-            <div class="product-grid">
-                <asp:Repeater ID="rptNewProducts" runat="server">
-                    <ItemTemplate>
-                        <div class="product-card-wrapper">
-                            <div class="product-card">
-                                <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
-                                <div class="d-flex justify-content-between mt-2">
-                                    <div>
-                                        <h3 class="mb-2"><%# Eval("Name") %></h3>
-                                        <p class="mb-0"><%# Eval("Description") %></p>
-                                    </div>
-                                    <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
-                                </div>
-                                <a href="#" class="btn">View Details</a>
+    <div class="title">
+        Danh sách sản phẩm
+        <img src="../../Template/image/main-img.png" />
+    </div>
+    <div class="product-grid">
+        <asp:Repeater ID="rptNewProducts" runat="server">
+            <ItemTemplate>
+                <div class="product-card-wrapper">
+                    <div class="product-card">
+                        <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h3 class="mb-2"><%# Eval("Name") %></h3>
+                                <p class="mb-0"><%# Eval("Description") %></p>
                             </div>
+                            <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
                         </div>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>
-        </div>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    <!-- Phân trang -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            <asp:Repeater ID="rptPagination" runat="server">
+                <ItemTemplate>
+                    <li class="page-item <%# Convert.ToBoolean(Eval("Active")) ? "active" : "" %>">
+                        <a class="page-link" href="?page=<%# Eval("PageNumber") %>"><%# Eval("PageNumber") %></a>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+    </nav>
+</div>
+
     </form>
     <script>
         function toggleLogout(event) {
