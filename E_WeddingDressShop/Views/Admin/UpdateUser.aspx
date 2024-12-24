@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateUser.aspx.cs" Inherits="E_WeddingDressShop.Views.Clients.UpdateUser" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateUser.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.UpdateUser" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -268,7 +268,7 @@
             </div>
             
             <asp:Button runat="server" Text="Update" CommandName="UpdateUserNe" OnCommand="UpdateUserNe" />
-            <asp:Button runat="server" Text="Cancel" PostBackUrl="~/Views/Clients/DashBoard.aspx" />
+            <asp:Button runat="server" Text="Cancel" PostBackUrl="~/Views/Admin/DashBoard.aspx" />
             <asp:Label runat="server" ID="lblErrorMessage"></asp:Label>
         </div>
     </form>
