@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListProduct.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.ListProduct" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ListProduct.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.ListProduct" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,14 +12,12 @@
             padding: 0;
             background-color: #f8f9fa;
         }
-
         /* Tiêu đề chính */
         h2 {
             text-align: center;
             color: #333;
             margin-top: 20px;
         }
-
         /* Form container */
         form {
             max-width: 80%;
@@ -29,7 +27,6 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         /* Tìm kiếm */
         .form-control {
             width: 70%;
@@ -54,7 +51,6 @@
             .btn:hover {
                 background-color: #0056b3;
             }
-
         /* Lưới sản phẩm */
         .grid-container {
             margin-top: 20px;
@@ -85,7 +81,6 @@
                 max-width: 100px;
                 max-height: 100px;
             }
-
             /* Nút sửa và xoá */
             .table .btn {
                 width: 80px;
@@ -98,7 +93,6 @@
             .btn-danger:hover {
                 background-color: #a71d2a;
             }
-
         /* Thông báo */
         #lblMessage {
             display: block;
@@ -115,7 +109,6 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
-
         /* Nút Sửa */
         .btn-edit {
             background-color: #28a745; /* Màu xanh lá cây */
@@ -126,7 +119,6 @@
                 background-color: #218838; /* Màu đậm hơn khi hover */
                 transform: scale(1.05);
             }
-
         /* Nút Xóa */
         .btn-delete {
             background-color: #dc3545; /* Màu đỏ */

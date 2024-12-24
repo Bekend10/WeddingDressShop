@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.DashBoard" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.DashBoard" %>
 
 <!DOCTYPE html>
 
@@ -179,33 +179,28 @@
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Home.aspx')">Home</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/CategoryManage.aspx')">Quản lý danh mục</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ProductManage.aspx')">Quản lý sản phẩm</a>
+                            <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/UserManage.aspx')">Quản lý người dùng</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/ListProduct.aspx')">Danh sách sản phẩm</a>
                             <a href="#" class="menu-item" onclick="loadPage('/Views/Admin/Order.aspx')">Đơn hàng</a>
-                            <a href="#" class="menu-item">Email</a>
-                            <a href="#" class="menu-item">Tickets</a>
-                            <a href="#" class="menu-item">Tree View</a>
-                            <a href="#" class="menu-item">Pricing</a>
                         </div>
                     </div>
-
                     <div class="user-profile">
                         <div class="profile-header">
                             <img src="   https://cdn-icons-png.flaticon.com/512/17003/17003310.png " alt="Profile Picture" class="profile-picture" />
                             <div class="profile-info">
-                                <span class="profile-name" id="userName"></span>
-                                <span class="profile-role" id="role"></span>
+                                <b><span runat="server" class="profile-name" id="userName"></span></b>
+                                <span runat="server" class="profile-role" id="roleUser"></span>
                             </div>
                         </div>
                         <div class="profile-actions">
-                            <a href="#" class="action-item">
-                                <i class="fa fa-cog"></i>Setting
-                        </a>
-                            <a href="#" class="action-item">
-                                <i class="fa fa-sign-out-alt"></i>Log out
-                        </a>
+                            <a href="/Views/Clients/DashBoard.aspx" class="action-item">
+                                <i class="fa fa-cog"></i>View Store
+                            </a>
+                            <asp:LinkButton ID="btnLogout" runat="server" CommandName="LOGOUT" OnCommand="CommandHandler" CssClass="action-item">
+                            <i class="fa fa-sign-out-alt"></i> Log out
+                            </asp:LinkButton>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Main Content -->
@@ -216,9 +211,7 @@
                         <input type="text" class="form-control" placeholder="Search..." />
                     </div>
                     <div class="hienthi">
-                       <iframe id="contentFrame" src="Home.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
-
-
+                        <iframe id="contentFrame" src="Home.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
                     </div>
 
                 </div>
@@ -229,6 +222,6 @@
         function loadPage(page) {
             document.getElementById("contentFrame").src = page;
         }
-        </script>
+    </script>
 </body>
 </html>

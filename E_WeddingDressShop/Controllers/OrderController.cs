@@ -13,7 +13,9 @@ namespace E_WeddingDressShop.Controllers
 
         public OrderController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            //string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=LAP;Initial Catalog=E_WeddingDress;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
             conn = new SqlConnection(SqlCon);
         }
 
@@ -39,7 +41,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (Decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                 };
@@ -62,7 +64,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (Decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                     FullName = (string)dr["FullName"]
@@ -88,7 +90,7 @@ namespace E_WeddingDressShop.Controllers
                 {
                     OrderID = (int)dr["OrderID"],
                     OrderDate = (DateTime)dr["OrderDate"],
-                    TotalAmount = (int)dr["TotalAmount"],
+                    TotalAmount = (Decimal)dr["TotalAmount"],
                     Status = (string)dr["Status"],
                     UserID = (int)dr["UserID"],
                     FullName = (string)dr["FullName"]
@@ -164,5 +166,124 @@ namespace E_WeddingDressShop.Controllers
                 return "Lỗi: " + ex.Message;
             }
         }
+
+        public decimal GetTotalRevenue()
+        {
+            decimal totalRevenue = 0;
+            try
+            {
+                string sql = @"SELECT SUM(TotalAmount) as TotalRevenue FROM tb_Orders WHERE Status = 'Completed'"; // Hoặc trạng thái tương ứng
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                conn.Open();
+                object result = cmd.ExecuteScalar();
+                totalRevenue = result != DBNull.Value ? Convert.ToDecimal(result) : 0;
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                throw new Exception("Lỗi khi tính tổng doanh thu: " + ex.Message);
+            }
+            return totalRevenue;
+        }
+
+        public decimal GetCancellationRate()
+        {
+            decimal cancellationRate = 0;
+            try
+            {
+                // Lấy tổng số đơn hàng
+                string sqlTotalOrders = "SELECT COUNT(*) FROM tb_Orders";
+                SqlCommand cmdTotalOrders = new SqlCommand(sqlTotalOrders, conn);
+                conn.Open();
+                int totalOrders = Convert.ToInt32(cmdTotalOrders.ExecuteScalar());
+
+                // Lấy số đơn hàng hủy
+                string sqlCancelledOrders = "SELECT COUNT(*) FROM tb_Orders WHERE Status = 'Cancle'"; // Trạng thái hủy của bạn
+                SqlCommand cmdCancelledOrders = new SqlCommand(sqlCancelledOrders, conn);
+                int cancelledOrders = Convert.ToInt32(cmdCancelledOrders.ExecuteScalar());
+                conn.Close();
+
+                // Tính tỷ lệ hủy
+                if (totalOrders > 0)
+                {
+                    cancellationRate = (decimal)cancelledOrders / totalOrders * 100; // Chuyển thành phần trăm
+                }
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                throw new Exception("Lỗi khi tính tỷ lệ đơn hàng hủy: " + ex.Message);
+            }
+            return cancellationRate;
+        }
+        public decimal GetCompletedRate()
+        {
+            decimal CompletedRate = 0;
+            try
+            {
+                // Lấy tổng số đơn hàng
+                string sqlTotalOrders = "SELECT COUNT(*) FROM tb_Orders";
+                SqlCommand cmdTotalOrders = new SqlCommand(sqlTotalOrders, conn);
+                conn.Open();
+                int totalOrders = Convert.ToInt32(cmdTotalOrders.ExecuteScalar());
+
+                // Lấy số đơn hàng thành công
+                string sqlCompletedOrders = "SELECT COUNT(*) FROM tb_Orders WHERE Status = 'Completed'"; // Trạng thái hủy của bạn
+                SqlCommand cmdCompletedOrders = new SqlCommand(sqlCompletedOrders, conn);
+                int cancelledOrders = Convert.ToInt32(cmdCompletedOrders.ExecuteScalar());
+                conn.Close();
+
+                // Tính tỷ lệ thành công
+                if (totalOrders > 0)
+                {
+                    CompletedRate = (decimal)cancelledOrders / totalOrders * 100; // Chuyển thành phần trăm
+                }
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                throw new Exception("Lỗi khi tính tỷ lệ đơn hàng Thành công: " + ex.Message);
+            }
+            return CompletedRate;
+        }
+        
+        public decimal GetCompletedRateByMonth(int month)
+        {
+            decimal completedRate = 0;
+            try
+            {
+                // Lấy tổng số đơn hàng theo tháng
+                string sqlTotalOrders = @"SELECT COUNT(*) 
+                                  FROM tb_Orders 
+                                  WHERE MONTH(OrderDate) = @month";
+                SqlCommand cmdTotalOrders = new SqlCommand(sqlTotalOrders, conn);
+                cmdTotalOrders.Parameters.AddWithValue("@month", month);
+                conn.Open();
+                int totalOrders = Convert.ToInt32(cmdTotalOrders.ExecuteScalar());
+
+                // Lấy số đơn hàng thành công theo tháng
+                string sqlCompletedOrders = @"SELECT COUNT(*) 
+                                      FROM tb_Orders 
+                                      WHERE Status = 'Completed' AND MONTH(OrderDate) = @month";
+                SqlCommand cmdCompletedOrders = new SqlCommand(sqlCompletedOrders, conn);
+                cmdCompletedOrders.Parameters.AddWithValue("@month", month);
+                int completedOrders = Convert.ToInt32(cmdCompletedOrders.ExecuteScalar());
+                conn.Close();
+
+                // Tính tỷ lệ thành công
+                if (totalOrders > 0)
+                {
+                    completedRate = (decimal)completedOrders / totalOrders * 100; // Chuyển thành phần trăm
+                }
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                throw new Exception("Lỗi khi tính tỷ lệ đơn hàng thành công theo tháng: " + ex.Message);
+            }
+            return completedRate;
+        }
+
     }
 }

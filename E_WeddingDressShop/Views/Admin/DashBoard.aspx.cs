@@ -1,4 +1,5 @@
-﻿using System;
+﻿using E_WeddingDressShop.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,17 +10,40 @@ namespace E_WeddingDressShop.Views.Admin
 {
     public partial class DashBoard : System.Web.UI.Page
     {
+        private readonly UserController userController = new UserController();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Load data into the table if needed
             }
             if (Session["UserEmail"] == null)
             {
                 Response.Redirect("~/Views/Clients/Login.aspx");
             }
+            else
+            {
+                string email = Session["UserEmail"].ToString();
+                int userID = userController.getUserByEmail(email);
+                string role = userController.getUserByUserID(userID).Role;
+                string username = userController.getUserByUserID(userID).FullName;
+                if (role != "Admin")
+                {
+                    Response.Redirect("~/Views/Clients/Login.aspx");
+                }
+                userName.InnerText = username.ToString();
+                roleUser.InnerText = role.ToString();
+            }
         }
+        protected void CommandHandler(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "LOGOUT")
+            {
+                Session.Clear();
+                Session.Abandon();
+                Response.Redirect("~/Views/Clients/Login.aspx");
+            }
+        }
+
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             // Logic for adding a new category

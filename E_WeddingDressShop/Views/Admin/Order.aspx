@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.Order" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.Order" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,15 +83,15 @@
 
             <div class="form-container">
                 <h3>Thêm/Sửa đơn hàng</h3>
-                <asp:HiddenField ID="hfOrderID" runat="server" />
+                <asp:HiddenField ID="hfOrderID" runat="server"/>
                 <label for="txtUserID">User ID:</label>
-                <asp:TextBox ID="txtUserID" runat="server" disabled ="true"/>
+                <asp:TextBox ID="txtUserID" runat="server" ReadOnly ="true"/>
                 <label for="txtFullName">Họ và tên:</label>
-                <asp:TextBox ID="txtFullName" runat="server" disabled ="true" />
+                <asp:TextBox ID="txtFullName" runat="server" ReadOnly ="true" />
                 <label for="txtOrderDate">Ngày đặt hàng:</label>
-                <asp:TextBox ID="txtOrderDate" runat="server" TextMode="Date" disabled ="true"/>
+                <asp:TextBox ID="txtOrderDate" runat="server" TextMode="Date" ReadOnly ="true"/>
                 <label for="txtTotalAmount">Tổng tiền:</label>
-                <asp:TextBox ID="txtTotalAmount" runat="server" disabled ="true"/>
+                <asp:TextBox ID="txtTotalAmount" runat="server" ReadOnly ="true"/>
                 <label for="ddlStatus">Trạng thái:</label>
                 <asp:DropDownList ID="ddlStatus" runat="server">
                     <asp:ListItem Text="Huỷ đơn" Value="Cancle" />

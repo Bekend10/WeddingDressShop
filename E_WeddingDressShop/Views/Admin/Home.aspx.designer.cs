@@ -24,24 +24,6 @@ namespace E_WeddingDressShop.Views.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblTotalSales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalSales;
-
-        /// <summary>
-        /// lblGrossSales control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGrossSales;
-
-        /// <summary>
         /// lblCancellations control.
         /// </summary>
         /// <remarks>
@@ -51,12 +33,21 @@ namespace E_WeddingDressShop.Views.Admin
         protected global::System.Web.UI.WebControls.Label lblCancellations;
 
         /// <summary>
-        /// blTasks control.
+        /// lblTotalRevenue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.BulletedList blTasks;
+        protected global::System.Web.UI.WebControls.Label lblTotalRevenue;
+
+        /// <summary>
+        /// lblCancellationRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCancellationRate;
     }
 }

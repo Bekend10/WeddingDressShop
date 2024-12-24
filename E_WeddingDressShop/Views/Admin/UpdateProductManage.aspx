@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateProductManage.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.UpdateProductManage" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateProductManage.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.UpdateProductManage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

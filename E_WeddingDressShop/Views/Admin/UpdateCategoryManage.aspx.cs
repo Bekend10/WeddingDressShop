@@ -23,7 +23,7 @@ namespace E_WeddingDressShop.Views.Admin
                 {
                     msg.Text = "Không có danh mục nào để cập nhật.";
                     msg.ForeColor = System.Drawing.Color.Red;
-                    btnSua.Enabled = false; 
+                    btnSua.Enabled = false;
                 }
             }
         }

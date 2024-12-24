@@ -70,7 +70,7 @@ namespace E_WeddingDressShop.Views.Admin
                     string fileName = $"{DateTime.Now.Ticks}_{fileUploadImage.FileName}";
                     string filePath = Server.MapPath($"~/Uploads/{fileName}");
                     fileUploadImage.SaveAs(filePath);
-                    imageUrl = $"/Uploads/{fileName}"; 
+                    imageUrl = $"/Uploads/{fileName}";
                 }
 
                 PRODUCT updateProduct = new PRODUCT
