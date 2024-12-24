@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Quản lý người dùng</h1>
             <div class="search-container">
-                <label for="txtSearch">Tìm kiếm theo tên hoặc email:</label>
+                <label for="txtSearch">Tìm kiếm theo tên </label>
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" />
                 <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" CssClass="btn" OnClick="btnSearch_Click" />
             </div>

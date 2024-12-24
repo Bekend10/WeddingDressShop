@@ -64,7 +64,6 @@ namespace E_WeddingDressShop.Views.Admin
             {
                 try
                 {
-                    // Kiểm tra loại file hợp lệ
                     string[] validExtensions = { ".jpg", ".jpeg", ".png", ".gif" };
                     string fileExtension = Path.GetExtension(fileUploadImage.FileName).ToLower();
 
@@ -105,7 +104,6 @@ namespace E_WeddingDressShop.Views.Admin
             }
             else
             {
-                // Nếu không có file mới được chọn, sử dụng URL đã nhập (nếu có)
                 if (!string.IsNullOrEmpty(txtImageUrl.Text))
                 {
                     product.ImageUrl = txtImageUrl.Text;

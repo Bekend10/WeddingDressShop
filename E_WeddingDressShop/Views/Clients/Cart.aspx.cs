@@ -20,6 +20,10 @@ namespace E_WeddingDressShop.Views.Clients
         {
             if (!IsPostBack)
             {
+                string email = Session["UserEmail"].ToString();
+                int userId = userController.getUserByEmail(email);
+                string userName = userController.getUserByUserID(userId).FullName;
+                nameUser.InnerText = "Xin chào " + userName.ToString();
                 Loaded();
             }
            
@@ -90,7 +94,7 @@ namespace E_WeddingDressShop.Views.Clients
                 int productId = cartController.getProductIDByCartID(cartID);
                 decimal price = productController.getPriceByID(productId);
                 int quantity = cartController.getQuantityByID(cartID);
-
+                int stockQuantity = productController.getProductByID(productId).StockQuantity;
                 ORDER od = new ORDER
                 {
                     UserID = userId,
@@ -100,7 +104,7 @@ namespace E_WeddingDressShop.Views.Clients
                 };
 
                 int orderId = orderController.AddORDER(od);
-
+                
                 ORDERDETAILS odd = new ORDERDETAILS
                 {
                     OrderID = orderId,
@@ -110,7 +114,7 @@ namespace E_WeddingDressShop.Views.Clients
                 };
 
                 string detailResult = orderDetailController.AddOderDetail(odd);
-
+                productController.UpdateStockQuantity(productId, stockQuantity - quantity);
                 cartController.DeleteCart(cartID);
 
                 ShowMessage("Đặt hàng thành công!", true);
@@ -121,6 +125,11 @@ namespace E_WeddingDressShop.Views.Clients
                 ShowMessage("Có lỗi xảy ra: " + ex.Message, false);
             }
         }
-
+       protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
+        }
     }
 }

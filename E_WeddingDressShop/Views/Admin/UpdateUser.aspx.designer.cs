@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_WeddingDressShop.Views.Clients
+namespace E_WeddingDressShop.Views.Admin
 {
 
 
-    public partial class ProductDetails
+    public partial class UpdateUser
     {
 
         /// <summary>
@@ -42,102 +42,66 @@ namespace E_WeddingDressShop.Views.Clients
         protected global::System.Web.UI.WebControls.Button logout;
 
         /// <summary>
-        /// hdnProductId control.
+        /// txthoten control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnProductId;
+        protected global::System.Web.UI.WebControls.TextBox txthoten;
 
         /// <summary>
-        /// productImage control.
+        /// txtemail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage productImage;
+        protected global::System.Web.UI.WebControls.TextBox txtemail;
 
         /// <summary>
-        /// productName control.
+        /// txtphonenumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productName;
+        protected global::System.Web.UI.WebControls.TextBox txtphonenumber;
 
         /// <summary>
-        /// productDescription control.
+        /// txtdiachi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productDescription;
+        protected global::System.Web.UI.WebControls.TextBox txtdiachi;
 
         /// <summary>
-        /// productPrice control.
+        /// txtmatkhau control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productPrice;
+        protected global::System.Web.UI.WebControls.TextBox txtmatkhau;
 
         /// <summary>
-        /// productCategory control.
+        /// txtnhaplaimatkhau control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtnhaplaimatkhau;
 
         /// <summary>
-        /// productStock control.
+        /// lblErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl productStock;
-
-        /// <summary>
-        /// hdnProductQuantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnProductQuantity;
-
-        /// <summary>
-        /// btnAddToCart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddToCart;
-
-        /// <summary>
-        /// btnViewDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewDetail;
-
-        /// <summary>
-        /// errmsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label errmsg;
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
     }
 }

@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateUser.aspx.cs" Inherits="E_WeddingDressShop.Views.Clients.UpdateUser" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdateUser.aspx.cs" Inherits="E_WeddingDressShop.Views.Admin.UpdateUser" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-      <title>Chỉnh sửa thông tin</title>
+    <title>Chỉnh sửa thông tin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
@@ -175,7 +175,7 @@
             <img src="../../Template/image/logo-header.png" alt="Logo" />
             <div class="menu-header">
                 <div class="category-wedding h-100 d-flex align-items-center">
-                    <a href="DashBoard.aspx">
+                    <a href="#">
                         <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
                     </a>
                     <div class="category-wedding-secondary">
@@ -233,11 +233,11 @@
             </div>
             <div class="form-control">
                 <asp:Label runat="server" Text="Mật khẩu:" />
-                <asp:TextBox ID="txtmatkhau" runat="server" placeholder="Nhập mật khẩu" TextMode="Password"  />
+                <asp:TextBox ID="txtmatkhau" runat="server" placeholder="Nhập mật khẩu" TextMode="Password" />
             </div>
             <div class="form-control">
                 <asp:Label runat="server" Text="Nhập lại mật khẩu:" />
-                <asp:TextBox ID="txtnhaplaimatkhau" runat="server" placeholder="Nhập lại mật khẩu"  TextMode="Password" />
+                <asp:TextBox ID="txtnhaplaimatkhau" runat="server" placeholder="Nhập lại mật khẩu" TextMode="Password" />
             </div>
             
             <asp:Button runat="server" Text="Update" CommandName="UpdateUserNe" OnCommand="UpdateUserNe" />

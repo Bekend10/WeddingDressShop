@@ -194,8 +194,8 @@
                             </div>
                         </div>
                         <div class="profile-actions">
-                            <a href="#" class="action-item">
-                                <i class="fa fa-cog"></i>Setting
+                           <a href="UpdateUser.aspx" class="action-item">
+                                <i class="fa fa-cog"></i>Update Info
                             </a>
                             <asp:LinkButton ID="btnLogout" runat="server" CommandName="LOGOUT" OnCommand="CommandHandler" CssClass="action-item">
     <i class="fa fa-sign-out-alt"></i> Log out

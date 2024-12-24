@@ -9,7 +9,7 @@ using E_WeddingDressShop.DTO;
 using System.EnterpriseServices.Internal;
 using System.Security.Cryptography;
 using System.Text;
-namespace E_WeddingDressShop.Views.Clients
+namespace E_WeddingDressShop.Views.Admin
 {
     public partial class UpdateUser : System.Web.UI.Page
     {
@@ -18,11 +18,6 @@ namespace E_WeddingDressShop.Views.Clients
         {
             Loaded();
         }
-        private bool checkPassword()
-        {
-            return txtmatkhau.Text == txtnhaplaimatkhau.Text;
-        }
-
         protected void Loaded()
         {
             string email = Session["UserEmail"].ToString();
@@ -34,6 +29,10 @@ namespace E_WeddingDressShop.Views.Clients
 
             txtphonenumber.Text = u.NumberPhone;
         }
+        private bool checkPassword()
+        {
+            return txtmatkhau.Text == txtnhaplaimatkhau.Text;
+        }
         protected void UpdateUserNe(object sender, CommandEventArgs e)
         {
             try
@@ -41,7 +40,10 @@ namespace E_WeddingDressShop.Views.Clients
                 string email = Session["UserEmail"].ToString();
                 int userId = usercontroller.getUserByEmail(email);
                 USER u = usercontroller.layUserByUserID(userId);
-
+                txthoten.Text = u.FullName;
+                txtemail.Text = u.Email;
+                txtdiachi.Text = u.Address;
+                txtphonenumber.Text = u.NumberPhone;
 
                 u.FullName = txthoten.Text;
                 u.Email = txtemail.Text;
@@ -54,8 +56,7 @@ namespace E_WeddingDressShop.Views.Clients
                 u.PasswordHash = usercontroller.HashPassword(txtmatkhau.Text);
                 string result = usercontroller.UpdateUser(u);
                 lblErrorMessage.Text = result;
-                Response.Redirect("~/Views/Clients/DashBoard.aspx");
-
+                Response.Redirect("~/Views/Admin/DashBoard.aspx");
             }
             catch (Exception e1)
             {
@@ -66,7 +67,7 @@ namespace E_WeddingDressShop.Views.Clients
         {
             Session.Clear();
             Session.Abandon();
-            Response.Redirect("~/Views/Clients/Login.aspx");
+            Response.Redirect("~/Views/Admin/Login.aspx");
         }
     }
 }

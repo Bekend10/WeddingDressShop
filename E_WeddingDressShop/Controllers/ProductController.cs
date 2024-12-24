@@ -127,6 +127,18 @@ namespace E_WeddingDressShop.Controllers
             conn.Close();
             return product;
         }
+        public void UpdateStockQuantity(int productId, int newQuantity)
+        {
+            conn.Open();
+            string sql = @"UPDATE tb_Products 
+                    SET StockQuantity = @newQuantity 
+                    WHERE ProductID = @productId";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@newQuantity", newQuantity);
+            cmd.Parameters.AddWithValue("@productId", productId);
+            cmd.ExecuteNonQuery();
+            conn.Close(); 
+        }
 
         public PRODUCT getProductByName(string name)
         {
@@ -239,7 +251,7 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
                 return price;
             }
-            catch (Exception e1)
+            catch
             {
                 conn.Close();
                 return 0;

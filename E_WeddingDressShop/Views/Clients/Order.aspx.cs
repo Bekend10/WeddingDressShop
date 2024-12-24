@@ -56,37 +56,12 @@ namespace E_WeddingDressShop.Views.Clients
                 lblMessage.Text = "Đã xảy ra lỗi: " + ex.Message;
             }
         }
-
-        protected void gvOrders_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        
+        protected void logout_Click(object sender, EventArgs e)
         {
-            if (e.CommandName == "ViewDetail")
-            {
-                int orderId = Convert.ToInt32(e.CommandArgument);
-                LoadOrderDetails(orderId); 
-            }
-        }
-
-        private void LoadOrderDetails(int orderId)
-        {
-            try
-            {
-                List<ORDERDETAILS> orderDetails = orderDetailController.getOrderDetailsByOrderId(orderId);
-                if (orderDetails.Count > 0)
-                {
-                    gvOrderDetails.DataSource = orderDetails;
-                    gvOrderDetails.DataBind();
-
-                    //orderDetailsDiv.Visible = true;
-                }
-                else
-                {
-                    lblMessage.Text = "Không có chi tiết cho đơn hàng này.";
-                }
-            }
-            catch (Exception ex)
-            {
-                lblMessage.Text = "Đã xảy ra lỗi khi tải chi tiết đơn hàng: " + ex.Message;
-            }
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
         }
     }
 }

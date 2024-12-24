@@ -66,14 +66,25 @@ namespace E_WeddingDressShop.Views.Admin
             if (order.OrderID == 0)
             {
                 int orderId = orderController.AddORDER(order); 
-                message = orderId > 0 ? "Đơn hàng đã được thêm thành công!" : "Thêm đơn hàng thất bại!";
+                if(orderId > 0)
+                {
+                    message = "Đơn hàng đã được thêm thành công!";
+                    lblMessage.Text = message;
+                    lblMessage.ForeColor = System.Drawing.Color.Green;
+                }
+                else
+                {
+                    message = "Đơn hàng đã được thêm thất bại!";
+                    lblMessage.Text = message;
+                    lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
             }
             else
             {
-                message = orderController.UpdateORDER(order); 
+                message = orderController.UpdateORDER(order);
+                lblMessage.Text = message;
+                lblMessage.ForeColor = System.Drawing.Color.Green;
             }
-
-            lblMessage.Text = message;
             LoadOrders();
         }
     }

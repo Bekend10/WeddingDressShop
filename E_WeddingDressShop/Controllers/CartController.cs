@@ -21,8 +21,8 @@ namespace E_WeddingDressShop.Controllers
         {
             try
             {
-                string sql = "INSERT INTO tb_Cart (CartID, UserID, ProductID, Quantity) " +
-                             "VALUES (@CartID, @UserID, @ProductID, @Quantity, @ImageUrl)";
+                string sql = "INSERT INTO tb_Cart (UserID, ProductID, Quantity) " +
+                             "VALUES (@UserID, @ProductID, @Quantity)";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 AddCartParamater(cmd, cart);
                 conn.Open();

@@ -146,7 +146,11 @@
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
-                    <asp:ImageField DataImageUrlField="ImageUrl" HeaderText="Hình ảnh" SortExpression="ImageUrl" />
+                    <asp:TemplateField HeaderText="Ảnh sản phẩm">
+                        <ItemTemplate>
+                            <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' class="product-img" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" />
                     <asp:BoundField DataField="Price" HeaderText="Giá" DataFormatString="{0:N0} VNĐ" />
                     <asp:BoundField DataField="StockQuantity" HeaderText="Số lượng tồn" />

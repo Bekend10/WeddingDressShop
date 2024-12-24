@@ -9,12 +9,13 @@ namespace E_WeddingDressShop.Views.Clients
     {
         ProductController productController = new ProductController();
         CategoryController categoryController = new CategoryController();
+        CartController cartController = new CartController();
+        UserController userController = new UserController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Lấy ProductID từ query string
                 string productIdStr = Request.QueryString["ProductID"];
                 if (!string.IsNullOrEmpty(productIdStr) && int.TryParse(productIdStr, out int productId))
                 {
@@ -49,8 +50,8 @@ namespace E_WeddingDressShop.Views.Clients
                     productName.InnerText = product.Name;
                     productDescription.InnerText = product.Description;
                     productPrice.InnerText = $"{product.Price:N0} VNĐ";
-                    productCategory.InnerText = $"Thể loại:{category}";
-                    productStock.InnerText = $"Số lượng còn lại: {product.StockQuantity}";
+                    productCategory.InnerText = $"{category}";
+                    productStock.InnerText = $"{product.StockQuantity}";
                 }
                 else
                 {
@@ -65,10 +66,52 @@ namespace E_WeddingDressShop.Views.Clients
             }
         }
 
-        protected void AddToCart_Click(object sender, EventArgs e)
+        protected void AddToCart_Click(object sender, CommandEventArgs e)
         {
-            // Logic thêm sản phẩm vào giỏ hàng (tùy thuộc vào hệ thống của bạn)
-            Response.Redirect("~/Views/Clients/Cart.aspx");
+            try
+            {
+                if(e.CommandName == "AddCart")
+                {
+                    string productIdStr = Request.QueryString["ProductID"];
+                    int productId = int.Parse(productIdStr);
+                    string email = Session["UserEmail"].ToString();
+                    int userId = userController.getUserByEmail(email);
+                    //int productId = Convert.ToInt32(e.CommandArgument);
+                    int quantity = int.Parse(hdnProductQuantity.Value);
+                    CART cart = new CART
+                    {
+                        UserID = userId,
+                        ProductID = productId,
+                        Quantity = quantity,
+                    };
+                    if (quantity > 0)
+                    {
+                        string isAdded = cartController.AddCart(cart);
+                        if (isAdded.Contains("thành công") == true)
+                        {
+                            errmsg.Text = "Sản phẩm đã được thêm vào giỏ hàng thành công.";
+                        }
+                        else
+                        {
+                            errmsg.Text = "Không thể thêm sản phẩm vào giỏ hàng.";
+                        }
+                    }
+                    else
+                    {
+                        errmsg.Text = "Dữ liệu không hợp lệ.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                errmsg.Text = $"Đã xảy ra lỗi: {ex.Message}";
+            }
+        }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
         }
     }
 }
