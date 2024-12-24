@@ -54,7 +54,7 @@ namespace E_WeddingDressShop.Views.Admin
                 ProductID = string.IsNullOrEmpty(txtProductID.Text) ? 0 : int.Parse(txtProductID.Text),
                 Name = txtProductName.Text.Trim(),
                 Description = txtDescription.Text.Trim(),
-                Price = float.Parse(txtPrice.Text),
+                Price = decimal.Parse(txtPrice.Text),
                 StockQuantity = int.Parse(txtStockQuantity.Text),
                 CategoryID = categoryId,
                 CreatedDate = DateTime.Now

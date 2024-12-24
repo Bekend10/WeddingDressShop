@@ -11,7 +11,7 @@ namespace E_WeddingDressShop.Views.Clients
 {
 
 
-    public partial class Order
+    public partial class HistoryBuy
     {
 
         /// <summary>
@@ -24,30 +24,21 @@ namespace E_WeddingDressShop.Views.Clients
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// gvOrders control.
+        /// gvHistory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrders;
+        protected global::System.Web.UI.WebControls.GridView gvHistory;
 
         /// <summary>
-        /// lblMessage control.
+        /// back control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMessage;
-
-        /// <summary>
-        /// gvOrderDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOrderDetails;
+        protected global::System.Web.UI.WebControls.Button back;
     }
 }

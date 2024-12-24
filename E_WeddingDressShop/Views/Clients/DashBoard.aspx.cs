@@ -1,4 +1,5 @@
 ﻿using E_WeddingDressShop.Controllers;
+using E_WeddingDressShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,10 +39,21 @@ namespace E_WeddingDressShop.Views
 
         private void LoadNewProducts()
         {
-            var products = productController.getListProduct(); 
+            List<PRODUCT> products = productController.getListProduct();
             rptNewProducts.DataSource = products;
             rptNewProducts.DataBind();
         }
+        protected void View_Details(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "view")
+            {
+                int productID;
+                if (int.TryParse(e.CommandArgument.ToString(), out productID))
+                {
+                    Response.Redirect("~/Views/Clients/ProductDetails.aspx?productID=" + productID);
+                }
 
+            }
+        }
     }
 }

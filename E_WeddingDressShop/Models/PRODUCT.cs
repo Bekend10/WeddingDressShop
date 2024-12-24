@@ -10,8 +10,10 @@ namespace E_WeddingDressShop.Models
         public int ProductID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         public int StockQuantity { get; set; }
+        public decimal TotalPrice { get; set; }
+        public int Quantity { get; set; }
         public string ImageUrl { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public int CategoryID { get; set; }
@@ -21,7 +23,7 @@ namespace E_WeddingDressShop.Models
             
         }
 
-        public PRODUCT(string name, string description, float price, int stockQuantity, string imageUrl, DateTime createdDate, int categoryID, string categoryName)
+        public PRODUCT(string name, string description, decimal price, int stockQuantity, string imageUrl, DateTime createdDate, int categoryID, string categoryName , int quantity , decimal totalPrice)
         {
             Name = name;
             Description = description;
@@ -31,6 +33,8 @@ namespace E_WeddingDressShop.Models
             CreatedDate = createdDate;
             CategoryID = categoryID;
             CategoryName = categoryName;
+            Quantity = quantity;
+            TotalPrice = totalPrice;
         }
     }
 }

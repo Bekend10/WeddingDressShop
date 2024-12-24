@@ -14,6 +14,7 @@ namespace E_WeddingDressShop.Views.Clients
         public CartController cartController = new CartController();
         public UserController userController = new UserController();
         public OrderController orderController = new OrderController();
+        public OrderDetailController orderDetailController = new OrderDetailController();
         public ProductController productController = new ProductController();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,14 +22,30 @@ namespace E_WeddingDressShop.Views.Clients
             {
                 Loaded();
             }
+           
         }
         public void Loaded()
         {
             string email = Session["UserEmail"].ToString();
             int userId = userController.getUserByEmail(email);
-            gvOrders.DataSource = cartController.getList(userId);
-            gvOrders.DataBind();
+
+            var cartList = cartController.getList(userId);
+
+            if (cartList.Count == 0)
+            {
+                lblMessage.Text = "Không có sản phẩm trong giỏ hàng.";
+                lblMessage.ForeColor = System.Drawing.Color.Red;
+                lblMessage.Visible = true;
+                gvOrders.Visible = false;  
+            }
+            else
+            {
+                gvOrders.DataSource = cartList;
+                gvOrders.DataBind();
+                gvOrders.Visible = true;
+            }
         }
+
         protected void Xoa_Click(object sender, CommandEventArgs e)
         {
             try
@@ -58,28 +75,52 @@ namespace E_WeddingDressShop.Views.Clients
         {
             try
             {
-                ORDER od = new ORDER();
-                string email = Session["UserEmail"].ToString();
+                // Lấy email người dùng từ Session
+                string email = Session["UserEmail"]?.ToString();
+                if (string.IsNullOrEmpty(email))
+                {
+                    ShowMessage("Không tìm thấy thông tin người dùng. Vui lòng đăng nhập lại.", false);
+                    return;
+                }
+
+                // Lấy thông tin người dùng và sản phẩm
                 int userId = userController.getUserByEmail(email);
+                string fullName = userController.getUserByUserID(userId).FullName;
                 int cartID = Convert.ToInt32(e.CommandArgument);
-                //string fullName = userController.getUserByUserID(userId);
                 int productId = cartController.getProductIDByCartID(cartID);
-                float price = productController.getPriceByID(productId);
+                decimal price = productController.getPriceByID(productId);
                 int quantity = cartController.getQuantityByID(cartID);
-                od.UserID = userId;
-                od.FullName = userController.getUserByUserID(userId).FullName;
-                od.OrderDate = DateTime.Now;
-                od.Status = "Processing";
-                od.TotalAmount = Convert.ToDecimal(price * quantity);
-                string result = orderController.AddORDER(od);
-                ShowMessage(result, result.Contains("thành công"));
+
+                ORDER od = new ORDER
+                {
+                    UserID = userId,
+                    OrderDate = DateTime.Now,
+                    Status = "Processing",
+                    TotalAmount = Convert.ToDecimal(price * quantity)
+                };
+
+                int orderId = orderController.AddORDER(od);
+
+                ORDERDETAILS odd = new ORDERDETAILS
+                {
+                    OrderID = orderId,
+                    ProductID = productId,
+                    Quantity = quantity,
+                    UnitPrice = Convert.ToDecimal(price * quantity)
+                };
+
+                string detailResult = orderDetailController.AddOderDetail(odd);
+
                 cartController.DeleteCart(cartID);
+
+                ShowMessage("Đặt hàng thành công!", true);
                 Loaded();
             }
-            catch (Exception e1)
+            catch (Exception ex)
             {
-                ShowMessage("Có lỗi sảy ra: " + e1.Message, false);
+                ShowMessage("Có lỗi xảy ra: " + ex.Message, false);
             }
         }
+
     }
 }

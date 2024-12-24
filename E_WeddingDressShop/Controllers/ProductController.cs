@@ -44,12 +44,57 @@ namespace E_WeddingDressShop.Controllers
                     ProductID = (int)dr["ProductID"],
                     Name = (string)dr["Name"],
                     Description = (string)dr["Description"],
-                    Price = Convert.ToSingle(dr["Price"]),
+                    Price = Convert.ToDecimal(dr["Price"]),
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],
                     CategoryID = (int)dr["CategoryID"],
                     CategoryName = (string)dr["CategoryName"]
+                };
+                list.Add(pr);
+            }
+            conn.Close();
+            return list;
+        }
+
+        public List<PRODUCT> getListProductBought(int UserID)
+        {
+            var list = new List<PRODUCT>();
+            string sql = @"SELECT 
+                P.ProductID, 
+                P.Name, 
+                P.Description, 
+                P.Price,
+                od.Quantity, 
+                P.StockQuantity, 
+                P.ImageUrl, 
+                P.CategoryID, 
+                C.CategoryName,
+                (P.Price * od.Quantity) AS TotalPrice
+            FROM tb_Products P 
+            INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID
+            INNER JOIN tb_OrderDetails od ON od.ProductID = P.ProductID
+            JOIN tb_Orders o ON od.OrderID = o.OrderID
+            WHERE o.Status = 'Completed' 
+            AND o.UserID =  @UserID";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@UserID", UserID);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                PRODUCT pr = new PRODUCT
+                {
+                    ProductID = (int)dr["ProductID"],
+                    Name = (string)dr["Name"],
+                    Description = (string)dr["Description"],
+                    Price = Convert.ToDecimal(dr["Price"]),
+                    StockQuantity = (int)dr["StockQuantity"],
+                    ImageUrl = (string)dr["ImageUrl"],
+                    CategoryID = (int)dr["CategoryID"],
+                    CategoryName = (string)dr["CategoryName"],
+                    Quantity = (int)dr["Quantity"],
+                    TotalPrice = (decimal)dr["TotalPrice"],
                 };
                 list.Add(pr);
             }
@@ -72,7 +117,7 @@ namespace E_WeddingDressShop.Controllers
                     ProductID = (int)dr["ProductID"],
                     Name = (string)dr["Name"],
                     Description = (string)dr["Description"],
-                    Price = Convert.ToSingle(dr["Price"]),
+                    Price = Convert.ToDecimal(dr["Price"]),
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],
@@ -98,7 +143,7 @@ namespace E_WeddingDressShop.Controllers
                     ProductID = (int)dr["ProductID"],
                     Name = (string)dr["Name"],
                     Description = (string)dr["Description"],
-                    Price = Convert.ToSingle(dr["Price"]),
+                    Price = Convert.ToDecimal(dr["Price"]),
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],
@@ -129,7 +174,7 @@ namespace E_WeddingDressShop.Controllers
                     ProductID = (int)dr["ProductID"],
                     Name = (string)dr["Name"],
                     Description = (string)dr["Description"],
-                    Price = Convert.ToSingle(dr["Price"]),
+                    Price = Convert.ToDecimal(dr["Price"]),
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],
@@ -163,7 +208,7 @@ namespace E_WeddingDressShop.Controllers
                         ProductID = (int)dr["ProductID"],
                         Name = dr["Name"].ToString(),
                         Description = dr["Description"].ToString(),
-                        Price = Convert.ToSingle(dr["Price"]),
+                        Price = Convert.ToDecimal(dr["Price"]),
                         StockQuantity = (int)dr["StockQuantity"],
                         ImageUrl = dr["ImageUrl"].ToString(),
                         CreatedDate = (DateTime)dr["CreatedDate"],
@@ -177,7 +222,7 @@ namespace E_WeddingDressShop.Controllers
             return list;
         }
 
-        public float getPriceByID(int productID)
+        public decimal getPriceByID(int productID)
         {
             try
             {
@@ -185,11 +230,11 @@ namespace E_WeddingDressShop.Controllers
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProductID", productID);
                 conn.Open();
-                float price = -1;
+                decimal price = -1;
                 SqlDataReader dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
-                    price = (float)dr["Price"];
+                    price = (decimal)dr["Price"];
                 }
                 conn.Close();
                 return price;
@@ -215,7 +260,7 @@ namespace E_WeddingDressShop.Controllers
                     ProductID = (int)dr["ProductID"],
                     Name = (string)dr["Name"],
                     Description = (string)dr["Description"],
-                    Price = Convert.ToSingle(dr["Price"]),
+                    Price = Convert.ToDecimal(dr["Price"]),
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],

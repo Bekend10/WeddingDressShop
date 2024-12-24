@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="E_WeddingDressShop.Views.DashBoard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="E_WeddingDressShop.Views.DashBoard" EnableEventValidation="false"%>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -272,7 +272,7 @@
             <img src="../../Template/image/logo-header.png" alt="Logo" />
             <div class="menu-header">
                 <a href="#">CATEGORY DRESS WEDDING</a>
-                <a href="Order.aspx"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i></a>
                  <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">
                     User
                 </a>
@@ -287,7 +287,7 @@
                      </div>
                     <div class="d-flex"> 
                         <i class="fa-solid fa-clock-rotate-left"></i>
-                        <asp:Button runat="server" Text="Lịch sử đặt hàng" />
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx"/>
                     </div>
                     <div class="d-flex">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -334,7 +334,7 @@
                                     </div>
                                     <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
                                 </div>
-                                <a href="#" class="btn">View Details</a>
+                                <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
                             </div>
                         </div>
                     </ItemTemplate>

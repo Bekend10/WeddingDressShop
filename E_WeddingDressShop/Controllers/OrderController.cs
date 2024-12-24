@@ -98,25 +98,34 @@ namespace E_WeddingDressShop.Controllers
             return cate;
         }
 
-        public string AddORDER(ORDER cate)
+        public int AddORDER(ORDER order)
         {
             try
             {
-                string sql = "INSERT INTO tb_Orders (UserID, OrderDate , TotalAmount , Status) VALUES (@UserID , @OrderDate, @TotalAmount , @Status)";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                AddParameters(cmd, cate);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return "Thêm danh mục thành công!";
+                using (var conn = new SqlConnection("Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True"))
+                {
+                    conn.Open();
+                    string sql = @"
+                    INSERT INTO tb_Orders (UserID, OrderDate, Status, TotalAmount)
+                    VALUES (@UserID, @OrderDate, @Status, @TotalAmount);
+
+                    SELECT SCOPE_IDENTITY();"; 
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@UserID", order.UserID);
+                    cmd.Parameters.AddWithValue("@OrderDate", order.OrderDate);
+                    cmd.Parameters.AddWithValue("@Status", order.Status);
+                    cmd.Parameters.AddWithValue("@TotalAmount", order.TotalAmount);
+
+                    int orderId = Convert.ToInt32(cmd.ExecuteScalar());  
+                    return orderId;
+                }
             }
             catch (Exception ex)
             {
-                conn.Close();
-                return "Lỗi: " + ex.Message;
+                throw new Exception("Lỗi khi thêm đơn hàng: " + ex.Message);
             }
         }
-
         public string UpdateORDER(ORDER cate)
         {
             try

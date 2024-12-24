@@ -41,7 +41,21 @@ namespace E_WeddingDressShop.Controllers
             conn.Close();
             return list;
         }
-
+        public string getCategoryNameByID(int categoryID)
+        {
+            string sql = "SELECT c.CategoryName FROM tb_Categories c WHERE CategoryID = @CategoryID";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@CategoryID", categoryID);
+            conn.Open();
+            string cate = null;
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                cate = (string)dr["CategoryName"];
+            }
+            conn.Close();
+            return cate;
+        }
         public CATEGORY getCategoryByID(int categoryID)
         {
             string sql = "SELECT * FROM tb_Categories WHERE CategoryID = @CategoryID";

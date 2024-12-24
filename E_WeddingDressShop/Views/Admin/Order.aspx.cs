@@ -61,9 +61,17 @@ namespace E_WeddingDressShop.Views.Admin
                 Status = ddlStatus.SelectedValue
             };
 
-            string message = order.OrderID == 0 ?
-                orderController.AddORDER(order) :
-                orderController.UpdateORDER(order);
+            string message;
+
+            if (order.OrderID == 0)
+            {
+                int orderId = orderController.AddORDER(order); 
+                message = orderId > 0 ? "Đơn hàng đã được thêm thành công!" : "Thêm đơn hàng thất bại!";
+            }
+            else
+            {
+                message = orderController.UpdateORDER(order); 
+            }
 
             lblMessage.Text = message;
             LoadOrders();
