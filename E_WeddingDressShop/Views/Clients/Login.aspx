@@ -151,8 +151,10 @@
                 <label for="txtPassword">Mật khẩu</label>
                 <asp:TextBox runat="server" ID="txtPassword" class="form-control" CssClass="form-control" TextMode="Password" placeholder="nhập mật khẩu của bạn" />
                 <br />
-                <asp:Button runat="server" ID="btnLogin" Text="Đăng Nhập" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
-                <asp:Button runat="server" ID="btnRegister" Text="Đăng Ký" CssClass="btn btn-primary" PostBackUrl="~/Views/Clients/Register.aspx"/>
+                <div style="display: flex; gap: 0 20px;">
+                    <asp:Button runat="server" ID="btnLogin" Text="Đăng Nhập" CssClass="btn btn-primary" OnClick="btnLogin_Click" />
+                    <asp:Button runat="server" ID="btnRegister" Text="Đăng Ký" CssClass="btn btn-primary" PostBackUrl="~/Views/Clients/Register.aspx"/>
+                </div>
 
                 <br />
                 <asp:Label runat="server" ID="lblErrorMessage" CssClass="error-message" Visible="false"></asp:Label>

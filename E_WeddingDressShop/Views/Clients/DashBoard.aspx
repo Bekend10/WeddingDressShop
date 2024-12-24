@@ -21,6 +21,10 @@
             font-display: swap;
         }
         /* General Reset */
+        :root {
+            --primary-color: #ffb648;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -47,27 +51,77 @@
             z-index: 1000;
         }
 
-            header img {
-                width: 150px;
-                object-fit: cover;
-            }
+        header img {
+            width: 150px;
+            object-fit: cover;
+        }
 
         .menu-header {
             display: flex;
             gap: 20px;
+            position: relative;
         }
 
-            .menu-header a {
-                color: #333;
-                text-decoration: none;
-                font-weight: bold;
-                transition: color 0.3s ease;
-            }
+        .menu-header a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-                .menu-header a:hover {
-                    color: #ffb648;
-                }
+        .menu-header a:hover {
+            color: #ffb648;
+        }
 
+        #nameUser {
+            cursor: pointer;
+        }
+
+        #logoutContainer {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #dddddd85;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+            z-index: 100;
+            overflow: hidden
+        }
+
+        #logoutContainer div {
+            width: 100%;
+            border: none;
+            background: #fff;
+            padding: 10px 20px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        #logoutContainer div:last-child {
+            border-top: 1px solid #ccc;
+        }
+
+        #logoutContainer div:hover {
+            background-color: #f5f5f5;
+        }
+
+        #logoutContainer div i {
+            width: 25px;
+            text-align: center;
+            margin-right: 5px;
+        }
+
+        #logoutContainer input {
+            background-color: transparent;
+            border: none;
+        }
         /* Banner */
         .banner {
             width: 100%;
@@ -76,98 +130,114 @@
             padding-top: 80px;
         }
 
-            .banner .swiper-slide img {
-                width: 100%;
-                object-fit: cover;
-                display: block;
-            }
+        .banner .swiper-slide img {
+            width: 100%;
+            object-fit: cover;
+            display: block;
+        }
 
-            .banner .swiper-container {
-                position: relative;
-                width: 100%;
-                height: 600px;
-            }
+        .banner .swiper-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+        }
 
-            .banner .swiper-button-next,
-            .banner .swiper-button-prev {
-                color: white;
-                opacity: 0.8;
-                transition: color 0.3s ease, opacity 0.3s ease;
-            }
+        .banner .swiper-button-next,
+        .banner .swiper-button-prev {
+            color: white;
+            opacity: 0.8;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
 
-                .banner .swiper-button-next:hover,
-                .banner .swiper-button-prev:hover {
-                    opacity: 1;
-                }
+        .banner .swiper-button-next:hover,
+        .banner .swiper-button-prev:hover {
+            opacity: 1;
+        }
 
-            .banner .swiper-pagination-bullet {
-                background-color: white;
-                opacity: 0.6;
-                transition: opacity 0.3s ease;
-            }
+        .banner .swiper-pagination-bullet {
+            background-color: white;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
 
-            .banner .swiper-pagination-bullet-active {
-                opacity: 1;
-            }
+        .banner .swiper-pagination-bullet-active {
+            opacity: 1;
+        }
 
+        /* Danh sách sản phẩm mới*/
+        .wrapper-new-product {
+            width: 100%;
+            margin-top: 100px;
+            padding: 80px 50px;
+        }
+
+        .wrapper-new-product .title {
+            position: relative;
+            text-align: center;
+            font-size: 40px;
+            font-family: "Housttely";
+            color: var(--primary-color);
+            margin-bottom: 70px;
+            z-index: 2;
+        }
+
+        .wrapper-new-product .title img {
+            position: absolute;
+            top: 50%; /* Đặt điểm giữa theo trục dọc */
+            left: 50%; /* Đặt điểm giữa theo trục ngang */
+            transform: translate(-50%, -50%);
+            width: 200px;
+            object-fit: cover;
+            z-index: -1;
+        }
         /* Product Grid */
         .product-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            justify-content: space-between;
             padding: 20px;
         }
 
         .product-card-wrapper {
-            flex: 1 1 calc(20% - 20px);
-            max-width: calc(20% - 20px);
+/*            flex: 1 1 calc(20% - 20px);
+            max-width: calc(20% - 20px);*/
         }
 
         .product-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
             background: #fff;
-            text-align: center;
-            padding: 15px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-            .product-card:hover {
-                transform: scale(1.05);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            }
+        .product-card:hover {
+            transform: scale(1.02);
+        }
 
-            .product-card img {
-                width: 100%;
-                height: 180px;
-                object-fit: cover;
-                border-radius: 8px;
-            }
+        .product-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
 
-            .product-card h3 {
-                font-size: 18px;
-                margin-top: 10px;
-                color: #333;
-            }
+        .product-card h3 {
+            font-size: 18px;
+            color: #333;
+        }
 
-            .product-card .price {
-                color: #f60;
-                font-size: 16px;
-                margin: 10px 0;
-            }
+        .product-card .price {
+            color: #f60;
+            font-size: 16px;
+        }
 
-            .product-card .btn {
-                background-color: #ffb648;
-                color: #fff;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-            }
+        .product-card .btn {
+            width: 100%;
+            background-color: transparent;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-                .product-card .btn:hover {
-                    background-color: #f68d1f;
-                }
+        .product-card .btn:hover {
+            color: #fe9651;
+        }
 
         /* Responsive Adjustments */
         @media (max-width: 1200px) {
@@ -215,9 +285,22 @@
             <div class="menu-header">
                 <a href="#">CATEGORY DRESS WEDDING</a>
                 <a href="Order.aspx"><i class="fa-solid fa-cart-shopping"></i></a>
-                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User</a>
+                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">
+                    User
+                </a>
                 <div id="logoutContainer" class="logout-container" style="display: none;">
-                    <asp:Button ID="logout" runat="server" Text="LOG OUT" OnClick="logout_Click" />
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <asp:Button runat="server" Text="Chỉnh sửa thông tin" />
+                    </div>
+                    <div class="d-flex"> 
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" />
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <asp:Button ID="logout" runat="server" Text="LOG OUT" OnClick="logout_Click" />
+                    </div>
                 </div>
             </div>
         </header>
@@ -225,13 +308,13 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper slides-banner">
                     <div class="swiper-slide">
-                        <img src="../../Template/image/banner.png" />
+                        <img src="../../Template/image/image-banner1.jpg" />
                     </div>
                     <div class="swiper-slide">
-                        <img src="../../Template/image/anh2.jpg" />
+                        <img src="../../Template/image/image-banner1.jpg" />
                     </div>
                     <div class="swiper-slide">
-                        <img src="../../Template/image/anh3.jpg" />
+                        <img src="../../Template/image/image-banner1.jpg" />
                     </div>
                 </div>
                 <!-- Thêm nút điều hướng -->
@@ -241,22 +324,32 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-        <h2>Danh sách sản phẩm mới</h2>
-        <hr />
-        <div class="product-grid">
-            <asp:Repeater ID="rptNewProducts" runat="server">
-                <ItemTemplate>
-                    <div class="product-card-wrapper">
-                        <div class="product-card">
-                            <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
-                            <h3><%# Eval("Name") %></h3>
-                            <p><%# Eval("Description") %></p>
-                            <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
-                            <a href="#" class="btn">View Details</a>
+
+        <%-- Danh sách sản phẩm mới --%>
+        <div class="wrapper-new-product">
+            <div class="title">
+                Danh sách sản phẩm mới
+                <img src="../../Template/image/main-img.png" />
+            </div>
+            <div class="product-grid">
+                <asp:Repeater ID="rptNewProducts" runat="server">
+                    <ItemTemplate>
+                        <div class="product-card-wrapper">
+                            <div class="product-card">
+                                <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div>
+                                        <h3 class="mb-2"><%# Eval("Name") %></h3>
+                                        <p class="mb-0"><%# Eval("Description") %></p>
+                                    </div>
+                                    <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
+                                </div>
+                                <a href="#" class="btn">View Details</a>
+                            </div>
                         </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </div>
     </form>
     <script>

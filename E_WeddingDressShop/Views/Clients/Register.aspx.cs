@@ -16,7 +16,7 @@ namespace E_WeddingDressShop.Views
             string rePassword = txtRePassword.Text.Trim();
             string numberPhone = txtNumberPhone.Text.Trim();
             string address = txtAddress.Text.Trim();
-            string role = ddlRole.SelectedValue;
+            //string role = ddlRole.SelectedValue;
 
             // Kiểm tra dữ liệu đầu vào
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(email) ||
@@ -63,7 +63,7 @@ namespace E_WeddingDressShop.Views
                 PasswordHash = password,
                 NumberPhone = numberPhone,
                 Address = address,
-                Role = role,
+                Role = "User",
                 CreatedDate = DateTime.Now
             };
 
