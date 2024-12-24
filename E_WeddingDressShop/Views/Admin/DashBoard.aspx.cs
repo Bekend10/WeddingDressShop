@@ -30,9 +30,19 @@ namespace E_WeddingDressShop.Views.Admin
                 {
                     Response.Redirect("~/Views/Clients/Login.aspx");
                 }
+                userName.InnerText = username.ToString();
+                roleUser.InnerText = role.ToString();
             }
         }
-
+        protected void CommandHandler(object sender, CommandEventArgs e)
+        {
+            if (e.CommandName == "LOGOUT")
+            {
+                Session.Clear();
+                Session.Abandon();
+                Response.Redirect("~/Views/Clients/Login.aspx");
+            }
+        }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {

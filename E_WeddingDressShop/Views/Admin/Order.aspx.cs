@@ -57,7 +57,7 @@ namespace E_WeddingDressShop.Views.Admin
                 UserID = Convert.ToInt32(txtUserID.Text),
                 FullName = txtFullName.Text,
                 OrderDate = Convert.ToDateTime(txtOrderDate.Text),
-                TotalAmount = Convert.ToInt32(txtTotalAmount.Text),
+                TotalAmount = Convert.ToDecimal(txtTotalAmount.Text),
                 Status = ddlStatus.SelectedValue
             };
 

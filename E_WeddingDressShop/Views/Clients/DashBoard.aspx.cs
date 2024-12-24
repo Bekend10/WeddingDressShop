@@ -31,13 +31,14 @@ namespace E_WeddingDressShop.Views
 
         protected void logout_Click(object sender, EventArgs e)
         {
-            Session.Clear(); 
+            Session.Clear();
+            Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
         }
 
         private void LoadNewProducts()
         {
-            var products = productController.getListNewProduct(); 
+            var products = productController.getListProduct(); 
             rptNewProducts.DataSource = products;
             rptNewProducts.DataBind();
         }

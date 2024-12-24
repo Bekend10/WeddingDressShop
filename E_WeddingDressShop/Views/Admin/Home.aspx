@@ -116,15 +116,7 @@
                 </div>
 
                 <!-- Additional Cards -->
-                <div class="card">
-                    <h3>Tasks</h3>
-                    <asp:BulletedList ID="blTasks" runat="server">
-                        <asp:ListItem>Connect delivery partners</asp:ListItem>
-                        <asp:ListItem>Setup menu</asp:ListItem>
-                        <asp:ListItem>Add team members</asp:ListItem>
-                        <asp:ListItem>Setup order management</asp:ListItem>
-                    </asp:BulletedList>
-                </div>
+
             </div>
         </div>
         <script>
