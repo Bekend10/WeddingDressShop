@@ -141,7 +141,8 @@
                 <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" CssClass="btn" OnClick="btnSearch_Click" />
             </div>
 
-            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
+                AllowPaging="True" PageSize="5" OnPageIndexChanging="gvUsers_PageIndexChanging">
                 <Columns>
                     <asp:BoundField DataField="UserID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="FullName" HeaderText="Họ và tên" />
@@ -160,12 +161,12 @@
                         <ItemTemplate>
                             <asp:Button runat="server" ID="btnPromoteRole" CommandName="PROMOTE_ROLE" Text="Lên quyền Admin"
                                 CommandArgument='<%# Bind("UserID") %>' OnCommand="btnEdit_Click"
-                                OnClientClick="return confirm('Bạn có chắc chắn muốn nâng quyền người dùng này?');"
-                                CssClass="btn btn-success" />
+                                OnClientClick="return confirm('Bạn có chắc chắn muốn nâng quyền người dùng này?');" CssClass="btn btn-success" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+
             <asp:Label ID="lblMessage" runat="server" CssClass="message" Visible="false"></asp:Label>
         </div>
     </form>

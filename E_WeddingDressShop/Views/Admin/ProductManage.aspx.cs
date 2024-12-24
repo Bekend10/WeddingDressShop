@@ -22,6 +22,21 @@ namespace E_WeddingDressShop.Views.Admin
             }
         }
 
+        private void LoadProducts()
+        {
+            // Giả sử bạn có phương thức lấy danh sách sản phẩm, bạn có thể sử dụng phân trang ở đây
+            gvProducts.PageIndex = (gvProducts.PageIndex < 0) ? 0 : gvProducts.PageIndex;
+            gvProducts.DataSource = productController.getListProduct(); // Nếu cần phân trang, chỉnh sửa phương thức này để hỗ trợ phân trang.
+            gvProducts.DataBind();
+        }
+
+        protected void gvProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            // Đặt lại PageIndex khi người dùng chọn một trang
+            gvProducts.PageIndex = e.NewPageIndex;
+            LoadProducts();  // Load lại dữ liệu khi thay đổi trang
+        }
+
         private void LoadCategories()
         {
             ddlCategory.DataSource = categoryController.getListCategory();
@@ -32,11 +47,6 @@ namespace E_WeddingDressShop.Views.Admin
             ddlCategory.Items.Insert(0, new ListItem("-- Chọn danh mục --", "0"));
         }
 
-        private void LoadProducts()
-        {
-            gvProducts.DataSource = productController.getListProduct();
-            gvProducts.DataBind();
-        }
 
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
@@ -54,7 +64,7 @@ namespace E_WeddingDressShop.Views.Admin
                 ProductID = string.IsNullOrEmpty(txtProductID.Text) ? 0 : int.Parse(txtProductID.Text),
                 Name = txtProductName.Text.Trim(),
                 Description = txtDescription.Text.Trim(),
-                Price = float.Parse(txtPrice.Text),
+                Price = Decimal.Parse(txtPrice.Text),
                 StockQuantity = int.Parse(txtStockQuantity.Text),
                 CategoryID = categoryId,
                 CreatedDate = DateTime.Now

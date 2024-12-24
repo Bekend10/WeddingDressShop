@@ -17,11 +17,22 @@ namespace E_WeddingDressShop.Views.Admin
         {
             if (!IsPostBack)
             {
+                VerifyAdminAccess();
                 LoadUsers();
             }
-            string email = Session["UserEmail"].ToString();
+        }
+
+        private void VerifyAdminAccess()
+        {
+            string email = Session["UserEmail"]?.ToString();
+            if (string.IsNullOrEmpty(email))
+            {
+                Response.Redirect("~/Views/Clients/Login.aspx");
+            }
+
             int userID = userController.getUserByEmail(email);
             string role = userController.getUserByUserID(userID).Role;
+
             if (role != "Admin")
             {
                 Response.Redirect("~/Views/Clients/Login.aspx");
@@ -74,13 +85,26 @@ namespace E_WeddingDressShop.Views.Admin
             {
                 int userId = Convert.ToInt32(e.CommandArgument);
 
-                string email = Session["UserEmail"].ToString();
+                string email = Session["UserEmail"]?.ToString();
                 int userID = userController.getUserByEmail(email);
                 string result = userController.RemoveUserRole(userId);
+
                 ShowMessage(result, result.Contains("thành công"));
+
+                // Nếu tự xóa quyền của chính mình, tải lại trang để chuyển hướng
                 if (userID == userId) Page_Load(sender, e);
+
                 LoadUsers();
             }
+        }
+
+        /// <summary>
+        /// Sự kiện phân trang
+        /// </summary>
+        protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUsers.PageIndex = e.NewPageIndex; // Cập nhật chỉ số trang hiện tại
+            LoadUsers(); // Tải lại dữ liệu phù hợp
         }
 
         private void ShowMessage(string message, bool isSuccess)

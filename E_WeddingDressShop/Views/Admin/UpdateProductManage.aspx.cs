@@ -78,7 +78,7 @@ namespace E_WeddingDressShop.Views.Admin
                     ProductID = int.Parse(txtProductID.Text),
                     Name = txtProductName.Text.Trim(),
                     Description = txtDescription.Text.Trim(),
-                    Price = float.Parse(txtPrice.Text),
+                    Price = Decimal.Parse(txtPrice.Text),
                     StockQuantity = int.Parse(txtStockQuantity.Text),
                     ImageUrl = imageUrl,
                     CategoryID = int.Parse(ddlCategory.SelectedValue)

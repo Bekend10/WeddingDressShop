@@ -25,7 +25,7 @@ namespace E_WeddingDressShop.Views.Admin
                 List<CATEGORY> categories = categoryController.getListCategory();
                 gvCategories.DataSource = categories;
                 gvCategories.DataBind();
-                lblMessage.Visible = false; // Hide the message label on successful load
+                lblMessage.Visible = false; // Ẩn thông báo nếu tải thành công
             }
             catch (Exception ex)
             {
@@ -118,6 +118,22 @@ namespace E_WeddingDressShop.Views.Admin
             catch (Exception ex)
             {
                 ShowMessage($"Lỗi khi xóa danh mục: {ex.Message}", false);
+            }
+        }
+
+        /// <summary>
+        /// Sự kiện thay đổi trang cho GridView
+        /// </summary>
+        protected void gvCategories_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                gvCategories.PageIndex = e.NewPageIndex; // Cập nhật chỉ số trang mới
+                LoadCategories(); // Tải lại danh mục
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khi thay đổi trang: {ex.Message}", false);
             }
         }
 
