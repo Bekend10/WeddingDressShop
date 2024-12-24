@@ -30,10 +30,8 @@
             font-family: 'Montserrat', sans-serif;
             margin-top: 80px;
             width: 100%;
-            height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../Template/image/titleAD.png') no-repeat center;
             background-size: cover;
-            overflow: hidden;
         }
         /* Header */
         header {
@@ -172,46 +170,54 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <img src="../../Template/image/logo-header.png" alt="Logo" />
-            <div class="menu-header">
-                <div class="category-wedding h-100 d-flex align-items-center">
-                    <a href="DashBoard.aspx">
-                        <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
-                    </a>
-                    <div class="category-wedding-secondary">
-                        <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
-                        <div>
-                            <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
-                            <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
-                            <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
-                        </div>
-                    </div>
-                </div>
-                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
-                </a>
-                <div id="logoutContainer" class="logout-container" style="display: none;">
-                    <div class="d-flex align-item-center justify-content-start">
-                        <i class="fa-solid fa-user-pen"></i>
-                        <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
-                    </div>
-                    <div>
-                        <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
-                    </div>
-                    <div class="d-flex align-item-center justify-content-start">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
-                    </div>
-                    <div class="d-flex">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-                        <asp:Button runat="server" Text="Lịch sử đặt hàng" />
-                    </div>
-                    <div class="d-flex">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                        <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
-                    </div>
+    <%--<div class="menu-header">
+        <a href="#">ABOUT US</a>
+        <a href="#">ALBUMS WEDDING</a>
+        <a href="#">COLLECTIONS</a>
+        <a href="#">NEW CONCEPT</a>
+    </div>--%>
+    <a href="./DashBoard.aspx">
+        <img src="../../Template/image/logo-header.png" alt="Logo" />
+    </a>
+    <div class="menu-header">
+        <div class="category-wedding h-100 d-flex align-items-center">
+            <a href="#">
+                <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+            </a>
+            <div class="category-wedding-secondary">
+                <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
+                <div>
+                    <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
+                    <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
+                    <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
                 </div>
             </div>
-        </header>
+        </div>
+        <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
+        </a>
+        <div id="logoutContainer" class="logout-container" style="display: none;">
+            <div class="d-flex align-item-center justify-content-start">
+                <i class="fa-solid fa-user-pen"></i>
+                <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
+            </div>
+            <div>
+                <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
+            </div>
+            <div class="d-flex align-item-center justify-content-start">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
+            </div>
+            <div class="d-flex">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
+            </div>
+            <div class="d-flex">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
+            </div>
+        </div>
+    </div>
+</header>
         <div class="content-update">
             <h2>Chỉnh sửa thông tin</h2>
             <hr />

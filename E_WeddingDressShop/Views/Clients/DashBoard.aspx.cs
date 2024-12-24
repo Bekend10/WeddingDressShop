@@ -37,12 +37,67 @@ namespace E_WeddingDressShop.Views
             Response.Redirect("~/Views/Clients/Login.aspx");
         }
 
+
+        private int PageSize = 8; // Số sản phẩm trên mỗi trang
+        private int CurrentPage
+        {
+            get
+            {
+                if (ViewState["CurrentPage"] == null)
+                    return 1; // Trang mặc định là 1
+                return (int)ViewState["CurrentPage"];
+            }
+            set
+            {
+                ViewState["CurrentPage"] = value;
+            }
+        }
+
         private void LoadNewProducts()
         {
             List<PRODUCT> products = productController.getListProduct();
-            rptNewProducts.DataSource = products;
+
+            // Tổng số trang
+            int totalProducts = products.Count;
+            int totalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+            // Hiển thị chỉ sản phẩm của trang hiện tại
+            var paginatedProducts = products.Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
+
+            rptNewProducts.DataSource = paginatedProducts;
             rptNewProducts.DataBind();
+
+            // Cập nhật thông tin phân trang
+            lblTotalPages.Text = totalPages.ToString();
+            lblCurrentPage.Text = CurrentPage.ToString();
+
+            // Kiểm tra trạng thái nút bấm
+            btnPrevious.Enabled = CurrentPage > 1;
+            btnNext.Enabled = CurrentPage < totalPages;
         }
+
+        protected void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (CurrentPage > 1)
+            {
+                CurrentPage--;
+                LoadNewProducts();
+            }
+        }
+
+        protected void btnNext_Click(object sender, EventArgs e)
+        {
+            int totalProducts = productController.getListProduct().Count;
+            int totalPages = (int)Math.Ceiling((double)totalProducts / PageSize);
+
+            if (CurrentPage < totalPages)
+            {
+                CurrentPage++;
+                LoadNewProducts();
+            }
+        }
+
+
         protected void View_Details(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "view")

@@ -49,5 +49,11 @@ namespace E_WeddingDressShop.Views.Clients
                 gvHistory.EmptyDataText = "Có lỗi xảy ra khi lấy dữ liệu lịch sử.";
             }
         }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
+        }
     }
 }

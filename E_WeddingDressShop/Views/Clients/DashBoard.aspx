@@ -248,9 +248,7 @@
         .product-card {
             border-radius: 8px;
             background: #fff;
-            text-align: center;
-            padding: 15px;
-            width: 280px;
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -279,16 +277,19 @@
                 font-size: 14px;
             }
 
-            .product-card .btn {
+            .product-card input {
                 width: 100%;
                 background-color: transparent;
-                color: var(--primary-color);
-                text-decoration: none;
+                color: #222;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                margin-top: 10px;
+                text-decoration: underline;
             }
 
-                .product-card .btn:hover {
-                    color: white;
-                    background-color: black;
+                .product-card input:hover {
+                    color: var(--primary-color);
                 }
 
         /* Responsive Adjustments */
@@ -316,12 +317,48 @@
             }
         }
 
-        h2 {
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-transform: uppercase;
-            margin-top: 100px;
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 10px;
         }
+
+            .pagination input {
+                padding: 8px 16px;
+                font-size: 14px;
+                color: #222;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+
+                .pagination input:hover {
+                    color: var(--primary-color); 
+                }
+
+                .pagination input:disabled {
+                    cursor: not-allowed;
+                }
+
+            .pagination span {
+                font-size: 15px;
+                color: var(--primary-color);
+            }
+
+
+        footer {
+            width: 100%;
+        }
+
+            footer img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
     </style>
 </head>
 <body>
@@ -333,12 +370,14 @@
                 <a href="#">COLLECTIONS</a>
                 <a href="#">NEW CONCEPT</a>
             </div>--%>
-             <a href="#">
+            <a href="./DashBoard.aspx">
                 <img src="../../Template/image/logo-header.png" alt="Logo" />
             </a>
             <div class="menu-header">
                 <div class="category-wedding h-100 d-flex align-items-center">
-                    <a href="#"><div class="h-100 d-flex align-items-center">Dress Wedding +</div></a>
+                    <a href="#">
+                        <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+                    </a>
                     <div class="category-wedding-secondary">
                         <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
                         <div>
@@ -348,8 +387,7 @@
                         </div>
                     </div>
                 </div>
-                 <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">
-                    User
+                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
                 </a>
                 <div id="logoutContainer" class="logout-container" style="display: none;">
                     <div class="d-flex align-item-center justify-content-start">
@@ -359,13 +397,13 @@
                     <div>
                         <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
                     </div>
-                     <div class="d-flex align-item-center justify-content-start">
-                         <i class="fa-solid fa-bag-shopping"></i>
-                         <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx"/>
-                     </div>
-                    <div class="d-flex"> 
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
+                    </div>
+                    <div class="d-flex">
                         <i class="fa-solid fa-clock-rotate-left"></i>
-                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx"/>
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
                     </div>
                     <div class="d-flex">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -393,42 +431,42 @@
             </div>
         </div>
         <div class="wrapper-new-product">
-    <div class="title">
-        Danh sách sản phẩm
+            <div class="title">
+                Danh sách sản phẩm
         <img src="../../Template/image/main-img.png" />
-    </div>
-    <div class="product-grid">
-        <asp:Repeater ID="rptNewProducts" runat="server">
-            <ItemTemplate>
-                <div class="product-card-wrapper">
-                    <div class="product-card">
-                        <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
-                        <div class="d-flex justify-content-between mt-2">
-                            <div>
-                                <h3 class="mb-2"><%# Eval("Name") %></h3>
-                                <p class="mb-0"><%# Eval("Description") %></p>
+            </div>
+            <div class="product-grid">
+                <asp:Repeater ID="rptNewProducts" runat="server">
+                    <ItemTemplate>
+                        <div class="product-card-wrapper">
+                            <div class="product-card">
+                                <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
+                                <div class="d-flex justify-content-between mt-2">
+                                    <div>
+                                        <h3 class="mb-2"><%# Eval("Name") %></h3>
+                                        <p class="mb-0"><%# Eval("Description") %></p>
+                                    </div>
+                                    <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
+                                </div>
+                                <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
                             </div>
-                            <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
                         </div>
-                        <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
-    <!-- Phân trang -->
-    <nav>
-        <ul class="pagination justify-content-center">
-            <asp:Repeater ID="rptPagination" runat="server">
-                <ItemTemplate>
-                    <li class="page-item <%# Convert.ToBoolean(Eval("Active")) ? "active" : "" %>">
-                        <a class="page-link" href="?page=<%# Eval("PageNumber") %>"><%# Eval("PageNumber") %></a>
-                    </li>
-                </ItemTemplate>
-            </asp:Repeater>
-        </ul>
-    </nav>
-</div>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
+            <!-- Phân trang -->
+            <div class="pagination">
+                <asp:Button ID="btnPrevious" runat="server" Text="<<Trang trước" CssClass="pagination-button" OnClick="btnPrevious_Click" />
+                <asp:Label ID="lblCurrentPage" runat="server"></asp:Label>
+                <span>/</span>
+   
+                <asp:Label ID="lblTotalPages" runat="server"></asp:Label>
+                <asp:Button ID="btnNext" runat="server" Text="Trang sau>>" CssClass="pagination-button" OnClick="btnNext_Click" />
+            </div>
+        </div>
+        <footer>
+            <img src="../../Template/image/Screenshot%202024-12-25%20000248.png" />
+        </footer>
     </form>
     <script>
         function toggleLogout(event) {
