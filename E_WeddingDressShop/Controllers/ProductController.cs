@@ -12,7 +12,7 @@ namespace E_WeddingDressShop.Controllers
 
         public ProductController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=WeddingDress;Integrated Security=True;TrustServerCertificate=True";
             conn = new SqlConnection(SqlCon);
         }
 
@@ -26,7 +26,35 @@ namespace E_WeddingDressShop.Controllers
             cmd.Parameters.AddWithValue("@CreatedDate", product.CreatedDate);
             cmd.Parameters.AddWithValue("@CategoryID", product.CategoryID);
         }
-
+        public List<PRODUCT> getListByCategoryID(int CategoryID)
+        {
+            var list = new List<PRODUCT>();
+            string sql = "SELECT * from tb_Products where CategoryID=@CategoryID";
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@CategoryID", CategoryID);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    PRODUCT pr = new PRODUCT
+                    {
+                        ProductID = (int)dr["ProductID"],
+                        Name = dr["Name"].ToString(),
+                        Description = dr["Description"].ToString(),
+                        Price = Convert.ToDecimal(dr["Price"]),
+                        StockQuantity = (int)dr["StockQuantity"],
+                        ImageUrl = dr["ImageUrl"].ToString(),
+                        CreatedDate = (DateTime)dr["CreatedDate"],
+                        CategoryID = (int)dr["CategoryID"],
+                        //CategoryName = dr["CategoryName"].ToString()
+                    };
+                    list.Add(pr);
+                }
+                conn.Close();
+            }
+            return list;
+        }
         public List<PRODUCT> getListProduct()
         {
             var list = new List<PRODUCT>();
@@ -48,6 +76,38 @@ namespace E_WeddingDressShop.Controllers
                     StockQuantity = (int)dr["StockQuantity"],
                     ImageUrl = (string)dr["ImageUrl"],
                     CreatedDate = (DateTime)dr["CreatedDate"],
+                    CategoryID = (int)dr["CategoryID"],
+                    CategoryName = (string)dr["CategoryName"]
+                };
+                list.Add(pr);
+            }
+            conn.Close();
+            return list;
+        }
+
+        public List<PRODUCT> getListTopProduct()
+        {
+            var list = new List<PRODUCT>();
+            string sql = @"SELECT TOP 4 p.ProductID , p.Name, p.ImageUrl,p.Price, p.CategoryID, p.Description, SUM(od.Quantity) AS TotalSold , c.CategoryName
+                            FROM tb_Products p
+                            JOIN tb_OrderDetails od ON p.ProductID = od.ProductID
+                            JOIN tb_Orders o ON o.OrderID = od.OrderID
+                            JOIN tb_Categories c on c.CategoryID = p.CategoryID
+                            GROUP BY p.Name, p.Price, p.CategoryID, p.Description , p.ImageUrl , c.CategoryName , p.ProductID
+                            ORDER BY TotalSold DESC";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            conn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                PRODUCT pr = new PRODUCT
+                {
+                    ProductID = (int)dr["ProductID"],
+                    Name = (string)dr["Name"],
+                    Description = (string)dr["Description"],
+                    Price = Convert.ToDecimal(dr["Price"]),
+                    TotalPrice = (int)dr["TotalSold"],
+                    ImageUrl = (string)dr["ImageUrl"],
                     CategoryID = (int)dr["CategoryID"],
                     CategoryName = (string)dr["CategoryName"]
                 };
@@ -203,7 +263,7 @@ namespace E_WeddingDressShop.Controllers
         {
             var list = new List<PRODUCT>();
             string sql = @"
-                SELECT TOP 5 P.ProductID, P.Name, P.Description, P.Price, P.StockQuantity, P.ImageUrl, P.CreatedDate, 
+                SELECT TOP 4 P.ProductID, P.Name, P.Description, P.Price, P.StockQuantity, P.ImageUrl, P.CreatedDate, 
                        P.CategoryID, C.CategoryName
                 FROM tb_Products P 
                 INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID

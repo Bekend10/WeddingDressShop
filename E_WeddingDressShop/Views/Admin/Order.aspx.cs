@@ -65,8 +65,8 @@ namespace E_WeddingDressShop.Views.Admin
 
             if (order.OrderID == 0)
             {
-                int orderId = orderController.AddORDER(order); 
-                if(orderId > 0)
+                int orderId = orderController.AddORDER(order);
+                if (orderId > 0)
                 {
                     message = "Đơn hàng đã được thêm thành công!";
                     lblMessage.Text = message;

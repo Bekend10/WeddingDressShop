@@ -241,7 +241,7 @@
             </div>
             
             <asp:Button runat="server" Text="Update" CommandName="UpdateUserNe" OnCommand="UpdateUserNe" />
-            <asp:Button runat="server" Text="Cancel" PostBackUrl="~/Views/Clients/DashBoard.aspx" />
+            <asp:Button runat="server" Text="Cancel" PostBackUrl="~/Views/Admin/DashBoard.aspx" />
             <asp:Label runat="server" ID="lblErrorMessage"></asp:Label>
         </div>
     </form>

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace E_WeddingDressShop.Views.Admin
+namespace E_WeddingDressShop.Views.Clients
 {
 
 
-    public partial class Home
+    public partial class CategoryPage
     {
 
         /// <summary>
@@ -24,30 +24,48 @@ namespace E_WeddingDressShop.Views.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lblCancellations control.
+        /// cbotheloai control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCancellations;
+        protected global::System.Web.UI.WebControls.DropDownList cbotheloai;
 
         /// <summary>
-        /// lblTotalRevenue control.
+        /// nameUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalRevenue;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor nameUser;
 
         /// <summary>
-        /// lblCancellationRate control.
+        /// logout control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCancellationRate;
+        protected global::System.Web.UI.WebControls.Button logout;
+
+        /// <summary>
+        /// rptNewProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptNewProducts;
+
+        /// <summary>
+        /// rptPagination control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptPagination;
     }
 }

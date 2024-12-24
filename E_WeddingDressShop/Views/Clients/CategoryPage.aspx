@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DashBoard.aspx.cs" Inherits="E_WeddingDressShop.Views.DashBoard" EnableEventValidation="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CategoryPage.aspx.cs" Inherits="E_WeddingDressShop.Views.Clients.CategoryPage" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -333,14 +333,12 @@
                 <a href="#">COLLECTIONS</a>
                 <a href="#">NEW CONCEPT</a>
             </div>--%>
-            <a href="DashBoard.aspx">
+             <a href="DashBoard.aspx">
                 <img src="../../Template/image/logo-header.png" alt="Logo" />
             </a>
             <div class="menu-header">
                 <div class="category-wedding h-100 d-flex align-items-center">
-                    <a href="#">
-                        <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
-                    </a>
+                    <a href="#"><div class="h-100 d-flex align-items-center">Dress Wedding +</div></a>
                     <div class="category-wedding-secondary">
                         <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
                         <div>
@@ -348,7 +346,8 @@
                         </div>
                     </div>
                 </div>
-                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
+                 <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">
+                    User
                 </a>
                 <div id="logoutContainer" class="logout-container" style="display: none;">
                     <div class="d-flex align-item-center justify-content-start">
@@ -358,13 +357,13 @@
                     <div>
                         <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
                     </div>
-                    <div class="d-flex align-item-center justify-content-start">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
-                    </div>
-                    <div class="d-flex">
+                     <div class="d-flex align-item-center justify-content-start">
+                         <i class="fa-solid fa-bag-shopping"></i>
+                         <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx"/>
+                     </div>
+                    <div class="d-flex"> 
                         <i class="fa-solid fa-clock-rotate-left"></i>
-                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx"/>
                     </div>
                     <div class="d-flex">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -392,66 +391,42 @@
             </div>
         </div>
         <div class="wrapper-new-product">
-            <div class="title">
-                Danh sách sản phẩm mới nhất
+    <div class="title">
+        Danh sách sản phẩm
         <img src="../../Template/image/main-img.png" />
-            </div>
-            <div class="product-grid">
-                <asp:Repeater ID="rptNewProducts" runat="server">
-                    <ItemTemplate>
-                        <div class="product-card-wrapper">
-                            <div class="product-card">
-                                <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
-                                <div class="d-flex justify-content-between mt-2">
-                                    <div>
-                                        <h3 class="mb-2"><%# Eval("Name") %></h3>
-                                        <p class="mb-0"><%# Eval("Description") %></p>
-                                    </div>
-                                    <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
-                                </div>
-                                <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
+    </div>
+    <div class="product-grid">
+        <asp:Repeater ID="rptNewProducts" runat="server">
+            <ItemTemplate>
+                <div class="product-card-wrapper">
+                    <div class="product-card">
+                        <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <h3 class="mb-2"><%# Eval("Name") %></h3>
+                                <p class="mb-0"><%# Eval("Description") %></p>
                             </div>
+                            <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
                         </div>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>
-
-            <div class="title">
-                Danh sách sản phẩm bán chạy nhất
-     <img src="../../Template/image/main-img.png" />
-            </div>
-            <div class="product-grid">
-                <asp:Repeater ID="rptTopProducts" runat="server">
-                    <ItemTemplate>
-                        <div class="product-card-wrapper">
-                            <div class="product-card">
-                                <img src='<%# ResolveUrl(Eval("ImageUrl").ToString()) %>' />
-                                <div class="d-flex justify-content-between mt-2">
-                                    <div>
-                                        <h3 class="mb-2"><%# Eval("Name") %></h3>
-                                        <p class="mb-0"><%# Eval("Description") %></p>
-                                    </div>
-                                    <p class="price"><%# Eval("Price", "{0:N0} VNĐ") %></p>
-                                </div>
-                                <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>
-            <!-- Phân trang -->
-            <nav>
-                <ul class="pagination justify-content-center">
-                    <asp:Repeater ID="rptPagination" runat="server">
-                        <ItemTemplate>
-                            <li class="page-item <%# Convert.ToBoolean(Eval("Active")) ? "active" : "" %>">
-                                <a class="page-link" href="?page=<%# Eval("PageNumber") %>"><%# Eval("PageNumber") %></a>
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
-            </nav>
-        </div>
+                        <asp:Button runat="server" CommandName="view" Text="View Details" CommandArgument='<%# Eval("ProductID") %>' OnCommand="View_Details" />
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
+    <!-- Phân trang -->
+    <nav>
+        <ul class="pagination justify-content-center">
+            <asp:Repeater ID="rptPagination" runat="server">
+                <ItemTemplate>
+                    <li class="page-item <%# Convert.ToBoolean(Eval("Active")) ? "active" : "" %>">
+                        <a class="page-link" href="?page=<%# Eval("PageNumber") %>"><%# Eval("PageNumber") %></a>
+                    </li>
+                </ItemTemplate>
+            </asp:Repeater>
+        </ul>
+    </nav>
+</div>
     </form>
     <script>
         function toggleLogout(event) {

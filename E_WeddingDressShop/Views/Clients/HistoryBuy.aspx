@@ -52,7 +52,7 @@
                     <asp:BoundField HeaderText="Tổng giá trị" DataField="TotalPrice" SortExpression="TotalPrice" DataFormatString="{0:N0} VNĐ" />
                 </Columns>
             </asp:GridView>
-            <asp:Button runat="server" ID="back" Text="Trở về" CssClass="" PostBackUrl="~/Views/Clients/DashBoard.aspx"/>
+           <asp:Button ID ="back" runat="server" PostBackUrl="~/Views/Clients/DashBoard.aspx" Text="Trở về" CssClass="btn btn-primary"/>
         </div>
     </form>
 </body>

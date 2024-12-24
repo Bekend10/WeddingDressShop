@@ -13,7 +13,7 @@ namespace E_WeddingDressShop.Controllers
 {
     public class UserController
     {
-        private readonly string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+        private readonly string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=WeddingDress;Integrated Security=True;TrustServerCertificate=True";
 
         public string RegisterUser(USER us)
         {

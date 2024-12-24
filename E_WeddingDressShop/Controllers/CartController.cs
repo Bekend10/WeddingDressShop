@@ -13,7 +13,7 @@ namespace E_WeddingDressShop.Controllers
 
         public CartController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=WeddingDress;Integrated Security=True;TrustServerCertificate=True";
             conn = new SqlConnection(SqlCon);
         }
 
@@ -79,7 +79,7 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
                 return productID;
             }
-            catch (Exception e1)
+            catch
             {
                 conn.Close();
                 return -1;
@@ -102,7 +102,7 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
                 return quantity;
             }
-            catch (Exception e1)
+            catch 
             {
                 conn.Close();
                 return -1;
@@ -135,7 +135,7 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
                 return cart;
             }
-            catch (Exception e1)
+            catch
             {
                 conn.Close();
                 return null;
@@ -168,7 +168,7 @@ namespace E_WeddingDressShop.Controllers
                 conn.Close();
                 return list;
             }
-            catch (Exception e1)
+            catch
             {
                 return null;
             }

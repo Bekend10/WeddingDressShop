@@ -168,7 +168,7 @@
       </ItemTemplate>
   </asp:TemplateField>
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" />
-                    <asp:BoundField DataField="Price" HeaderText="Giá" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="Price" HeaderText="Giá" DataFormatString="{0:N0} VNĐ" />
                     <asp:BoundField DataField="StockQuantity" HeaderText="Số lượng tồn" />
                     <asp:BoundField DataField="CategoryName" HeaderText="Danh mục" />
                     <asp:TemplateField HeaderText="Sửa">

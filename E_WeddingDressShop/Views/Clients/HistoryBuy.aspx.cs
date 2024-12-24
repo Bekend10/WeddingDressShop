@@ -44,7 +44,7 @@ namespace E_WeddingDressShop.Views.Clients
                     gvHistory.EmptyDataText = "Bạn chưa mua sản phẩm nào.";
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 gvHistory.EmptyDataText = "Có lỗi xảy ra khi lấy dữ liệu lịch sử.";
             }

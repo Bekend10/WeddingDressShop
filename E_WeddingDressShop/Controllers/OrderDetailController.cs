@@ -14,7 +14,7 @@ namespace E_WeddingDressShop.Controllers
 
         public OrderDetailController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=WeddingDress;Integrated Security=True;TrustServerCertificate=True";
             conn = new SqlConnection(SqlCon);
         }
         private void AddParameters(SqlCommand cmd, ORDERDETAILS order)
@@ -66,36 +66,34 @@ namespace E_WeddingDressShop.Controllers
             }
         }
 
-        public List<ORDERDETAILS> getOrderDetailsByOrderId(int orderId)
+        public ORDERDETAILS getOrderDetailsByOrderId(int orderId)
         {
-            var list = new List<ORDERDETAILS>();
             string sql = @"
-                SELECT od.ProductID, p.Name AS ProductName, od.Quantity, od.UnitPrice, (od.Quantity * od.UnitPrice) AS TotalPrice, p.ImageUrl
+                SELECT od.ProductID, p.Name AS ProductName, od.Quantity, p.Price, (od.Quantity * p.Price) AS TotalPrice, p.ImageUrl
                 FROM tb_OrderDetails od
                 JOIN tb_Products p ON od.ProductID = p.ProductID
                 WHERE od.OrderID = @OrderID";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@OrderID", orderId);
-
+            ORDERDETAILS odd = null;
             conn.Open();
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                ORDERDETAILS odd = new ORDERDETAILS
+                odd = new ORDERDETAILS
                 {
                     ProductID = (int)dr["ProductID"],
                     ProductName = (string)dr["ProductName"],
                     Quantity = (int)dr["Quantity"],
-                    UnitPrice = Convert.ToDecimal(dr["UnitPrice"]),
+                    UnitPrice = Convert.ToDecimal(dr["Price"]),
                     TotalPrice = Convert.ToDecimal(dr["TotalPrice"]),
                     ImageUrl = (string)dr["ImageUrl"] 
                 };
-                list.Add(odd);
             }
             conn.Close();
 
-            return list;
+            return odd;
         }
 
     }

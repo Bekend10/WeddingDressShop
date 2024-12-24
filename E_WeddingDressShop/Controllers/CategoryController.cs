@@ -11,7 +11,7 @@ namespace E_WeddingDressShop.Controllers
 
         public CategoryController()
         {
-            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=E_WeddingDress;Integrated Security=True;TrustServerCertificate=True";
+            string SqlCon = "Data Source=bekend\\sqlexpress;Initial Catalog=WeddingDress;Integrated Security=True;TrustServerCertificate=True";
             conn = new SqlConnection(SqlCon);
         }
 

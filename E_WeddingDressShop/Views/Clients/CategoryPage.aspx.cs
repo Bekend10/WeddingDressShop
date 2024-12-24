@@ -1,20 +1,19 @@
-﻿using E_WeddingDressShop.Controllers;
-using E_WeddingDressShop.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using E_WeddingDressShop.Controllers;
+using E_WeddingDressShop.Models;
 
-namespace E_WeddingDressShop.Views
+namespace E_WeddingDressShop.Views.Clients
 {
-    public partial class DashBoard : System.Web.UI.Page
+    public partial class CategoryPage : System.Web.UI.Page
     {
-        private UserController userController = new UserController();
-        private ProductController productController = new ProductController();
+        ProductController productcontroller = new ProductController();
+        UserController userController = new UserController();
         CategoryController categoryController = new CategoryController();
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,7 +31,6 @@ namespace E_WeddingDressShop.Views
                 string userName = userController.getUserByUserID(userID).FullName;
                 nameUser.InnerText = "Xin chào " + userName.ToString();
                 LoadNewProducts();
-                LoadTopProducts();
             }
         }
         protected void LoadCategory()
@@ -45,27 +43,24 @@ namespace E_WeddingDressShop.Views
             //cbotheloai.SelectedIndex = 0;
             cbotheloai.DataBind();
             cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
-        }
-        protected void logout_Click(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Session.Abandon();
-            Response.Redirect("~/Views/Clients/Login.aspx");
-        }
 
+        }
         private void LoadNewProducts()
         {
-            List<PRODUCT> products = productController.getListNewProduct();
-            rptNewProducts.DataSource = products;
-            rptNewProducts.DataBind();
+            try
+            {
+                string categoryIdStr = Request.QueryString["CategoryID"];
+                int categoryID = int.Parse(categoryIdStr);
+                List<PRODUCT> products = productcontroller.getListByCategoryID(categoryID);
+                rptNewProducts.DataSource = products;
+                rptNewProducts.DataBind();
+            }
+            catch 
+            {
+                throw new Exception($"Lỗi");
+            }
         }
 
-        private void LoadTopProducts()
-        {
-            List<PRODUCT> products = productController.getListTopProduct();
-            rptTopProducts.DataSource = products;
-            rptTopProducts.DataBind();
-        }
         protected void View_Details(object sender, CommandEventArgs e)
         {
             if (e.CommandName == "view")
@@ -83,5 +78,12 @@ namespace E_WeddingDressShop.Views
 
             Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
         }
+        protected void logout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("~/Views/Clients/Login.aspx");
+        }
     }
+
 }

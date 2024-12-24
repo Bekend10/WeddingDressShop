@@ -219,7 +219,7 @@ header {
                     <asp:BoundField DataField="Quantity" HeaderText="Số lượng" />
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:Button ID="btnOrder" runat="server" Text="Đặt hàng" CommandName="Order" CommandArgument='<%# Eval("CartID") %>' CssClass="btn" OnCommand="Dat_Hang_Click"/>
+                            <asp:Button ID="btnOrder" runat="server" Text="Đặt hàng" CommandName="Order" CommandArgument='<%# Eval("CartID") %>' CssClass="btn btn-success" OnCommand="Dat_Hang_Click"/>
                             <asp:Button ID="btnDelete" runat="server" Text="Xóa" CommandName="DeleteCart" CommandArgument='<%# Eval("CartID") %>' CssClass="btn btn-danger" OnCommand="Xoa_Click"
                                 OnClientClick="return confirm('Bạn có chắc chắn xoá không ?') "
                                 />
@@ -227,6 +227,7 @@ header {
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <asp:Button ID ="back" runat="server" PostBackUrl="~/Views/Clients/DashBoard.aspx" Text="Trở về" CssClass="btn btn-primary"/>
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
         </div>
     </form>

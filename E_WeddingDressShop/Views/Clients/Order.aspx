@@ -199,7 +199,7 @@
 <body>
     <form id="form1" runat="server">
         <header>
-            <img src="../../Template/image/logo-header.png" alt="Logo" />
+            <a href="DashBoard.aspx"><img src="../../Template/image/logo-header.png" alt="Logo" /></a>
             <div class="menu-header">
                 <div class="category-wedding h-100 d-flex align-items-center">
                     <a href="#">
@@ -248,15 +248,11 @@
                     <asp:BoundField DataField="OrderDate" HeaderText="Ngày Đặt Hàng" DataFormatString="{0:dd/MM/yyyy}" />
                     <asp:BoundField DataField="TotalAmount" HeaderText="Tổng Tiền" DataFormatString="{0:N0} VNĐ" />
                     <asp:BoundField DataField="Status" HeaderText="Trạng Thái" />
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <asp:Button ID="btnDetail" runat="server" Text="Xem chi tiết" CssClass="btn" PostBackUrl="~/Views/Clients/Login.aspx" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-
             <asp:Label ID="lblMessage" runat="server" CssClass="message"></asp:Label>
+            <br />
+           <asp:Button ID ="back" runat="server" PostBackUrl="~/Views/Clients/DashBoard.aspx" Text="Trở về" CssClass="btn btn-primary"/>
         </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

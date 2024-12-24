@@ -57,7 +57,7 @@ namespace E_WeddingDressShop.Views.Clients
                 Response.Redirect("~/Views/Clients/DashBoard.aspx");
 
             }
-            catch (Exception e1)
+            catch (Exception e1) 
             {
                 lblErrorMessage.Text = "Có lỗi xảy ra: " + e1.Message;
             }
