@@ -120,7 +120,8 @@
                 <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" />
                 <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" CssClass="btn" OnClick="btnSearch_Click" />
             </div>
-            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered"
+                AllowPaging="True" PageSize="5" OnPageIndexChanging="gvUsers_PageIndexChanging">
                 <Columns>
                     <asp:BoundField DataField="UserID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="FullName" HeaderText="Họ và tên" />

@@ -86,28 +86,78 @@
     <Content Include="Assets\CategoryManage.css" />
     <Content Include="Assets\Login.css" />
     <Content Include="Assets\ProductManage.css" />
+    <Content Include="Assets\UpdateCategory.css" />
+    <Content Include="Assets\UpdateProduct.css" />
     <Content Include="Template\fonts\SVN-Ginger-Regular.svg" />
+    <Content Include="Template\image\anh2.jpg" />
+    <Content Include="Template\image\anh3.jpg" />
     <Content Include="Template\image\anh4.png" />
     <Content Include="Template\image\Screenshot 2024-12-20 145052.png" />
+    <Content Include="Template\image\Screenshot 2024-12-25 000248.png" />
+    <Content Include="Template\image\Váy công chúa\congchua1.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua10.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua11.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua12.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua13.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua14.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua15.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua16.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua2.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua3.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua4.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua5.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua6.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua7.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua8.jpg" />
+    <Content Include="Template\image\Váy công chúa\congchua9.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica1.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica10.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica11.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica12.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica13.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica14.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica15.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica16.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica2.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica3.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica4.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica5.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica6.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica7.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica8.jpg" />
+    <Content Include="Template\image\Váy đuôi cá\duoica9.jpg" />
     <Content Include="Views\Admin\CategoryManage.aspx" />
+    <Content Include="Views\Admin\DashBoard.aspx" />
+    <Content Include="Views\Admin\Home.aspx" />
     <Content Include="Views\Admin\ListProduct.aspx" />
     <Content Include="Views\Admin\Order.aspx" />
     <Content Include="Views\Admin\ProductManage.aspx" />
     <Content Include="Views\Admin\UpdateProductManage.aspx" />
     <Content Include="Views\Admin\UpdateCategoryManage.aspx" />
+    <Content Include="Views\Admin\UpdateUser.aspx" />
+    <Content Include="Views\Admin\UserManage.aspx" />
+    <Content Include="Views\Clients\Cart.aspx" />
+    <Content Include="Views\Clients\CategoryPage.aspx" />
+    <Content Include="Views\Clients\HistoryBuy.aspx" />
     <Content Include="Views\Clients\Order.aspx" />
     <Content Include="Views\Clients\DashBoard.aspx" />
     <Content Include="Views\Clients\Login.aspx" />
+    <Content Include="Views\Clients\ProductDetails.aspx" />
     <Content Include="Views\Clients\Register.aspx" />
+    <Content Include="Views\Clients\UpdateUser.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\OrderDetailController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Models\CART.cs" />
     <Compile Include="Models\CATEGORY.cs" />
     <Compile Include="Models\ORDER.cs" />
+    <Compile Include="Models\ORDERDETAILS.cs" />
     <Compile Include="Models\PRODUCT.cs" />
     <Compile Include="Models\USER.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +167,20 @@
     </Compile>
     <Compile Include="Views\Admin\CategoryManage.aspx.designer.cs">
       <DependentUpon>CategoryManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\ListProduct.aspx.cs">
       <DependentUpon>ListProduct.aspx</DependentUpon>
@@ -153,6 +217,41 @@
     <Compile Include="Views\Admin\UpdateCategoryManage.aspx.designer.cs">
       <DependentUpon>UpdateCategoryManage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\UpdateUser.aspx.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\UpdateUser.aspx.designer.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UserManage.aspx.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\UserManage.aspx.designer.cs">
+      <DependentUpon>UserManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\CategoryPage.aspx.cs">
+      <DependentUpon>CategoryPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\CategoryPage.aspx.designer.cs">
+      <DependentUpon>CategoryPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\HistoryBuy.aspx.cs">
+      <DependentUpon>HistoryBuy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\HistoryBuy.aspx.designer.cs">
+      <DependentUpon>HistoryBuy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clients\Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -174,12 +273,26 @@
     <Compile Include="Views\Clients\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Clients\ProductDetails.aspx.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\ProductDetails.aspx.designer.cs">
+      <DependentUpon>ProductDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Clients\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Clients\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Clients\UpdateUser.aspx.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Clients\UpdateUser.aspx.designer.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

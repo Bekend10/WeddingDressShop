@@ -32,7 +32,18 @@ namespace E_WeddingDressShop.Views.Admin
                 ShowMessage($"Lỗi khi tải danh sách danh mục: {ex.Message}", false);
             }
         }
-
+        protected void gvCategories_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                gvCategories.PageIndex = e.NewPageIndex; // Cập nhật chỉ số trang mới
+                LoadCategories(); // Tải lại danh mục
+            }
+            catch (Exception ex)
+            {
+                ShowMessage($"Lỗi khi thay đổi trang: {ex.Message}", false);
+            }
+        }
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             try

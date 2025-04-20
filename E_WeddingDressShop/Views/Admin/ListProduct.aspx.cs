@@ -23,31 +23,35 @@ namespace E_WeddingDressShop.Views.Admin
         }
         private void LoadProducts(string searchKeyword = null)
         {
-            List<PRODUCT> products;
+            try
+            {
+                List<PRODUCT> products;
 
-            if (!string.IsNullOrEmpty(searchKeyword))
-            {
-                products = productController.getListProductByName(searchKeyword);
+                if (!string.IsNullOrEmpty(searchKeyword))
+                {
+                    products = productController.getListProductByName(searchKeyword);
+                }
+                else
+                {
+                    products = productController.getListProduct();
+                }
+                if (products == null || products.Count == 0)
+                {
+                    ShowMessage($"Không tìm thấy sản phẩm nào với từ khóa '{searchKeyword}'.", false);
+                }
+                else
+                {
+                    lblMessage.Visible = false;
+                }
+                gvProducts.DataSource = products;
+                gvProducts.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                products = productController.getListProduct();
+                ShowMessage($"Lỗi khi tải danh sách sản phẩm: {ex.Message}", false);
             }
-
-            if (products == null || products.Count == 0)
-            {
-                ShowMessage($"Không tìm thấy sản phẩm nào với từ khóa '{searchKeyword}'.", false);
-            }
-            else
-            {
-                lblMessage.Visible = false;
-            }
-
-            gvProducts.DataSource = products;
-            gvProducts.DataBind();
         }
-
-
+   
         protected void Xoa_Click(object sender, CommandEventArgs e)
         {
             try
@@ -63,7 +67,7 @@ namespace E_WeddingDressShop.Views.Admin
             }
             catch (Exception ex)
             {
-                ShowMessage($"Lỗi khi xóa danh mục: {ex.Message}", false);
+                ShowMessage($"Lỗi khi xóa sản phẩm: {ex.Message}", false);
             }
         }
         protected void Sua_Click(object sender, CommandEventArgs e)
@@ -82,7 +86,7 @@ namespace E_WeddingDressShop.Views.Admin
                     }
                     else
                     {
-                        ShowMessage("Không tìm thấy danh mục cần sửa.", false);
+                        ShowMessage("Không tìm thấy sản phẩm cần sửa.", false);
                     }
                 }
             }
@@ -101,9 +105,14 @@ namespace E_WeddingDressShop.Views.Admin
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string searchKeyword = txtSearch.Text.Trim(); 
-            LoadProducts(searchKeyword); 
+            string searchKeyword = txtSearch.Text.Trim();
+            LoadProducts(searchKeyword);
         }
-
+        protected void gvProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvProducts.PageIndex = e.NewPageIndex; // Cập nhật chỉ số trang hiện tại
+            string searchKeyword = txtSearch.Text.Trim(); // Duy trì từ khóa tìm kiếm
+            LoadProducts(searchKeyword);
+        }
     }
 }

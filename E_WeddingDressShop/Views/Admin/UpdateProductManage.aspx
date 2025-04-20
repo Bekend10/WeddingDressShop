@@ -5,6 +5,19 @@
 <head runat="server">
     <title>Sửa sản phẩm</title>
     <link href="../../Assets/UpdateProduct.css" rel="stylesheet" />
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imgPreview = document.getElementById('<%= imgPreview.ClientID %>');
+                    imgPreview.src = e.target.result;
+                    imgPreview.style.display = 'block';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -50,9 +63,9 @@
                 <asp:TableRow>
                     <asp:TableCell>Ảnh</asp:TableCell>
                     <asp:TableCell>
-                        <asp:Image ID="imgPreview" runat="server" Width="200px" Height="200px" Visible="false" />
+                        <asp:Image ID="imgPreview" runat="server" Width="200px" Height="200px" Style="display: none;" />
                         <br />
-                        <asp:FileUpload ID="fileUploadImage" runat="server" class="input-file" />
+                        <asp:FileUpload ID="fileUploadImage" runat="server" class="input-file" onchange="previewImage(this)" />
                         <asp:Label ID="lblUploadMessage" runat="server" class="upload-message" Visible="false"></asp:Label>
                         <asp:TextBox ID="txtImageUrl" runat="server" class="input-field" Visible="false"></asp:TextBox>
                     </asp:TableCell>

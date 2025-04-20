@@ -26,8 +26,14 @@
 
         <div class="grid-container">
             <h2>Danh sách danh mục</h2>
-            <asp:GridView ID="gvCategories" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
-                <Columns>
+<asp:GridView
+                ID="gvCategories"
+                runat="server"
+                AutoGenerateColumns="False"
+                CssClass="table table-bordered"
+                AllowPaging="True"
+                PageSize="5"
+                OnPageIndexChanging="gvCategories_PageIndexChanging">                <Columns>
                     <asp:BoundField DataField="CategoryID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="CategoryName" HeaderText="Tên danh mục" />
                     <asp:BoundField DataField="Description" HeaderText="Mô tả" />

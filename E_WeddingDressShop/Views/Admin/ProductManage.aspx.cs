@@ -34,10 +34,17 @@ namespace E_WeddingDressShop.Views.Admin
 
         private void LoadProducts()
         {
-            gvProducts.DataSource = productController.getListProduct();
+            // Giả sử bạn có phương thức lấy danh sách sản phẩm, bạn có thể sử dụng phân trang ở đây
+            gvProducts.PageIndex = (gvProducts.PageIndex < 0) ? 0 : gvProducts.PageIndex;
+            gvProducts.DataSource = productController.getListProduct(); // Nếu cần phân trang, chỉnh sửa phương thức này để hỗ trợ phân trang.
             gvProducts.DataBind();
         }
-
+        protected void gvProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            // Đặt lại PageIndex khi người dùng chọn một trang
+            gvProducts.PageIndex = e.NewPageIndex;
+            LoadProducts();  // Load lại dữ liệu khi thay đổi trang
+        }
         protected void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             int categoryId = int.Parse(ddlCategory.SelectedValue);

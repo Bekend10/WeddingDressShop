@@ -19,6 +19,11 @@ namespace E_WeddingDressShop.Views.Clients
                 string productIdStr = Request.QueryString["ProductID"];
                 if (!string.IsNullOrEmpty(productIdStr) && int.TryParse(productIdStr, out int productId))
                 {
+                    string email = Session["UserEmail"].ToString();
+                    int userID = userController.getUserByEmail(email);
+                    string userName = userController.getUserByUserID(userID).FullName;
+                    nameUser.InnerText = "Xin chào " + userName.ToString();
+                    LoadCategory();
                     LoadProductDetails(productId);
                 }
                 else
@@ -34,6 +39,17 @@ namespace E_WeddingDressShop.Views.Clients
                 int productId = Convert.ToInt32(e.CommandArgument);
                 Response.Redirect($"~/Views/Clients/ProductDetails.aspx?ProductID={productId}");
             }
+        }
+        protected void LoadCategory()
+        {
+            var list = categoryController.getListCategory();
+            cbotheloai.DataSource = list;
+            cbotheloai.DataTextField = "CategoryName";
+            cbotheloai.DataValueField = "CategoryID";
+            //cbotheloai.Items.Insert(0, new ListItem("-- Select --", string.Empty));
+            //cbotheloai.SelectedIndex = 0;
+            cbotheloai.DataBind();
+            cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
         }
 
         private void LoadProductDetails(int productId)
@@ -76,7 +92,6 @@ namespace E_WeddingDressShop.Views.Clients
                     int productId = int.Parse(productIdStr);
                     string email = Session["UserEmail"].ToString();
                     int userId = userController.getUserByEmail(email);
-                    //int productId = Convert.ToInt32(e.CommandArgument);
                     int quantity = int.Parse(hdnProductQuantity.Value);
                     CART cart = new CART
                     {
@@ -89,16 +104,20 @@ namespace E_WeddingDressShop.Views.Clients
                         string isAdded = cartController.AddCart(cart);
                         if (isAdded.Contains("thành công") == true)
                         {
-                            errmsg.Text = "Sản phẩm đã được thêm vào giỏ hàng thành công.";
+                            errmsg.Text = "Sản phẩm đã được thêm vào giỏ hàng thành công !";
+                            errmsg.ForeColor = System.Drawing.Color.Green;
+                            errmsg.Visible = true;
                         }
                         else
                         {
-                            errmsg.Text = "Không thể thêm sản phẩm vào giỏ hàng.";
+                            errmsg.Text = "Không thể thêm sản phẩm vào giỏ hàng !";
+                            errmsg.Visible = true;
                         }
-                    }
+                    }   
                     else
                     {
                         errmsg.Text = "Dữ liệu không hợp lệ.";
+                        errmsg.Visible = true;
                     }
                 }
             }
@@ -112,6 +131,12 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
+        }
+        protected void cbotheloai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategoryID = cbotheloai.SelectedValue;
+
+            Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
         }
     }
 }

@@ -43,27 +43,12 @@ namespace E_WeddingDressShop.Views
                 {
                     Response.Redirect("~/Views/Clients/Dashboard.aspx");
                 }
-                Session["Role"] = role;
-                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ShowToast", @"
-                     function showToast(message) {
-                         Toastify({
-                             text: message,
-                             duration: 3000,
-                             close: true,
-                             gravity: 'top',
-                             position: 'right',
-                             backgroundColor: 'linear-gradient(to right, #00b09b, #96c93d)',
-                             stopOnFocus: true
-                         }).showToast();
-                     }
-                 ", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "ToastMessage", "showToast('Đăng nhập thành công!');", true);
+                Session["Role"] = role;           
             }
             else
             {
                 lblErrorMessage.Visible = true;
                 lblErrorMessage.Text = result;
-
                 txtPassword.Text = string.Empty;
             }
         }

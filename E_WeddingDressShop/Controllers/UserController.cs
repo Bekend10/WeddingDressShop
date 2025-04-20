@@ -75,6 +75,7 @@ namespace E_WeddingDressShop.Controllers
                             if (reader.HasRows)
                             {
                                 reader.Read();
+                                //Lấy pw từ db
                                 string storedPasswordHash = (reader["PasswordHash"].ToString()).Trim() as string;
 
                                 if (VerifyPassword(plainPassword, storedPasswordHash))

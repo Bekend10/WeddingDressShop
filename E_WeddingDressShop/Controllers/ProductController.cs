@@ -61,7 +61,7 @@ namespace E_WeddingDressShop.Controllers
             string sql = @"SELECT P.ProductID, P.Name, P.Description, P.Price, P.StockQuantity, P.ImageUrl, P.CreatedDate, 
                  P.CategoryID, C.CategoryName
                  FROM tb_Products P 
-                 INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID";
+                 INNER JOIN tb_Categories C ON P.CategoryID = C.CategoryID where P.StockQuantity >= 1";
             SqlCommand cmd = new SqlCommand(sql, conn);
             conn.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -93,6 +93,7 @@ namespace E_WeddingDressShop.Controllers
                             JOIN tb_OrderDetails od ON p.ProductID = od.ProductID
                             JOIN tb_Orders o ON o.OrderID = od.OrderID
                             JOIN tb_Categories c on c.CategoryID = p.CategoryID
+							where p.StockQuantity >= 1 
                             GROUP BY p.Name, p.Price, p.CategoryID, p.Description , p.ImageUrl , c.CategoryName , p.ProductID
                             ORDER BY TotalSold DESC";
             SqlCommand cmd = new SqlCommand(sql, conn);

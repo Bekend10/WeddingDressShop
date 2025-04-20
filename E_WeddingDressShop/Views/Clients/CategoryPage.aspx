@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CategoryPage.aspx.cs" Inherits="E_WeddingDressShop.Views.Clients.CategoryPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CategoryPage.aspx.cs" Inherits="E_WeddingDressShop.Views.Clients.CategoryPage" enableEventValidation="false" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,7 +66,6 @@
             .menu-header a {
                 color: #333;
                 text-decoration: none;
-                font-weight: 500;
                 transition: color 0.3s ease;
             }
 
@@ -248,9 +247,7 @@
         .product-card {
             border-radius: 8px;
             background: #fff;
-            text-align: center;
-            padding: 15px;
-            width: 280px;
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -279,17 +276,20 @@
                 font-size: 14px;
             }
 
-            .product-card .btn {
-                width: 100%;
-                background-color: transparent;
-                color: var(--primary-color);
-                text-decoration: none;
-            }
+            .product-card input {
+    width: 100%;
+    background-color: transparent;
+    color: #222;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
 
-                .product-card .btn:hover {
-                    color: white;
-                    background-color: black;
-                }
+    .product-card input:hover {
+        color: var(--primary-color);
+    }
 
         /* Responsive Adjustments */
         @media (max-width: 1200px) {
@@ -322,6 +322,95 @@
             text-transform: uppercase;
             margin-top: 100px;
         }
+        footer {
+    width: 100%;
+}
+
+    footer img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+                .custom-dropdown select {
+  
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+            #cbotheloai {
+                padding: 5px 10px;
+                border-radius: 0;
+            }
+
+.custom-dropdown select:hover {
+  border-color: #aaa;
+  background-color: #fff;
+}
+
+.custom-dropdown select:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+
+.custom-dropdown::after {
+  content: ''; 
+  font-size: 12px;
+  color: #333;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-container input {
+    border : none !important;
+    border-bottom : 1px solid var(--primary-color) !important;
+    border-radius : 0 !important;
+    box-shadow : 0 0 0!important;
+    margin-bottom : 40px;
+}
+
+.search-container .form-control {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.search-container .btn {
+    background-color: var(--primary-color);
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-container .btn:hover {
+    background-color: #e09e3a;
+}
     </style>
 </head>
 <body>
@@ -341,7 +430,7 @@
                     <a href="#"><div class="h-100 d-flex align-items-center">Dress Wedding +</div></a>
                     <div class="category-wedding-secondary">
                         <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
-                        <div>
+                        <div class="custom-dropdown">
                             <asp:DropDownList runat="server" ID="cbotheloai" AutoPostBack="true" OnSelectedIndexChanged="cbotheloai_SelectedIndexChanged" />
                         </div>
                     </div>
@@ -391,6 +480,10 @@
             </div>
         </div>
         <div class="wrapper-new-product">
+            <div class="search-container">
+    <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" Placeholder="Nhập tên sản phẩm..." />
+    <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary" Text="Tìm kiếm" OnClick="btnSearch_Click" />
+</div>
     <div class="title">
         Danh sách sản phẩm
         <img src="../../Template/image/main-img.png" />
@@ -413,6 +506,7 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+        <asp:Label ID="lblNoProducts" runat="server" Text="Không có sản phẩm phù hợp." CssClass="text-danger text-center d-block" Visible="false"></asp:Label>
     </div>
     <!-- Phân trang -->
     <nav>
@@ -427,6 +521,9 @@
         </ul>
     </nav>
 </div>
+        <footer>
+    <img src="../../Template/image/Screenshot%202024-12-25%20000248.png" />
+</footer>
     </form>
     <script>
         function toggleLogout(event) {

@@ -42,6 +42,10 @@ namespace E_WeddingDressShop.Views.Admin
             {
                 ShowMessage("Không tìm thấy người dùng phù hợp.", false);
             }
+            else
+            {
+                ShowMessage("", false);
+            }
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -76,6 +80,11 @@ namespace E_WeddingDressShop.Views.Admin
             lblMessage.Text = message;
             lblMessage.ForeColor = isSuccess ? System.Drawing.Color.Green : System.Drawing.Color.Red;
             lblMessage.Visible = true;
+        }
+        protected void gvUsers_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUsers.PageIndex = e.NewPageIndex; // Cập nhật chỉ số trang hiện tại
+            LoadUsers(); // Tải lại dữ liệu phù hợp
         }
     }
 }

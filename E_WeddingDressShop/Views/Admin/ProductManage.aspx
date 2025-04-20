@@ -158,8 +158,7 @@
 
         <div class="grid-container">
             <h2>Danh sách sản phẩm</h2>
-            <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
-                <Columns>
+ <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered" AllowPaging="True" PageSize="5" OnPageIndexChanging="gvProducts_PageIndexChanging">                <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />
                       <asp:TemplateField HeaderText="Ảnh sản phẩm">

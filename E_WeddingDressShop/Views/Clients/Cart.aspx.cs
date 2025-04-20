@@ -16,6 +16,8 @@ namespace E_WeddingDressShop.Views.Clients
         public OrderController orderController = new OrderController();
         public OrderDetailController orderDetailController = new OrderDetailController();
         public ProductController productController = new ProductController();
+        CategoryController categoryController = new CategoryController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,6 +27,7 @@ namespace E_WeddingDressShop.Views.Clients
                 string userName = userController.getUserByUserID(userId).FullName;
                 nameUser.InnerText = "Xin chào " + userName.ToString();
                 Loaded();
+                LoadCategory();
             }
            
         }
@@ -62,6 +65,8 @@ namespace E_WeddingDressShop.Views.Clients
                     string result = cartController.DeleteCart(cartID);
                     ShowMessage(result, result.Contains("thành công"));
                     Loaded();
+                    LoadCategory();
+
                 }
             }
             catch (Exception ex)
@@ -130,6 +135,23 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
+        }
+        protected void cbotheloai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategoryID = cbotheloai.SelectedValue;
+
+            Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
+        }
+        protected void LoadCategory()
+        {
+            var list = categoryController.getListCategory();
+            cbotheloai.DataSource = list;
+            cbotheloai.DataTextField = "CategoryName";
+            cbotheloai.DataValueField = "CategoryID";
+            //cbotheloai.Items.Insert(0, new ListItem("-- Select --", string.Empty));
+            //cbotheloai.SelectedIndex = 0;
+            cbotheloai.DataBind();
+            cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
         }
     }
 }

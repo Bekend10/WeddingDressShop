@@ -84,6 +84,32 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txtSearch.Text.Trim();
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                var products = productcontroller.getListProductByName(searchQuery);
+                if (products.Count > 0)
+                {
+                    rptNewProducts.DataSource = products;
+                    rptNewProducts.DataBind();
+                    lblNoProducts.Visible = false;
+                }
+                else
+                {
+                    rptNewProducts.DataSource = null;
+                    rptNewProducts.DataBind();
+                    lblNoProducts.Visible = true;
+                }
+            }
+            else
+            {
+                lblNoProducts.Visible = false;
+                LoadNewProducts();
+            }
+        }
     }
 
 }

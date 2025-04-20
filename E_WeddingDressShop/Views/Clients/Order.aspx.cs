@@ -2,6 +2,7 @@
 using E_WeddingDressShop.Models;
 using System;
 using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace E_WeddingDressShop.Views.Clients
 {
@@ -10,12 +11,19 @@ namespace E_WeddingDressShop.Views.Clients
         private readonly OrderController orderController = new OrderController();
         private readonly UserController userController = new UserController();
         private readonly OrderDetailController orderDetailController = new OrderDetailController();
+        CategoryController categoryController = new CategoryController();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                string email = Session["UserEmail"].ToString();
+                int userID = userController.getUserByEmail(email);
+                string userName = userController.getUserByUserID(userID).FullName;
+                nameUser.InnerText = "Xin chào " + userName.ToString();
                 LoadOrdersForClient();
+                LoadCategory();
+
             }
         }
 
@@ -62,6 +70,23 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
+        }
+        protected void cbotheloai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategoryID = cbotheloai.SelectedValue;
+
+            Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
+        }
+        protected void LoadCategory()
+        {
+            var list = categoryController.getListCategory();
+            cbotheloai.DataSource = list;
+            cbotheloai.DataTextField = "CategoryName";
+            cbotheloai.DataValueField = "CategoryID";
+            //cbotheloai.Items.Insert(0, new ListItem("-- Select --", string.Empty));
+            //cbotheloai.SelectedIndex = 0;
+            cbotheloai.DataBind();
+            cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
         }
     }
 }

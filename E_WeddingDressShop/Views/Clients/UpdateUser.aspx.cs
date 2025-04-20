@@ -14,9 +14,17 @@ namespace E_WeddingDressShop.Views.Clients
     public partial class UpdateUser : System.Web.UI.Page
     {
         UserController usercontroller = new UserController();
+        CategoryController categoryController = new CategoryController();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            string email = Session["UserEmail"].ToString();
+            int userID = usercontroller.getUserByEmail(email);
+            string userName = usercontroller.getUserByUserID(userID).FullName;
+            nameUser.InnerText = "Xin chào " + userName.ToString();
             Loaded();
+            LoadCategory();
+
         }
         private bool checkPassword()
         {
@@ -31,7 +39,6 @@ namespace E_WeddingDressShop.Views.Clients
             txthoten.Text = u.FullName;
             txtemail.Text = u.Email;
             txtdiachi.Text = u.Address;
-
             txtphonenumber.Text = u.NumberPhone;
         }
         protected void UpdateUserNe(object sender, CommandEventArgs e)
@@ -46,6 +53,7 @@ namespace E_WeddingDressShop.Views.Clients
                 u.FullName = txthoten.Text;
                 u.Email = txtemail.Text;
                 u.NumberPhone = txtphonenumber.Text;
+                u.Address = txtdiachi.Text;
                 if (checkPassword() == false)
                 {
                     lblErrorMessage.Text = "Mật khẩu không trùng khớp";
@@ -67,6 +75,23 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Clear();
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
+        }
+        protected void cbotheloai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedCategoryID = cbotheloai.SelectedValue;
+
+            Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
+        }
+        protected void LoadCategory()
+        {
+            var list = categoryController.getListCategory();
+            cbotheloai.DataSource = list;
+            cbotheloai.DataTextField = "CategoryName";
+            cbotheloai.DataValueField = "CategoryID";
+            //cbotheloai.Items.Insert(0, new ListItem("-- Select --", string.Empty));
+            //cbotheloai.SelectedIndex = 0;
+            cbotheloai.DataBind();
+            cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
         }
     }
 }

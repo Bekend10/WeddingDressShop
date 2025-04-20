@@ -44,7 +44,7 @@ namespace E_WeddingDressShop.Views
             //cbotheloai.Items.Insert(0, new ListItem("-- Select --", string.Empty));
             //cbotheloai.SelectedIndex = 0;
             cbotheloai.DataBind();
-            cbotheloai.Items.Insert(0, new ListItem("-- Select --", ""));
+            cbotheloai.Items.Insert(0, new ListItem("-- Dress Wedding --", ""));
         }
         protected void logout_Click(object sender, EventArgs e)
         {

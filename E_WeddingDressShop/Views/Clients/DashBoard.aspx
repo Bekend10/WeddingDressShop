@@ -66,7 +66,6 @@
             .menu-header a {
                 color: #333;
                 text-decoration: none;
-                font-weight: 500;
                 transition: color 0.3s ease;
             }
 
@@ -248,9 +247,7 @@
         .product-card {
             border-radius: 8px;
             background: #fff;
-            text-align: center;
-            padding: 15px;
-            width: 280px;
+            text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -279,16 +276,19 @@
                 font-size: 14px;
             }
 
-            .product-card .btn {
+            .product-card input {
                 width: 100%;
                 background-color: transparent;
-                color: var(--primary-color);
-                text-decoration: none;
+                color: #222;
+                border: none;
+                outline: none;
+                font-size: 14px;
+                margin-top: 10px;
+                text-decoration: underline;
             }
 
-                .product-card .btn:hover {
-                    color: white;
-                    background-color: black;
+                .product-card input:hover {
+                    color: var(--primary-color);
                 }
 
         /* Responsive Adjustments */
@@ -316,12 +316,61 @@
             }
         }
 
-        h2 {
-            text-align: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-transform: uppercase;
-            margin-top: 100px;
+        footer {
+            width: 100%;
         }
+
+            footer img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .custom-dropdown select {
+  
+  background-color: #fff;
+  border: none;
+  border-bottom: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+
+            #cbotheloai {
+                padding: 5px 10px;
+                border-radius: 0;
+            }
+
+.custom-dropdown select:hover {
+  border-color: #aaa;
+  background-color: #fff;
+}
+
+.custom-dropdown select:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+}
+
+.custom-dropdown::after {
+  content: ''; 
+  font-size: 12px;
+  color: #333;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
     </style>
 </head>
 <body>
@@ -343,7 +392,7 @@
                     </a>
                     <div class="category-wedding-secondary">
                         <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
-                        <div>
+                        <div class="custom-dropdown">
                             <asp:DropDownList runat="server" ID="cbotheloai" AutoPostBack="true" OnSelectedIndexChanged="cbotheloai_SelectedIndexChanged" />
                         </div>
                     </div>
@@ -393,7 +442,7 @@
         </div>
         <div class="wrapper-new-product">
             <div class="title">
-                Danh sách sản phẩm mới nhất
+                Danh sách sản phẩm mới
         <img src="../../Template/image/main-img.png" />
             </div>
             <div class="product-grid">
@@ -416,8 +465,8 @@
                 </asp:Repeater>
             </div>
 
-            <div class="title">
-                Danh sách sản phẩm bán chạy nhất
+            <div class="title mt-5">
+                Sản phẩm bán chạy nhất
      <img src="../../Template/image/main-img.png" />
             </div>
             <div class="product-grid">
@@ -452,6 +501,9 @@
                 </ul>
             </nav>
         </div>
+        <footer>
+            <img src="../../Template/image/Screenshot%202024-12-25%20000248.png" />
+        </footer>
     </form>
     <script>
         function toggleLogout(event) {

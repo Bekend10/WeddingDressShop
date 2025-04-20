@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="E_WeddingDressShop.Views.Register" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="E_WeddingDressShop.Views.Register" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -66,6 +66,7 @@
         .register-container {
             width: 100%;
             z-index: 2;
+            padding: 30px 20px;
         }
 
         /* Tiêu đề */
@@ -106,7 +107,7 @@
             font-family: 'Housttely';
         }
 
-        #btnRegister {
+        #btnRegister, #btnLogin {
             background-color: transparent;
             border: 2px solid #ffb648;
             border-radius: 30px;
@@ -120,7 +121,8 @@
             transition: all 0.3s ease;
         }
 
-        #btnRegister:hover {
+        #btnRegister:hover,
+        #btnLogin:hover {
             color: #fff;
             background-color: #ffb648;
             box-shadow: 0 0 10px #ffb648;
@@ -138,6 +140,11 @@
                 transform: translateY(0);
                 opacity: 1;
             }
+        }
+        .wrapper-btn-control {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
         }
     </style>
 
@@ -167,7 +174,10 @@
                 <label for="txtAddress">Địa chỉ:</label><br />
                 <asp:TextBox ID="txtAddress" runat="server" CssClass="form-control" placeholder="nhập địa chỉ của bạn" /><br />
 
-                <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
+                <div class="wrapper-btn-control">
+                    <asp:Button ID="btnLogin" runat="server" class="btnControlUpdate" Text="Đăng nhập" PostBackUrl="~/Views/Clients/Login.aspx" />
+                    <asp:Button ID="btnRegister" Text="Đăng Ký" runat="server" CssClass="btn btn-primary" OnClick="btnRegister_Click" />
+                </div>
                 <asp:Label runat="server" ID="lblErrorMessage" CssClass="error-message" Visible="false"></asp:Label>
             </div>
         </div>

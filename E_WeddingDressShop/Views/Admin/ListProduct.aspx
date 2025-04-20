@@ -142,7 +142,14 @@
         </div>
         <br />
         <div class="grid-container">
-            <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" CssClass="table table-bordered">
+            <asp:GridView
+                ID="gvProducts"
+                runat="server"
+                AutoGenerateColumns="False"
+                CssClass="table table-bordered"
+                AllowPaging="True"
+                PageSize="5"
+                OnPageIndexChanging="gvProducts_PageIndexChanging">
                 <Columns>
                     <asp:BoundField DataField="ProductID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="Name" HeaderText="Tên sản phẩm" />

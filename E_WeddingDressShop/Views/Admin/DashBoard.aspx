@@ -189,12 +189,12 @@
                         <div class="profile-header">
                             <img src="   https://cdn-icons-png.flaticon.com/512/17003/17003310.png " alt="Profile Picture" class="profile-picture" />
                             <div class="profile-info">
-                                 <b><span runat="server" class="profile-name" id="userName"></span></b>
+                                <b><span runat="server" class="profile-name" id="userName"></span></b>
                                 <span runat="server" class="profile-role" id="roleUser"></span>
                             </div>
                         </div>
                         <div class="profile-actions">
-                           <a href="UpdateUser.aspx" class="action-item">
+                            <a href="UpdateUser.aspx" class="action-item">
                                 <i class="fa fa-cog"></i>Update Info
                             </a>
                             <asp:LinkButton ID="btnLogout" runat="server" CommandName="LOGOUT" OnCommand="CommandHandler" CssClass="action-item">
@@ -213,7 +213,7 @@
                         <input type="text" class="form-control" placeholder="Search..." />
                     </div>
                     <div class="hienthi">
-                          <iframe id="contentFrame" src="Home.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+                        <iframe id="contentFrame" src="Home.aspx" frameborder="0" style="width: 100%; height: 100%;"></iframe>
 
 
                     </div>

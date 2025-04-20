@@ -40,14 +40,15 @@ namespace E_WeddingDressShop.Views.Admin
                 string email = Session["UserEmail"].ToString();
                 int userId = usercontroller.getUserByEmail(email);
                 USER u = usercontroller.layUserByUserID(userId);
-                txthoten.Text = u.FullName;
-                txtemail.Text = u.Email;
-                txtdiachi.Text = u.Address;
-                txtphonenumber.Text = u.NumberPhone;
-
+                //txthoten.Text = u.FullName;
+                //txtemail.Text = u.Email;
+                //txtdiachi.Text = u.Address;
+                //txtphonenumber.Text = u.NumberPhone;
+                u.UserID = userId;
                 u.FullName = txthoten.Text;
                 u.Email = txtemail.Text;
                 u.NumberPhone = txtphonenumber.Text;
+                u.Address = txtdiachi.Text;
                 if (checkPassword() == false)
                 {
                     lblErrorMessage.Text = "Mật khẩu không trùng khớp";
