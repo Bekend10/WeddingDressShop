@@ -69,11 +69,5 @@ namespace E_WeddingDressShop.Views.Clients
             Session.Abandon();
             Response.Redirect("~/Views/Clients/Login.aspx");
         }
-        protected void cbotheloai_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedCategoryID = cbotheloai.SelectedValue;
-
-            Response.Redirect($"CategoryPage.aspx?CategoryID={selectedCategoryID}");
-        }
     }
 }

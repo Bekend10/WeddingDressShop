@@ -210,102 +210,59 @@
                 border: 2px solid #ffb64852;
                 letter-spacing: 1px;
             }
-                        .custom-dropdown select {
-  
-  background-color: #fff;
-  border: none;
-  border-bottom: 1px solid var(--primary-color);
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  width: 200px;
-  transition: all 0.3s ease;
-}
-
-            #cbotheloai {
-                padding: 5px 10px;
-                border-radius: 0;
-            }
-
-.custom-dropdown select:hover {
-  border-color: #aaa;
-  background-color: #fff;
-}
-
-.custom-dropdown select:focus {
-  outline: none;
-  border-color: #f39c12;
-  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
-}
-
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-  width: 200px;
-}
-
-.custom-dropdown::after {
-  content: ''; 
-  font-size: 12px;
-  color: #333;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <header>
-    <%--<div class="menu-header">
+            <%--<div class="menu-header">
         <a href="#">ABOUT US</a>
         <a href="#">ALBUMS WEDDING</a>
         <a href="#">COLLECTIONS</a>
         <a href="#">NEW CONCEPT</a>
     </div>--%>
-    <a href="DashBoard.aspx">
-        <img src="../../Template/image/logo-header.png" alt="Logo" />
-    </a>
-    <div class="menu-header">
-        <div class="category-wedding h-100 d-flex align-items-center">
-            <a href="#">
-                <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+            <a href="./DashBoard.aspx">
+                <img src="../../Template/image/logo-header.png" alt="Logo" />
             </a>
-            <div class="category-wedding-secondary">
-                <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
-                <div class="custom-dropdown">
-                    <asp:DropDownList runat="server" ID="cbotheloai" AutoPostBack="true" OnSelectedIndexChanged="cbotheloai_SelectedIndexChanged" />
+            <div class="menu-header">
+                <div class="category-wedding h-100 d-flex align-items-center">
+                    <a href="#">
+                        <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+                    </a>
+                    <div class="category-wedding-secondary">
+                        <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
+                        </div>
+                    </div>
+                </div>
+                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
+                </a>
+                <div id="logoutContainer" class="logout-container" style="display: none;">
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
+                    </div>
+                    <div>
+                        <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
+                    </div>
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
-        </a>
-        <div id="logoutContainer" class="logout-container" style="display: none;">
-            <div class="d-flex align-item-center justify-content-start">
-                <i class="fa-solid fa-user-pen"></i>
-                <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
-            </div>
-            <div>
-                <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
-            </div>
-            <div class="d-flex align-item-center justify-content-start">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
-            </div>
-            <div class="d-flex">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
-            </div>
-            <div class="d-flex">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
-            </div>
-        </div>
-    </div>
-</header>
+        </header>
         <div class="content-history">
             <h2>Lịch sử Mua Hàng</h2>
             <hr />

@@ -4,12 +4,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Danh sách đơn hàng</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
         @font-face {
             font-family: "Housttely";
             src: url("../../Template/fonts/SVN-HousttelySignature-Regular.eot");
@@ -18,6 +19,7 @@
             font-style: normal;
             font-display: swap;
         }
+
         :root {
             --primary-color: #ffb648;
         }
@@ -27,6 +29,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Montserrat', sans-serif;
             margin-top: 80px;
@@ -48,19 +51,23 @@
             padding: 0 40px;
             z-index: 1000;
         }
+
             header img {
                 width: 150px;
                 object-fit: cover;
             }
+
         .menu-header {
             height: 100%;
             display: flex;
             align-items: center;
             gap: 20px;
         }
+
         .category-wedding {
             position: relative;
         }
+
         .category-wedding-secondary {
             position: absolute;
             top: 100%;
@@ -70,23 +77,28 @@
             padding: 10px 15px;
             display: none;
         }
+
         .category-wedding:hover .category-wedding-secondary {
             display: flex;
         }
+
         .category-wedding-secondary div div {
             border-bottom: 1px solid #f5f5f5;
             width: 200px;
             padding: 10px;
             cursor: pointer;
         }
+
             .category-wedding-secondary div div:hover {
                 background-color: #f5f5f5;
             }
+
         .category-wedding-secondary img {
             width: 100px;
             height: 150px;
             object-fit: cover;
         }
+
         .category-wedding-secondary span {
             width: 30px;
             height: 30px;
@@ -97,11 +109,13 @@
             justify-content: center;
             font-size: 12px;
         }
+
         .menu-header a {
             color: #333;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         #logoutContainer {
             position: absolute;
             top: 100%;
@@ -113,6 +127,7 @@
             z-index: 100;
             overflow: hidden
         }
+
             #logoutContainer div {
                 width: 100%;
                 border: none;
@@ -124,24 +139,30 @@
                 align-items: center;
                 justify-content: flex-start;
             }
+
                 #logoutContainer div:last-child {
                     border-top: 1px solid #ccc;
                 }
+
                 #logoutContainer div:hover {
                     background-color: #f5f5f5;
                 }
+
                 #logoutContainer div i {
                     width: 25px;
                     text-align: center;
                     margin-right: 5px;
                 }
+
             #logoutContainer input {
                 background-color: transparent;
                 border: none;
             }
+
         #nameUser {
             cursor: pointer;
         }
+
         .content-order {
             background-color: #fff;
             margin: 0 80px;
@@ -156,35 +177,43 @@
                 transform: translateY(30%);
                 opacity: 0.5;
             }
+
             100% {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
+
         h1 {
             color: #333;
         }
+
         .table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
             .table th, .table td {
                 border: 1px solid #ddd;
                 padding: 8px;
                 text-align: left;
             }
+
             .table th {
                 background-color: #f4f4f4;
                 font-weight: bold;
             }
+
         .message {
             color: red;
             font-style: italic;
         }
+
         .success {
             color: green;
         }
+
         .btn {
             background-color: green;
             color: white;
@@ -193,121 +222,80 @@
             border-radius: 4px;
             cursor: pointer;
         }
-        #back {
-    background-color: transparent;
-    border: 2px solid #ffb648;
-    border-radius: 30px;
-    font-family: 'Quicksand';
-    font-size: 20px;
-    padding: 8px 30px;
-    cursor: pointer;
-    color: #ffb648;
-    transition: all 0.3s ease;
-}
 
-    #back:hover {
-        color: #fff;
-        background-color: #ffb648;
-        box-shadow: 0 0 10px #ffb648;
-        border: 2px solid #ffb64852;
-        letter-spacing: 1px;
-    }
-                .custom-dropdown select {
-  
-  background-color: #fff;
-  border: none;
-  border-bottom: 1px solid var(--primary-color);
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  width: 200px;
-  transition: all 0.3s ease;
-}
+        .btnReturn {
+            background-color: transparent;
+            border: 2px solid #ffb648;
+            border-radius: 30px;
+            font-family: 'Quicksand';
+            font-size: 20px;
+            margin-top: 30px;
+            padding: 8px 30px;
+            cursor: pointer;
+            color: #ffb648;
+            transition: all 0.3s ease;
+        }
 
-            #cbotheloai {
-                padding: 5px 10px;
-                border-radius: 0;
+            .btnReturn:hover {
+                color: #fff;
+                background-color: #ffb648;
+                box-shadow: 0 0 10px #ffb648;
+                border: 2px solid #ffb64852;
+                letter-spacing: 1px;
             }
-
-.custom-dropdown select:hover {
-  border-color: #aaa;
-  background-color: #fff;
-}
-
-.custom-dropdown select:focus {
-  outline: none;
-  border-color: #f39c12;
-  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
-}
-
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-  width: 200px;
-}
-
-.custom-dropdown::after {
-  content: ''; 
-  font-size: 12px;
-  color: #333;
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <header>
-    <%--<div class="menu-header">
+            <%--<div class="menu-header">
         <a href="#">ABOUT US</a>
         <a href="#">ALBUMS WEDDING</a>
         <a href="#">COLLECTIONS</a>
         <a href="#">NEW CONCEPT</a>
     </div>--%>
-    <a href="DashBoard.aspx">
-        <img src="../../Template/image/logo-header.png" alt="Logo" />
-    </a>
-    <div class="menu-header">
-        <div class="category-wedding h-100 d-flex align-items-center">
-            <a href="#">
-                <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+            <a href="./DashBoard.aspx">
+                <img src="../../Template/image/logo-header.png" alt="Logo" />
             </a>
-            <div class="category-wedding-secondary">
-                <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
-                <div class="custom-dropdown">
-                    <asp:DropDownList runat="server" ID="cbotheloai" AutoPostBack="true" OnSelectedIndexChanged="cbotheloai_SelectedIndexChanged" />
+            <div class="menu-header">
+                <div class="category-wedding h-100 d-flex align-items-center">
+                    <a href="#">
+                        <div class="h-100 d-flex align-items-center">Dress Wedding +</div>
+                    </a>
+                    <div class="category-wedding-secondary">
+                        <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
+                            <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
+                        </div>
+                    </div>
+                </div>
+                <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
+                </a>
+                <div id="logoutContainer" class="logout-container" style="display: none;">
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-user-pen"></i>
+                        <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
+                    </div>
+                    <div>
+                        <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
+                    </div>
+                    <div class="d-flex align-item-center justify-content-start">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
+                    </div>
+                    <div class="d-flex">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <a id="nameUser" runat="server" class="dropdown-toggle" onclick="toggleLogout(event)">User
-        </a>
-        <div id="logoutContainer" class="logout-container" style="display: none;">
-            <div class="d-flex align-item-center justify-content-start">
-                <i class="fa-solid fa-user-pen"></i>
-                <asp:Button runat="server" Text="Chỉnh sửa thông tin" PostBackUrl="~/Views/Clients/UpdateUser.aspx" />
-            </div>
-            <div>
-                <a href="Cart.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng của tôi</a>
-            </div>
-            <div class="d-flex align-item-center justify-content-start">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <asp:Button runat="server" Text="Đơn hàng của tôi" PostBackUrl="~/Views/Clients/Order.aspx" />
-            </div>
-            <div class="d-flex">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-                <asp:Button runat="server" Text="Lịch sử đặt hàng" PostBackUrl="~/Views/Clients/HistoryBuy.aspx" />
-            </div>
-            <div class="d-flex">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                <asp:Button ID="logout" runat="server" Text="Đăng xuất" OnClick="logout_Click" />
-            </div>
-        </div>
-    </div>
-</header>
+        </header>
         <div class="content-order">
             <h2>Danh sách đơn hàng của bạn</h2>
             <hr />
@@ -317,8 +305,11 @@
                     <asp:BoundField DataField="OrderDate" HeaderText="Ngày Đặt Hàng" DataFormatString="{0:dd/MM/yyyy}" />
                     <asp:BoundField DataField="TotalAmount" HeaderText="Tổng Tiền" DataFormatString="{0:N0} VNĐ" />
                     <asp:BoundField DataField="Status" HeaderText="Trạng Thái" />
+
                 </Columns>
             </asp:GridView>
+            <asp:Button runat="server" ID="back" Text="Trở về" CssClass="btnReturn" PostBackUrl="~/Views/Clients/DashBoard.aspx" />
+
             <asp:Label ID="lblMessage" runat="server" CssClass="message"></asp:Label>
             <br />
            <asp:Button ID ="back" runat="server" PostBackUrl="~/Views/Clients/DashBoard.aspx" Text="Trở về" CssClass="btn btn-primary"/>

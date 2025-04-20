@@ -30,10 +30,9 @@
         body {
             font-family: 'Montserrat', sans-serif;
             width: 100%;
-            height: 100%;
+            margin-top: 80px;
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../../Template/image/titleAD.png') no-repeat center;
             background-size: cover;
-            overflow: hidden;
         }
         /* Header */
         header {
@@ -164,7 +163,6 @@
         }
         .content-product-detail .product-card {
             display: flex;
-            margin-top: 80px;
         }
         .content-product-detail .product-image {
             width: 300px;
@@ -225,7 +223,7 @@
         <a href="#">COLLECTIONS</a>
         <a href="#">NEW CONCEPT</a>
     </div>--%>
-    <a href="DashBoard.aspx">
+    <a href="./DashBoard.aspx">
         <img src="../../Template/image/logo-header.png" alt="Logo" />
     </a>
     <div class="menu-header">
@@ -236,7 +234,9 @@
             <div class="category-wedding-secondary">
                 <img src="../../Template/image/Váy%20công%20chúa/congchua1.jpg" />
                 <div>
-                    <asp:DropDownList runat="server" ID="cbotheloai" AutoPostBack="true" OnSelectedIndexChanged="cbotheloai_SelectedIndexChanged" />
+                    <div class="d-flex justify-content-between align-items-center">Tất cả <span>10</span></div>
+                    <div class="d-flex justify-content-between align-items-center">Váy công chúa <span>5</span></div>
+                    <div class="d-flex justify-content-between align-items-center">Váy đuôi cá <span>5</span></div>
                 </div>
             </div>
         </div>

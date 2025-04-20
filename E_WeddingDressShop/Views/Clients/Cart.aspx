@@ -161,7 +161,7 @@ header {
         opacity: 1;
     }
 }
-#back {
+.btnReturn {
     background-color: transparent;
     border: 2px solid #ffb648;
     border-radius: 30px;
@@ -173,7 +173,7 @@ header {
     color: #ffb648;
     transition: all 0.3s ease;
 }
-#back:hover {
+.btnReturn:hover {
     color: #fff;
     background-color: #ffb648;
     box-shadow: 0 0 10px #ffb648;
@@ -182,40 +182,6 @@ header {
 }
 td, th {
     text-align:center;
-}
-            .custom-dropdown select {
-  
-  background-color: #fff;
-  border: none;
-  border-bottom: 1px solid var(--primary-color);
-  padding: 10px 20px;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-  width: 200px;
-  transition: all 0.3s ease;
-}
-
-            #cbotheloai {
-                padding: 5px 10px;
-                border-radius: 0;
-            }
-
-.custom-dropdown select:hover {
-  border-color: #aaa;
-  background-color: #fff;
-}
-
-.custom-dropdown select:focus {
-  outline: none;
-  border-color: #f39c12;
-  box-shadow: 0 0 5px rgba(243, 156, 18, 0.5);
-}
-
-.custom-dropdown {
-  position: relative;
-  display: inline-block;
-  width: 200px;
 }
 
 .custom-dropdown::after {
@@ -239,7 +205,7 @@ td, th {
         <a href="#">COLLECTIONS</a>
         <a href="#">NEW CONCEPT</a>
     </div>--%>
-    <a href="DashBoard.aspx">
+    <a href="./DashBoard.aspx">
         <img src="../../Template/image/logo-header.png" alt="Logo" />
     </a>
     <div class="menu-header">
@@ -297,6 +263,8 @@ td, th {
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <asp:Button runat="server" ID="back" Text="Trở về" CssClass="btnReturn" PostBackUrl="~/Views/Clients/DashBoard.aspx"/>
+
             <asp:Label ID="lblMessage" runat="server" ForeColor="Red" />
             <br />
             <asp:Button ID ="back" runat="server" PostBackUrl="~/Views/Clients/DashBoard.aspx" Text="Trở về" CssClass="btn btn-primary"/>
